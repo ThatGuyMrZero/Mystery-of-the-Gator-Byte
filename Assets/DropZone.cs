@@ -4,12 +4,25 @@ public class DropZone : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log($"📌 {gameObject.name}: Something entered! Object = {other.gameObject.name}");
+
         if (other.CompareTag("Book"))
         {
-            SortingManager sortingManager = Object.FindFirstObjectByType<SortingManager>();
-            if (sortingManager == null) return;
+            Debug.Log($"✅ {other.gameObject.name} entered {gameObject.name}");
 
-            sortingManager.AddBookToZone(gameObject.name, other.gameObject); // Send book to SortingManager
+            SortingManager sortingManager = Object.FindFirstObjectByType<SortingManager>();
+            if (sortingManager != null)
+            {
+                sortingManager.AddBookToZone(gameObject.name, other.gameObject);
+            }
+            else
+            {
+                Debug.LogError("❌ SortingManager not found!");
+            }
+        }
+        else
+        {
+            Debug.Log($"⚠️ {other.gameObject.name} is NOT a book, ignoring.");
         }
     }
 }
