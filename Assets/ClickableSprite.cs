@@ -2,14 +2,14 @@
 
 public class ClickableSprite : MonoBehaviour
 {
-    public GameObject chalkboard; // Reference to the chalkboard sprite
+    public GameObject chalkboard; // Reference to the chalkboard
 
     void OnMouseDown()
     {
-        if (chalkboard != null)
+        // Only allow clicks if the chalkboard is NOT active
+        if (chalkboard != null && !chalkboard.activeSelf)
         {
-            bool isActive = chalkboard.activeSelf;
-            chalkboard.SetActive(!isActive); // Toggle chalkboard visibility
+            chalkboard.SetActive(true);
         }
     }
 }
