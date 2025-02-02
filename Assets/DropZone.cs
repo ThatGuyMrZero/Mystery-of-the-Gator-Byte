@@ -6,10 +6,10 @@ public class DropZone : MonoBehaviour
     {
         if (other.CompareTag("Book"))
         {
-            SortingManager sortingManager = FindObjectOfType<SortingManager>();
-            sortingManager.AddBookToZone(gameObject.name); // Add book to the correct zone
-            other.GetComponent<DragAndDrop>().enabled = false; // Disable dragging after placement
-            other.transform.position = transform.position; // Snap book into place
+            SortingManager sortingManager = Object.FindFirstObjectByType<SortingManager>();
+            if (sortingManager == null) return;
+
+            sortingManager.AddBookToZone(gameObject.name, other.gameObject); // Send book to SortingManager
         }
     }
 }
