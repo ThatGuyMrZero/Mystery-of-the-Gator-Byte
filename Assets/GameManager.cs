@@ -2,7 +2,7 @@
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance; // Singleton instance
+    public static GameManager instance;
 
     public GameObject chalkboard;
     public GameObject winMessage;
@@ -11,10 +11,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        if (instance == null)
-        {
-            instance = this; // Assign this instance
-        }
+        instance = this;
     }
 
     void Start()
@@ -32,7 +29,7 @@ public class GameManager : MonoBehaviour
             totalBooks += zone.GetCurrentBookCount();
         }
 
-        if (totalBooks == 6) // If all 6 books are sorted
+        if (totalBooks == 6)
         {
             Debug.Log("You did it!");
             winMessage.SetActive(true);
