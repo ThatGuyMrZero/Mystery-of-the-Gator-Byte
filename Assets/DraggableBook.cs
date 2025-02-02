@@ -4,22 +4,28 @@ using UnityEngine.EventSystems;
 public class DraggableBook : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private Vector3 startPosition;
-    private Transform parentAfterDrag;
+    private Transform originalParent;
+    private CanvasGroup canvasGroup;
+
+    void Awake()
+    {
+        canvasGroup = gameObject.AddComponent<CanvasGroup>(); // Allows transparency while dragging
+    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         startPosition = transform.position;
-        parentAfterDrag = transform.parent;
-        GetComponent<CanvasGroup>().blocksRaycasts = false;
+        originalParent = transform.parent;
+        canvasGroup.blocksRaycasts = false; // Prevents drop detection issues
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = Input.mousePosition;
+        transform.position = Input.mousePosition; // Moves book to cursor position
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        GetComponent<CanvasGroup>().blocksRaycasts = true;
+        canvasGroup.blocksRaycasts = true; // Reactivate raycasting after dropping
     }
 }

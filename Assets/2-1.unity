@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 189889406}
   - component: {fileID: 189889407}
+  - component: {fileID: 189889409}
   - component: {fileID: 189889408}
   m_Layer: 0
   m_Name: closedbook6_0
@@ -253,6 +254,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 5.35, y: 7.74}
   m_EdgeRadius: 0
+--- !u!114 &189889409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189889405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00ece6a4a61234f4cb985f6516f7d9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &365285972
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,6 +424,7 @@ GameObject:
   m_Component:
   - component: {fileID: 594324976}
   - component: {fileID: 594324975}
+  - component: {fileID: 594324977}
   m_Layer: 0
   m_Name: DropZone1
   m_TagString: Untagged
@@ -481,13 +495,59 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 594324974}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.8484, y: 1.4621, z: 0.016411666}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.829841, y: 1.4845232, z: 0.016411666}
   m_LocalScale: {x: 3.8031, y: 3.1357, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 662130723}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &594324977
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594324974}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &662130721
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,6 +640,8 @@ Transform:
   - {fileID: 1105489204}
   - {fileID: 2070314475}
   - {fileID: 189889406}
+  - {fileID: 594324976}
+  - {fileID: 1574273065}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &669150698
@@ -592,6 +654,7 @@ GameObject:
   m_Component:
   - component: {fileID: 669150699}
   - component: {fileID: 669150700}
+  - component: {fileID: 669150702}
   - component: {fileID: 669150701}
   m_Layer: 0
   m_Name: closedbook1_0
@@ -716,6 +779,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 5.36, y: 7.75}
   m_EdgeRadius: 0
+--- !u!114 &669150702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669150698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00ece6a4a61234f4cb985f6516f7d9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1043636179
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,6 +949,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1105489204}
   - component: {fileID: 1105489205}
+  - component: {fileID: 1105489207}
   - component: {fileID: 1105489206}
   m_Layer: 0
   m_Name: closedbook4_0
@@ -998,6 +1074,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 5.34, y: 7.74}
   m_EdgeRadius: 0
+--- !u!114 &1105489207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105489203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00ece6a4a61234f4cb985f6516f7d9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1153075835
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,6 +1183,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1574273065}
   - component: {fileID: 1574273064}
+  - component: {fileID: 1574273066}
   m_Layer: 0
   m_Name: DropZone2
   m_TagString: Untagged
@@ -1165,13 +1254,59 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1574273063}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.99, y: 1.48, z: 0.016411666}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.0085592, y: 1.5024232, z: 0.016411666}
   m_LocalScale: {x: 4.069953, y: 3.0356557, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 662130723}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1574273066
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574273063}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1864615113
 GameObject:
   m_ObjectHideFlags: 0
@@ -1182,6 +1317,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1864615114}
   - component: {fileID: 1864615115}
+  - component: {fileID: 1864615117}
   - component: {fileID: 1864615116}
   m_Layer: 0
   m_Name: closedbook2_0
@@ -1306,6 +1442,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 5.37, y: 7.77}
   m_EdgeRadius: 0
+--- !u!114 &1864615117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864615113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00ece6a4a61234f4cb985f6516f7d9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1865007298
 GameObject:
   m_ObjectHideFlags: 0
@@ -1316,6 +1464,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1865007299}
   - component: {fileID: 1865007300}
+  - component: {fileID: 1865007302}
   - component: {fileID: 1865007301}
   m_Layer: 0
   m_Name: closedbook3_0
@@ -1440,6 +1589,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 5.37, y: 7.76}
   m_EdgeRadius: 0
+--- !u!114 &1865007302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865007298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00ece6a4a61234f4cb985f6516f7d9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2070314474
 GameObject:
   m_ObjectHideFlags: 0
@@ -1450,6 +1611,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2070314475}
   - component: {fileID: 2070314476}
+  - component: {fileID: 2070314478}
   - component: {fileID: 2070314477}
   m_Layer: 0
   m_Name: closedbook5_0
@@ -1574,6 +1736,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 5.34, y: 7.74}
   m_EdgeRadius: 0
+--- !u!114 &2070314478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070314474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00ece6a4a61234f4cb985f6516f7d9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2080188980
 GameObject:
   m_ObjectHideFlags: 0
@@ -1674,5 +1848,3 @@ SceneRoots:
   - {fileID: 1153075837}
   - {fileID: 365285974}
   - {fileID: 662130723}
-  - {fileID: 594324976}
-  - {fileID: 1574273065}
