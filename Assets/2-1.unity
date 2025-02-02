@@ -131,9 +131,10 @@ GameObject:
   - component: {fileID: 189889407}
   - component: {fileID: 189889409}
   - component: {fileID: 189889408}
+  - component: {fileID: 189889410}
   m_Layer: 0
   m_Name: closedbook6_0
-  m_TagString: Untagged
+  m_TagString: Book
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -266,6 +267,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46faa88978d97994a89cbfd87a488bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &189889410
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189889405}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &365285972
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,6 +582,7 @@ Transform:
   - {fileID: 561175666}
   - {fileID: 1536594892}
   - {fileID: 1710731690}
+  - {fileID: 1339680361}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &669150698
@@ -569,9 +598,10 @@ GameObject:
   - component: {fileID: 669150704}
   - component: {fileID: 669150701}
   - component: {fileID: 669150703}
+  - component: {fileID: 669150705}
   m_Layer: 0
   m_Name: closedbook1_0
-  m_TagString: Untagged
+  m_TagString: Book
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -716,6 +746,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46faa88978d97994a89cbfd87a488bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &669150705
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669150698}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1043636179
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,9 +933,10 @@ GameObject:
   - component: {fileID: 1105489205}
   - component: {fileID: 1105489207}
   - component: {fileID: 1105489206}
+  - component: {fileID: 1105489208}
   m_Layer: 0
   m_Name: closedbook4_0
-  m_TagString: Untagged
+  m_TagString: Book
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1011,6 +1069,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46faa88978d97994a89cbfd87a488bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &1105489208
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105489203}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1153075835
 GameObject:
   m_ObjectHideFlags: 0
@@ -1170,12 +1255,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1339680358}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.018559217, y: 0.022423156, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 662130723}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1536594891
 GameObject:
@@ -1187,11 +1272,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1536594892}
   - component: {fileID: 1536594894}
-  - component: {fileID: 1536594895}
   - component: {fileID: 1536594893}
   m_Layer: 0
   m_Name: LeftZone
-  m_TagString: Untagged
+  m_TagString: DropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1312,18 +1396,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1536594895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1536594891}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68ad67c8a46611344b28908ed54f49b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1710731689
 GameObject:
   m_ObjectHideFlags: 0
@@ -1338,7 +1410,7 @@ GameObject:
   - component: {fileID: 1710731691}
   m_Layer: 0
   m_Name: RightZone
-  m_TagString: Untagged
+  m_TagString: DropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1483,9 +1555,10 @@ GameObject:
   - component: {fileID: 1864615115}
   - component: {fileID: 1864615117}
   - component: {fileID: 1864615116}
+  - component: {fileID: 1864615118}
   m_Layer: 0
   m_Name: closedbook2_0
-  m_TagString: Untagged
+  m_TagString: Book
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1618,6 +1691,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46faa88978d97994a89cbfd87a488bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &1864615118
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864615113}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1865007298
 GameObject:
   m_ObjectHideFlags: 0
@@ -1630,9 +1730,10 @@ GameObject:
   - component: {fileID: 1865007300}
   - component: {fileID: 1865007302}
   - component: {fileID: 1865007301}
+  - component: {fileID: 1865007303}
   m_Layer: 0
   m_Name: closedbook3_0
-  m_TagString: Untagged
+  m_TagString: Book
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1765,6 +1866,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46faa88978d97994a89cbfd87a488bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &1865007303
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865007298}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &2070314474
 GameObject:
   m_ObjectHideFlags: 0
@@ -1777,9 +1905,10 @@ GameObject:
   - component: {fileID: 2070314476}
   - component: {fileID: 2070314478}
   - component: {fileID: 2070314477}
+  - component: {fileID: 2070314479}
   m_Layer: 0
   m_Name: closedbook5_0
-  m_TagString: Untagged
+  m_TagString: Book
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1912,6 +2041,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46faa88978d97994a89cbfd87a488bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &2070314479
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070314474}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &2080188980
 GameObject:
   m_ObjectHideFlags: 0
@@ -2012,4 +2168,3 @@ SceneRoots:
   - {fileID: 1153075837}
   - {fileID: 365285974}
   - {fileID: 662130723}
-  - {fileID: 1339680361}

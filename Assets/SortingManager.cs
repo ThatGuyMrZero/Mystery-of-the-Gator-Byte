@@ -5,7 +5,7 @@ public class SortingManager : MonoBehaviour
 {
     public int booksNeededToWin = 3;
     private Dictionary<string, List<GameObject>> booksInZones = new Dictionary<string, List<GameObject>>();
-    private bool gameWon = false;
+    private bool gameOver = false;
 
     void Start()
     {
@@ -15,50 +15,38 @@ public class SortingManager : MonoBehaviour
 
     public void AddBookToZone(string zone, GameObject book)
     {
-        if (gameWon || !booksInZones.ContainsKey(zone)) return;
+        if (gameOver || !booksInZones.ContainsKey(zone)) return;
 
         if (!booksInZones[zone].Contains(book))
         {
             booksInZones[zone].Add(book);
-            Debug.Log($"✅ Book {book.name} added to {zone}. Total books: {booksInZones[zone].Count}");
-        }
-        else
-        {
-            Debug.LogWarning($"⚠️ Book {book.name} was already in {zone}!");
         }
 
         if (booksInZones[zone].Count >= booksNeededToWin)
         {
-            gameWon = true;
-            Debug.Log("🎉 Sorting complete! All books locked in place.");
-            StopAllBooks(zone);
+            gameOver = true;
+            EndGame();
         }
     }
 
-    private void StopAllBooks(string zone)
+    void EndGame()
     {
-        Debug.Log($"🛑 Stopping books in {zone}");
+        Debug.Log("🎉 GAME OVER! Books sorted correctly.");
 
-        foreach (GameObject book in booksInZones[zone])
+        // Disable all books' movement
+        foreach (var zone in booksInZones)
         {
-            if (book != null)
+            foreach (GameObject book in zone.Value)
             {
-                DragAndDrop dragScript = book.GetComponent<DragAndDrop>();
-                if (dragScript != null)
+                if (book != null)
                 {
-                    dragScript.enabled = false;
-                    Debug.Log($"🚫 Disabled dragging for {book.name}");
+                    book.GetComponent<DragAndDrop>().enabled = false;
+                    book.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
                 }
-
-                Collider2D collider = book.GetComponent<Collider2D>();
-                if (collider != null)
-                {
-                    collider.enabled = false;
-                    Debug.Log($"🔒 Disabled collider for {book.name}");
-                }
-
-                book.transform.position = new Vector3(book.transform.position.x, book.transform.position.y, 0);
             }
         }
+
+        // Optional: Stop time
+        Time.timeScale = 0;
     }
 }
