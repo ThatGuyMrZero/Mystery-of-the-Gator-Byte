@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI; // Import for UI
 
 public class SortingManager : MonoBehaviour
 {
     public int booksNeededToWin = 3;
+    public GameObject winScreen; // Assign in Inspector
     private Dictionary<string, List<GameObject>> booksInZones = new Dictionary<string, List<GameObject>>();
     private bool gameOver = false;
 
@@ -11,6 +13,11 @@ public class SortingManager : MonoBehaviour
     {
         booksInZones["LeftZone"] = new List<GameObject>();
         booksInZones["RightZone"] = new List<GameObject>();
+
+        if (winScreen != null)
+        {
+            winScreen.SetActive(false); // Hide the win screen at the start
+        }
     }
 
     public void AddBookToZone(string zone, GameObject book)
@@ -33,7 +40,17 @@ public class SortingManager : MonoBehaviour
     {
         Debug.Log("🎉 GAME OVER! Books sorted correctly.");
 
-        // Disable all books' movement
+        if (winScreen != null)
+        {
+            Debug.Log("✅ WinScreen is assigned. Activating now...");
+            winScreen.SetActive(true);
+        }
+        else
+        {
+            Debug.LogError("❌ WinScreen is NOT assigned in the Inspector!");
+        }
+
+        // Stop all books from moving
         foreach (var zone in booksInZones)
         {
             foreach (GameObject book in zone.Value)
@@ -46,7 +63,8 @@ public class SortingManager : MonoBehaviour
             }
         }
 
-        // Optional: Stop time
+        // Optional: Pause the game
         Time.timeScale = 0;
     }
+
 }
