@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.UI; // Import for UI
 
 public class SortingManager : MonoBehaviour
 {
-    public int booksNeededToWin = 3; // Each zone must have 3 books
-    public GameObject winScreen; // Assign in Inspector
+    public int booksNeededToWin = 3;
+    public GameObject winSprite; // Assign in Inspector
     private Dictionary<string, List<GameObject>> booksInZones = new Dictionary<string, List<GameObject>>();
     private bool gameOver = false;
 
@@ -14,9 +13,9 @@ public class SortingManager : MonoBehaviour
         booksInZones["LeftZone"] = new List<GameObject>();
         booksInZones["RightZone"] = new List<GameObject>();
 
-        if (winScreen != null)
+        if (winSprite != null)
         {
-            winScreen.SetActive(false); // Hide the win screen at the start
+            winSprite.SetActive(false); // Hide the sprite at the start
         }
     }
 
@@ -29,10 +28,10 @@ public class SortingManager : MonoBehaviour
             booksInZones[zone].Add(book);
         }
 
-        Debug.Log($"✅ {book.name} added to {zone}. {zone} now has {booksInZones[zone].Count} books.");
+        Debug.Log($"✅ {book.name} added to {zone}. Counts: LeftZone = {booksInZones["LeftZone"].Count}, RightZone = {booksInZones["RightZone"].Count}");
 
-        // Check if both zones are full
-        if (booksInZones["LeftZone"].Count >= booksNeededToWin && booksInZones["RightZone"].Count >= booksNeededToWin)
+        // Only end the game if BOTH zones have exactly 3 books
+        if (booksInZones["LeftZone"].Count == booksNeededToWin && booksInZones["RightZone"].Count == booksNeededToWin)
         {
             gameOver = true;
             EndGame();
@@ -43,10 +42,15 @@ public class SortingManager : MonoBehaviour
     {
         Debug.Log("🎉 GAME OVER! Both drop zones are full. You did it!");
 
-        // Show the "You Did It!" screen
-        if (winScreen != null)
+        // Show the "You Did It!" sprite
+        if (winSprite != null)
         {
-            winScreen.SetActive(true);
+            winSprite.SetActive(true);
+            Debug.Log("✅ WinSprite is now visible!");
+        }
+        else
+        {
+            Debug.LogError("❌ WinSprite is NOT assigned in the Inspector!");
         }
 
         // Stop all books from moving
