@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 189889407}
   - component: {fileID: 189889409}
   - component: {fileID: 189889408}
+  - component: {fileID: 189889410}
   m_Layer: 0
   m_Name: closedbook6_0
   m_TagString: Book
@@ -266,6 +267,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46faa88978d97994a89cbfd87a488bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &189889410
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189889405}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &365285972
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,7 +598,6 @@ GameObject:
   - component: {fileID: 669150700}
   - component: {fileID: 669150704}
   - component: {fileID: 669150701}
-  - component: {fileID: 669150703}
   - component: {fileID: 669150705}
   m_Layer: 0
   m_Name: closedbook1_0
@@ -695,18 +722,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 5.36, y: 7.75}
   m_EdgeRadius: 0
---- !u!225 &669150703
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 669150698}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!114 &669150704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1878,6 +1893,7 @@ GameObject:
   - component: {fileID: 2070314476}
   - component: {fileID: 2070314478}
   - component: {fileID: 2070314477}
+  - component: {fileID: 2070314479}
   m_Layer: 0
   m_Name: closedbook5_0
   m_TagString: Book
@@ -2013,6 +2029,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46faa88978d97994a89cbfd87a488bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &2070314479
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070314474}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &2080188980
 GameObject:
   m_ObjectHideFlags: 0
