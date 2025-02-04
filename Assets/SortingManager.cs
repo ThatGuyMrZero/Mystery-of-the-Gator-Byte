@@ -4,7 +4,7 @@ using UnityEngine.UI; // Import for UI
 
 public class SortingManager : MonoBehaviour
 {
-    public int booksNeededToWin = 3;
+    public int booksNeededToWin = 3; // Each zone must have 3 books
     public GameObject winScreen; // Assign in Inspector
     private Dictionary<string, List<GameObject>> booksInZones = new Dictionary<string, List<GameObject>>();
     private bool gameOver = false;
@@ -29,7 +29,10 @@ public class SortingManager : MonoBehaviour
             booksInZones[zone].Add(book);
         }
 
-        if (booksInZones[zone].Count >= booksNeededToWin)
+        Debug.Log($"✅ {book.name} added to {zone}. {zone} now has {booksInZones[zone].Count} books.");
+
+        // Check if both zones are full
+        if (booksInZones["LeftZone"].Count >= booksNeededToWin && booksInZones["RightZone"].Count >= booksNeededToWin)
         {
             gameOver = true;
             EndGame();
@@ -38,16 +41,12 @@ public class SortingManager : MonoBehaviour
 
     void EndGame()
     {
-        Debug.Log("🎉 GAME OVER! Books sorted correctly.");
+        Debug.Log("🎉 GAME OVER! Both drop zones are full. You did it!");
 
+        // Show the "You Did It!" screen
         if (winScreen != null)
         {
-            Debug.Log("✅ WinScreen is assigned. Activating now...");
             winScreen.SetActive(true);
-        }
-        else
-        {
-            Debug.LogError("❌ WinScreen is NOT assigned in the Inspector!");
         }
 
         // Stop all books from moving
@@ -63,8 +62,7 @@ public class SortingManager : MonoBehaviour
             }
         }
 
-        // Optional: Pause the game
+        // Optional: Pause game
         Time.timeScale = 0;
     }
-
 }
