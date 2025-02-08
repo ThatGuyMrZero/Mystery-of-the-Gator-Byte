@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 27739031}
   m_Layer: 0
   m_Name: book2_0
-  m_TagString: Untagged
+  m_TagString: BackgroundBook
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -199,12 +199,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 27739030}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.18, y: -1.05, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.848369, y: -0.57566017, z: -0.00035550003}
   m_LocalScale: {x: 0.09639844, y: 0.079149954, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 917405608}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &189889405
 GameObject:
@@ -569,7 +569,7 @@ GameObject:
   - component: {fileID: 365285975}
   m_Layer: 0
   m_Name: open book sprie_0
-  m_TagString: Untagged
+  m_TagString: BackgroundBook
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -637,12 +637,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 365285972}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3265, y: -2.9522, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.34186888, y: -2.4778602, z: -0.00035550003}
   m_LocalScale: {x: 0.24999328, y: 0.30985776, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 917405608}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &365285975
 BoxCollider2D:
@@ -749,6 +749,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   booksNeededToWin: 3
   winSprite: {fileID: 1056452206}
+  backgroundBooksGroup: {fileID: 917405607}
 --- !u!1 &636077626
 GameObject:
   m_ObjectHideFlags: 0
@@ -1344,6 +1345,41 @@ Transform:
   - {fileID: 1498263218}
   - {fileID: 308589071}
   - {fileID: 1056857315}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &917405607
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 917405608}
+  m_Layer: 0
+  m_Name: BackgroundBooksGroup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &917405608
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917405607}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.6683689, y: -0.47433978, z: 0.00035550003}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1673190921}
+  - {fileID: 1194752552}
+  - {fileID: 27739032}
+  - {fileID: 365285974}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1043636179
@@ -2089,7 +2125,7 @@ GameObject:
   - component: {fileID: 1194752551}
   m_Layer: 0
   m_Name: book3_0
-  m_TagString: Untagged
+  m_TagString: BackgroundBook
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2157,12 +2193,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1194752550}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.9, y: -2.68, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.2316313, y: -2.2056603, z: -0.00035550003}
   m_LocalScale: {x: 0.13565157, y: 0.16184098, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 917405608}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1339680358
 GameObject:
@@ -2476,7 +2512,7 @@ GameObject:
   - component: {fileID: 1673190920}
   m_Layer: 0
   m_Name: book1_0
-  m_TagString: Untagged
+  m_TagString: BackgroundBook
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2544,12 +2580,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1673190919}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.6, y: -0.8148, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -8.268369, y: -0.34046024, z: -0.00035550003}
   m_LocalScale: {x: 0.07093013, y: 0.06345981, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 917405608}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1710731689
 GameObject:
@@ -3408,10 +3444,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 2080188983}
   - {fileID: 1153075837}
-  - {fileID: 365285974}
   - {fileID: 662130723}
   - {fileID: 1056452208}
   - {fileID: 798227029}
-  - {fileID: 1673190921}
-  - {fileID: 1194752552}
-  - {fileID: 27739032}
+  - {fileID: 917405608}

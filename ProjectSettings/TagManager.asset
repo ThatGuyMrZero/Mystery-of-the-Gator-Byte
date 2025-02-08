@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DropZone
   - Book
+  - BackgroundBook
   layers:
   - Default
   - TransparentFX

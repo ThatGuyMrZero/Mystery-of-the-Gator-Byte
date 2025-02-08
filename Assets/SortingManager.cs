@@ -5,6 +5,7 @@ public class SortingManager : MonoBehaviour
 {
     public int booksNeededToWin = 3;
     public GameObject winSprite; // Assign in Inspector
+    public GameObject backgroundBooksGroup; // Assign in Inspector (if using group)
     private Dictionary<string, List<GameObject>> booksInZones = new Dictionary<string, List<GameObject>>();
     private bool gameOver = false;
 
@@ -15,7 +16,7 @@ public class SortingManager : MonoBehaviour
 
         if (winSprite != null)
         {
-            winSprite.SetActive(false); // Hide the sprite at the start
+            winSprite.SetActive(false); // Hide the win sprite at the start
         }
     }
 
@@ -53,6 +54,9 @@ public class SortingManager : MonoBehaviour
             Debug.LogError("❌ WinSprite is NOT assigned in the Inspector!");
         }
 
+        // Hide all background books
+        HideBackgroundBooks();
+
         // Stop all books from moving
         foreach (var zone in booksInZones)
         {
@@ -68,5 +72,24 @@ public class SortingManager : MonoBehaviour
 
         // Optional: Pause game
         Time.timeScale = 0;
+    }
+
+    void HideBackgroundBooks()
+    {
+        if (backgroundBooksGroup != null)
+        {
+            backgroundBooksGroup.SetActive(false);
+            Debug.Log("📚 Background books are now hidden!");
+        }
+        else
+        {
+            Debug.LogWarning("⚠️ No background book group assigned! Hiding by tag instead...");
+
+            GameObject[] backgroundBooks = GameObject.FindGameObjectsWithTag("BackgroundBook");
+            foreach (GameObject book in backgroundBooks)
+            {
+                book.SetActive(false);
+            }
+        }
     }
 }
