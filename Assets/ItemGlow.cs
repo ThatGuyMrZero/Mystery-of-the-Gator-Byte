@@ -18,6 +18,8 @@ public class ItemGlow : MonoBehaviour
         materialInstance.SetColor("_EmissionColor", glowColor * baseEmission);
     }
 
+
+
     // Update is called once per frame
     void Update()
     {
