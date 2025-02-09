@@ -13,7 +13,7 @@ public class ItemGlow : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        materialInstance = GetComponent < SpriteRenderer() >.material;
+        materialInstance = GetComponent < SpriteRenderer >().material;
         materialInstance.EnableKeyword("_EMISSION");
         materialInstance.SetColor("_EmissionColor", glowColor * baseEmission);
     }
