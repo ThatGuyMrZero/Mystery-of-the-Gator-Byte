@@ -15,6 +15,11 @@ public class DialogueScript : MonoBehaviour
             textSprites[i] = transform.GetChild(i);
             textSprites[i].gameObject.SetActive(false);
         }
+
+        // Make first text box active from the start
+        textSprites[0].gameObject.SetActive(true);
+        // Make text box border always active
+        textSprites[textSprites.Length - 1].gameObject.SetActive(true);
     }
 
     // Update is called once per frame
@@ -33,7 +38,7 @@ public class DialogueScript : MonoBehaviour
         {
             textSprites[currentIndex].gameObject.SetActive(false);
         }
-        currentIndex = (currentIndex + 1) % textSprites.Length;
+        currentIndex = (currentIndex + 1) % (textSprites.Length - 1);
         textSprites[currentIndex].gameObject.SetActive(true);
     }
 }
