@@ -5,6 +5,7 @@ public class DialogueScript : MonoBehaviour
 {
     private Transform[] textSprites;
     private int currentIndex = 0;
+    public GameController gameController;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,11 +35,18 @@ public class DialogueScript : MonoBehaviour
 
     void CycleText()
     {
-        if (currentIndex >= 0)
-        {
+        if (currentIndex >= 0 && gameObject.activeSelf)
             textSprites[currentIndex].gameObject.SetActive(false);
+
+        currentIndex++;
+
+        if (currentIndex < textSprites.Length - 1)  // Ignore text box border
+            textSprites[currentIndex].gameObject.SetActive(true);
+        else
+        {
+            currentIndex = -1;
+            // Make text box border invisible
+            textSprites[textSprites.Length - 1].gameObject.SetActive(false);
         }
-        currentIndex = (currentIndex + 1) % (textSprites.Length - 1);
-        textSprites[currentIndex].gameObject.SetActive(true);
     }
 }
