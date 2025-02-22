@@ -8,6 +8,8 @@ public class ItemStack : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
     public bool isPizzaTopping = false;
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
+    private Transform originalParent;
+    private Vector2 originalPosition;
 
     void Start()
     {
@@ -19,7 +21,8 @@ public class ItemStack : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
     {
         canvasGroup.alpha = 0.6f;
         canvasGroup.blocksRaycasts = false;
-        rectTransform.SetParent(transform.root);
+        originalParent = transform.parent;
+        originalPosition = rectTransform.anchoredPosition;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -31,8 +34,24 @@ public class ItemStack : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
     {
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
-        rectTransform.SetParent(GameObject.Find("Canvas").transform);
-        rectTransform.localScale = Vector3.one;
+
+        GameObject tray = GameObject.Find("Tray");
+        RectTransform trayRect = tray.GetComponent<RectTransform>();
+
+        if (RectTransformUtility.RectangleContainsScreenPoint(trayRect, Input.mousePosition, Camera.main))
+        {
+            Debug.Log("Dropped on tray: " + gameObject.name);
+            transform.SetParent(tray.transform, false);
+            transform.SetAsLastSibling();
+            rectTransform.anchoredPosition = Vector2.zero;
+        }
+        else
+        {
+            Debug.Log("Not on tray, returning to start.");
+            transform.SetParent(originalParent);
+            rectTransform.anchoredPosition = originalPosition;
+        }
+
     }
 
     public void OnDrop(PointerEventData eventData)
