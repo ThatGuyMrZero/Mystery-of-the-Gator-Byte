@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using System.Collections.Generic;
 
 public class OrderGenerator : MonoBehaviour
 {
@@ -9,6 +10,11 @@ public class OrderGenerator : MonoBehaviour
     public int maxOrders = 10;
     public int orderCount =0;
     public float orderDuration = 7f;
+
+    private List<string> menuItems = new List<string> { "Pizza", "Burger", "Dessert"};
+    private List<string> pizzaToppings = new List<string> { "Extra Cheese", "Pepperoni", "Mushroom", "Pineapple" };
+    private List<string> burgerToppings = new List<string> { "Cheese", "Ketchup", "Mustard", "Lettuce", "Tomato", "Onion" };
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,7 +30,12 @@ public class OrderGenerator : MonoBehaviour
 
     void GenerateOrder()
     {
-        string currentOrder = "Order number" + (orderCount) + ": Pizza";
+
+        int orderType = Random.Range(0, 3);
+        int dessertOrdered = Random.Range(0,2); // 0 is no, 1 is yes 
+
+
+        string currentOrder = "Order number " + (orderCount+1) + ": " + menuItems[orderType];
         orderText.text = currentOrder;
     }
 
