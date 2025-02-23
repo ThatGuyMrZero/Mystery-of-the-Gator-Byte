@@ -31,7 +31,23 @@ public class SortingManager : MonoBehaviour
 
         Debug.Log($"✅ {book.name} added to {zone}. Counts: LeftZone = {booksInZones["LeftZone"].Count}, RightZone = {booksInZones["RightZone"].Count}");
 
-        // Only end the game if BOTH zones have exactly 3 books
+        CheckGameEnd();
+    }
+
+    public void RemoveBookFromZone(string zone, GameObject book)
+    {
+        if (!booksInZones.ContainsKey(zone)) return;
+
+        if (booksInZones[zone].Contains(book))
+        {
+            booksInZones[zone].Remove(book);
+        }
+
+        Debug.Log($"❌ {book.name} removed from {zone}. Counts: LeftZone = {booksInZones["LeftZone"].Count}, RightZone = {booksInZones["RightZone"].Count}");
+    }
+
+    void CheckGameEnd()
+    {
         if (booksInZones["LeftZone"].Count == booksNeededToWin && booksInZones["RightZone"].Count == booksNeededToWin)
         {
             gameOver = true;
