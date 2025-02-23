@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 
-public class ItemStack : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IDropHandler
+public class ItemStack : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     public GameObject prefabToSpawn;
     public bool isPizzaTopping = false;
@@ -54,27 +54,29 @@ public class ItemStack : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
 
     }
 
-    public void OnDrop(PointerEventData eventData)
-    {
-        GameObject droppedItem = eventData.pointerDrag;
+    // dont need ondrop here since we use it inside trayhandler now instead to stack properly on the tray
 
-        if (droppedItem != null)
-        {
-            ItemStack stackable = droppedItem.GetComponent<ItemStack>();
-            if(stackable != null)
-            {
-                if(stackable.isPizzaTopping && stackable.prefabToSpawn != null)
-                {
-                    SpawnToppings(stackable.prefabToSpawn, rectTransform);
-                }
-                else
-                {
-                    droppedItem.transform.SetParent(transform);
-                    droppedItem.transform.localPosition = Vector3.zero;
-                }
-            }
-        }
-    }
+    //public void OnDrop(PointerEventData eventData)
+    //{
+    //    GameObject droppedItem = eventData.pointerDrag;
+
+    //    if (droppedItem != null)
+    //    {
+    //        ItemStack stackable = droppedItem.GetComponent<ItemStack>();
+    //        if(stackable != null)
+    //        {
+    //            if(stackable.isPizzaTopping && stackable.prefabToSpawn != null)
+    //            {
+    //                SpawnToppings(stackable.prefabToSpawn, rectTransform);
+    //            }
+    //            else
+    //            {
+    //                droppedItem.transform.SetParent(transform);
+    //                droppedItem.transform.localPosition = Vector3.zero;
+    //            }
+    //        }
+    //    }
+    //}
 
 
     private void SpawnToppings(GameObject prefab, Transform parent)
