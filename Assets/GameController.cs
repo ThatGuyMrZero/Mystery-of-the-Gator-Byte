@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
     {
         TextBeforeGame.SetActive(true);
         TextAfterGame.SetActive(false);
-        football.SetActive(false);
+        football.SetActive(true);
         Debug.Log("Pregame text activated");
     }
 
