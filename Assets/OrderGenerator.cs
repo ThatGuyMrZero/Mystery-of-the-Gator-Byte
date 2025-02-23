@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class OrderGenerator : MonoBehaviour
 {
 
+
     public TextMeshProUGUI orderText;
     public int maxOrders = 10;
     public int orderCount =0;
