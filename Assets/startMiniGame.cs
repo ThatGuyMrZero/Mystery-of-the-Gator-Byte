@@ -6,6 +6,7 @@ public class startMiniGame : MonoBehaviour
     public GameObject MiniGame;
     public void StartMiniGame()
     {
+        Debug.Log("Active Camera: " + Camera.main.name);
         Debug.Log("Loading MiniGame Scene...");
         if (Application.CanStreamedLevelBeLoaded("MiniGame"))
         {
