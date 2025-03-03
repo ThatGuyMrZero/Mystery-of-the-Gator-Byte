@@ -10,7 +10,6 @@ public class LevelManager : MonoBehaviour
     // Level 2 Objects
     public GameObject level2Object1;
     public GameObject level2Object2;
-    public GameObject level2Object3;
 
     // Level 3 Objects
     public GameObject level3Object1;
@@ -45,7 +44,7 @@ public class LevelManager : MonoBehaviour
         {
             level2Object1.SetActive(true);
             level2Object2.SetActive(true);
-            level2Object3.SetActive(true);
+
         }
         else if (levelName == "Level3")
         {
@@ -70,7 +69,7 @@ public class LevelManager : MonoBehaviour
         
         level2Object1.SetActive(false);
         level2Object2.SetActive(false);
-        level2Object3.SetActive(false);
+
         
         level3Object1.SetActive(false);
         level3Object2.SetActive(false);

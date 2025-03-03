@@ -1,29 +1,26 @@
 using UnityEngine;
 
-public class GlowManager2D : MonoBehaviour
+public class GlowManager : MonoBehaviour
 {
-    private Material objectMaterial;
+    private Material objectMaterial; // Material Object reference 
     public Color hoverGlowColor = Color.white; // Glow color when hovered
     private Color originalColor;
-    public float glowStrength = 5.0f; // Strength of the glow
+    public float glowStrength = 5.0f;
+
 
     private void Start()
     {
-        // Get the material of the object
-        objectMaterial = GetComponent<Renderer>().material;
-        // Store the original color of the material
-        originalColor = objectMaterial.GetColor("_Color");
+        objectMaterial = GetComponent<Renderer>().material; // Access material property of the current object
+        originalColor = objectMaterial.GetColor("_Color"); // Store the original color of the material
     }
 
     private void Update()
     {
-        // Convert screen position to world position for 2D raycasting
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); // Convert screen position to world position for 2D raycasting
 
-        // Cast a 2D ray to detect if the player is hovering over the object
-        RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+        RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero); // Cast a 2D ray to detect if the player is hovering over the object
 
-        if (hit.collider != null)
+        if (hit.collider != null) // Object hover check
         {
             // Check if the ray hits this object
             if (hit.collider.gameObject == gameObject)
@@ -35,15 +32,15 @@ public class GlowManager2D : MonoBehaviour
             }
             else
             {
-                // Revert the glow effect and disable outline when the player stops hovering
-                objectMaterial.SetColor("_Color", originalColor);
+                // Disable glow again if not hovering
+                objectMaterial.SetColor("_Color", originalColor); 
                 objectMaterial.SetFloat("_GlowStrength", 0);
                 objectMaterial.SetFloat("_OutlineEnabled", 0); // Disable outline
             }
         }
         else
         {
-            // Revert the glow effect and disable outline if not hovering
+            // Disable glow again if not hovering
             objectMaterial.SetColor("_Color", originalColor);
             objectMaterial.SetFloat("_GlowStrength", 0);
             objectMaterial.SetFloat("_OutlineEnabled", 0); // Disable outline
