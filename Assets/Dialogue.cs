@@ -3,7 +3,7 @@ using TMPro;
 
 public class Dialogue : MonoBehaviour
 {
-    public TextMeshProUGUI textComponent; // TMPro instance
+    public TextMeshProUGUI textComponent; 
     public string[] lines; // store dialogue lines in array
     private int i = 0; // track current dialogue line
 
