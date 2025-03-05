@@ -5,6 +5,8 @@ public class DialogueManager : MonoBehaviour
     public GameObject textBox; // Assign the text box sprite
     public GameObject[] textSprites; // Assign 8 text sprites in order
     private int currentTextIndex = 0;
+    public HoverBounce hoverBounceScript;
+    public IsVisible isVisibleScript;
 
     void Start()
     {
@@ -44,6 +46,16 @@ public class DialogueManager : MonoBehaviour
             textSprites[currentTextIndex].SetActive(false);
             textBox.SetActive(false);
             Debug.Log("🎉 Dialogue finished! Game starts now.");
+
+                        // Enable hover effect after dialogue is finished
+            if (hoverBounceScript != null)
+            {
+                hoverBounceScript.StartHovering();
+            }
+            if (isVisibleScript != null)
+            {
+                isVisibleScript.ShowObject();  // Make the object visible
+            }
         }
     }
 }

@@ -13,7 +13,7 @@ public class CustomButton : MonoBehaviour
     
     // Set the hover and click colors
     public Color hoverColor = new Color(0f, 0.129f, 0.647f);  // Light Blue (0, 33, 165)
-    public Color clickColor = new Color(0.980f, 0.275f, 0.086f);  // Light Orange (250, 70, 22)
+    public Color clickColor = new Color(1f, 1f, 1f);  // Light Orange (250, 70, 22)
 
     public Color defaultColor = Color.white;
 

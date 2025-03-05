@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    // Level 1 Objects
+
+    public GameObject level0Object1;
+    public GameObject level0Object2;
     public GameObject level1Object1;
     public GameObject level1Object2;
     public GameObject level1Object3;
@@ -23,8 +25,8 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        // Initially, activate only Level 1 objects
-        SetActiveLevel("Level1");
+        // Initially, activate only Level 0 objects
+        SetActiveLevel("Level0");
     }
 
     // Method to switch between levels based on level name
@@ -33,50 +35,57 @@ public class LevelManager : MonoBehaviour
         // Deactivate all level objects first
         DeactivateAllObjects();
 
-        // Activate objects for the chosen level
-        if (levelName == "Level1")
+        if (levelName == "Level0")
         {
-            level1Object1.SetActive(true);
-            level1Object2.SetActive(true);
-            level1Object3.SetActive(true);
+            if (level0Object1 != null) level0Object1.SetActive(true);
+            if (level0Object2 != null) level0Object2.SetActive(true);
+
+        }
+        else if (levelName == "Level1")
+        {
+            if (level1Object1 != null) level1Object1.SetActive(true);
+            if (level1Object2 != null) level1Object2.SetActive(true);
+            if (level1Object3 != null) level1Object3.SetActive(true);
         }
         else if (levelName == "Level2")
         {
-            level2Object1.SetActive(true);
-            level2Object2.SetActive(true);
-
+            if (level2Object1 != null) level2Object1.SetActive(true);
+            if (level2Object2 != null) level2Object2.SetActive(true);
         }
         else if (levelName == "Level3")
         {
-            level3Object1.SetActive(true);
-            level3Object2.SetActive(true);
-            level3Object3.SetActive(true);
+            if (level3Object1 != null) level3Object1.SetActive(true);
+            if (level3Object2 != null) level3Object2.SetActive(true);
+            if (level3Object3 != null) level3Object3.SetActive(true);
         }
         else if (levelName == "Level4")
         {
-            level4Object1.SetActive(true);
-            level4Object2.SetActive(true);
-            level4Object3.SetActive(true);
+            if (level4Object1 != null) level4Object1.SetActive(true);
+            if (level4Object2 != null) level4Object2.SetActive(true);
+            if (level4Object3 != null) level4Object3.SetActive(true);
         }
     }
 
     // Method to deactivate all level objects
     private void DeactivateAllObjects()
     {
-        level1Object1.SetActive(false);
-        level1Object2.SetActive(false);
-        level1Object3.SetActive(false);
-        
-        level2Object1.SetActive(false);
-        level2Object2.SetActive(false);
+        // Deactivate all level objects, but only if they are assigned (non-null)
+        if (level0Object1 != null) level0Object1.SetActive(false);
+        if (level0Object2 != null) level0Object2.SetActive(false);
 
+        if (level1Object1 != null) level1Object1.SetActive(false);
+        if (level1Object2 != null) level1Object2.SetActive(false);
+        if (level1Object3 != null) level1Object3.SetActive(false);
         
-        level3Object1.SetActive(false);
-        level3Object2.SetActive(false);
-        level3Object3.SetActive(false);
+        if (level2Object1 != null) level2Object1.SetActive(false);
+        if (level2Object2 != null) level2Object2.SetActive(false);
         
-        level4Object1.SetActive(false);
-        level4Object2.SetActive(false);
-        level4Object3.SetActive(false);
+        if (level3Object1 != null) level3Object1.SetActive(false);
+        if (level3Object2 != null) level3Object2.SetActive(false);
+        if (level3Object3 != null) level3Object3.SetActive(false);
+        
+        if (level4Object1 != null) level4Object1.SetActive(false);
+        if (level4Object2 != null) level4Object2.SetActive(false);
+        if (level4Object3 != null) level4Object3.SetActive(false);
     }
 }
