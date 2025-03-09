@@ -30,23 +30,17 @@ public class TrayHandler : MonoBehaviour, IDropHandler
                 droppedItem.transform.SetParent(transform, false);
                 droppedItem.transform.SetAsLastSibling();
 
-                LayoutElement layoutElement = droppedItem.GetComponent<LayoutElement>();
-                if (layoutElement == null)
-                {
-                    layoutElement = droppedItem.AddComponent<LayoutElement>();
-                }
-                layoutElement.ignoreLayout = true;
-
-
-
+           
                 itemRect.anchorMin = new Vector2(0.5f, 0.5f);
                 itemRect.anchorMax = new Vector2(0.5f, 0.5f);
                 itemRect.pivot = new Vector2(0.5f, 0.5f);
-                itemRect.localScale = Vector3.one; 
-                itemRect.sizeDelta = new Vector2(100, 100);
                 itemRect.anchoredPosition = stackPositions[stackedItems.Count].GetComponent<RectTransform>().anchoredPosition;
 
+          
+                itemRect.sizeDelta = new Vector2(100, 100);
+                droppedItem.transform.localScale = Vector3.one;
 
+          
                 Canvas.ForceUpdateCanvases();
                 itemRect.ForceUpdateRectTransforms();
 
