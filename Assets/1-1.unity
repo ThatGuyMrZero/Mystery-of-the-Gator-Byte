@@ -2003,7 +2003,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelManager: {fileID: 1153090374}
   targetLevel: 
-  hoverColor: {r: 0, g: 0.129, b: 0.647, a: 1}
+  hoverColor: {r: 0.36078432, g: 0.53333336, b: 0.94509804, a: 1}
   clickColor: {r: 1, g: 1, b: 1, a: 1}
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &711708988
