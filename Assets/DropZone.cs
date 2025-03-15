@@ -2,6 +2,7 @@
 
 public class DropZone : MonoBehaviour
 {
+    [SerializeField] public string requiredCategory;
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log($"📌 {gameObject.name}: Something entered! Object = {other.gameObject.name}");
