@@ -5,7 +5,9 @@ public class DragAndDrop : MonoBehaviour
     private bool isDragging = false;
     private Vector3 offset;
     private Vector3 startPosition;
-    private Collider2D currentDropZone = null; // Track current valid drop zone
+    private Collider2D currentDropZone = null;
+
+    [SerializeField] private string category; // Assign in Inspector
 
     void Start()
     {
@@ -48,8 +50,9 @@ public class DragAndDrop : MonoBehaviour
         {
             if (col.CompareTag("DropZone"))
             {
-                Bounds dropZoneBounds = col.bounds;
-                if (dropZoneBounds.Contains(transform.position)) // Ensure book is fully inside
+                DropZone dropZone = col.GetComponent<DropZone>();
+
+                if (dropZone != null && dropZone.requiredCategory == category)
                 {
                     newDropZone = col;
                     break;
@@ -57,45 +60,14 @@ public class DragAndDrop : MonoBehaviour
             }
         }
 
-        if (newDropZone != null) // If book is in a valid drop zone
+        if (newDropZone != null)
         {
-            if (currentDropZone != newDropZone) // If book is moving to a new zone
-            {
-                if (currentDropZone != null) // Remove book from previous zone
-                {
-                    SortingManager sortingManager = FindObjectOfType<SortingManager>();
-                    if (sortingManager != null)
-                    {
-                        sortingManager.RemoveBookFromZone(currentDropZone.gameObject.name, gameObject);
-                    }
-                }
-
-                transform.position = newDropZone.transform.position; // Snap to drop zone
-                currentDropZone = newDropZone; // Update current zone
-
-                // Notify sorting manager of new placement
-                SortingManager sortingManager2 = FindObjectOfType<SortingManager>();
-                if (sortingManager2 != null)
-                {
-                    sortingManager2.AddBookToZone(newDropZone.gameObject.name, gameObject);
-                    //sortingManager2.CheckGameEnd(); // Check if game should end
-                }
-            }
+            transform.position = newDropZone.transform.position;
+            currentDropZone = newDropZone;
         }
-        else // If book is NOT placed in a valid zone, return to start position
+        else
         {
-            if (currentDropZone != null) // Remove book from zone if dragged out
-            {
-                SortingManager sortingManager = FindObjectOfType<SortingManager>();
-                if (sortingManager != null)
-                {
-                    sortingManager.RemoveBookFromZone(currentDropZone.gameObject.name, gameObject);
-                }
-                currentDropZone = null;
-            }
-
-            transform.position = startPosition; // Return book to start
+            transform.position = startPosition;
         }
     }
-
 }

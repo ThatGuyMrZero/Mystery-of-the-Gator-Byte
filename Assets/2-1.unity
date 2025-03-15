@@ -354,6 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46faa88978d97994a89cbfd87a488bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  category: Math
 --- !u!50 &189889410
 Rigidbody2D:
   serializedVersion: 5
@@ -1170,6 +1171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46faa88978d97994a89cbfd87a488bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  category: English
 --- !u!50 &669150705
 Rigidbody2D:
   serializedVersion: 5
@@ -2000,6 +2002,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46faa88978d97994a89cbfd87a488bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  category: Math
 --- !u!50 &1105489208
 Rigidbody2D:
   serializedVersion: 5
@@ -2378,6 +2381,7 @@ GameObject:
   - component: {fileID: 1536594892}
   - component: {fileID: 1536594894}
   - component: {fileID: 1536594893}
+  - component: {fileID: 1536594895}
   m_Layer: 0
   m_Name: LeftZone
   m_TagString: DropZone
@@ -2501,6 +2505,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1536594895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536594891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ad67c8a46611344b28908ed54f49b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredCategory: English
 --- !u!1 &1673190919
 GameObject:
   m_ObjectHideFlags: 0
@@ -2600,6 +2617,7 @@ GameObject:
   - component: {fileID: 1710731692}
   - component: {fileID: 1710731693}
   - component: {fileID: 1710731691}
+  - component: {fileID: 1710731694}
   m_Layer: 0
   m_Name: RightZone
   m_TagString: DropZone
@@ -2735,6 +2753,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ad67c8a46611344b28908ed54f49b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requiredCategory: 
+--- !u!114 &1710731694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710731689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ad67c8a46611344b28908ed54f49b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredCategory: Math
 --- !u!1 &1765574312
 GameObject:
   m_ObjectHideFlags: 0
@@ -2970,6 +3002,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46faa88978d97994a89cbfd87a488bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  category: English
 --- !u!50 &1864615118
 Rigidbody2D:
   serializedVersion: 5
@@ -3145,6 +3178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46faa88978d97994a89cbfd87a488bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  category: English
 --- !u!50 &1865007303
 Rigidbody2D:
   serializedVersion: 5
@@ -3320,6 +3354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46faa88978d97994a89cbfd87a488bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  category: Math
 --- !u!50 &2070314479
 Rigidbody2D:
   serializedVersion: 5

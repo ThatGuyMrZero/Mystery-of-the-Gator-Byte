@@ -4,8 +4,9 @@ using System.Collections.Generic;
 public class SortingManager : MonoBehaviour
 {
     public int booksNeededToWin = 3;
-    public GameObject winSprite; // Assign in Inspector
-    public GameObject backgroundBooksGroup; // Assign in Inspector (if using group)
+    public GameObject winSprite;
+    public GameObject backgroundBooksGroup;
+
     private Dictionary<string, List<GameObject>> booksInZones = new Dictionary<string, List<GameObject>>();
     private bool gameOver = false;
 
@@ -16,7 +17,7 @@ public class SortingManager : MonoBehaviour
 
         if (winSprite != null)
         {
-            winSprite.SetActive(false); // Hide the win sprite at the start
+            winSprite.SetActive(false);
         }
     }
 
@@ -29,8 +30,6 @@ public class SortingManager : MonoBehaviour
             booksInZones[zone].Add(book);
         }
 
-        Debug.Log($"✅ {book.name} added to {zone}. Counts: LeftZone = {booksInZones["LeftZone"].Count}, RightZone = {booksInZones["RightZone"].Count}");
-
         CheckGameEnd();
     }
 
@@ -42,8 +41,6 @@ public class SortingManager : MonoBehaviour
         {
             booksInZones[zone].Remove(book);
         }
-
-        Debug.Log($"❌ {book.name} removed from {zone}. Counts: LeftZone = {booksInZones["LeftZone"].Count}, RightZone = {booksInZones["RightZone"].Count}");
     }
 
     void CheckGameEnd()
@@ -57,23 +54,13 @@ public class SortingManager : MonoBehaviour
 
     void EndGame()
     {
-        Debug.Log("🎉 GAME OVER! Both drop zones are full. You did it!");
-
-        // Show the "You Did It!" sprite
         if (winSprite != null)
         {
             winSprite.SetActive(true);
-            Debug.Log("✅ WinSprite is now visible!");
-        }
-        else
-        {
-            Debug.LogError("❌ WinSprite is NOT assigned in the Inspector!");
         }
 
-        // Hide all background books
         HideBackgroundBooks();
 
-        // Stop all books from moving
         foreach (var zone in booksInZones)
         {
             foreach (GameObject book in zone.Value)
@@ -81,13 +68,9 @@ public class SortingManager : MonoBehaviour
                 if (book != null)
                 {
                     book.GetComponent<DragAndDrop>().enabled = false;
-                    book.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
                 }
             }
         }
-
-        // Optional: Pause game
-        Time.timeScale = 0;
     }
 
     void HideBackgroundBooks()
@@ -95,17 +78,6 @@ public class SortingManager : MonoBehaviour
         if (backgroundBooksGroup != null)
         {
             backgroundBooksGroup.SetActive(false);
-            Debug.Log("📚 Background books are now hidden!");
-        }
-        else
-        {
-            Debug.LogWarning("⚠️ No background book group assigned! Hiding by tag instead...");
-
-            GameObject[] backgroundBooks = GameObject.FindGameObjectsWithTag("BackgroundBook");
-            foreach (GameObject book in backgroundBooks)
-            {
-                book.SetActive(false);
-            }
         }
     }
 }
