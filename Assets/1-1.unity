@@ -266,8 +266,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cba5e27af561c147b5e43a9429a1a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textBoxManager: {fileID: 0}
-  textType: 
+  textBoxManager: {fileID: 1684528386}
+  textType: Syntax
 --- !u!1 &36025362
 GameObject:
   m_ObjectHideFlags: 0
@@ -1328,8 +1328,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cba5e27af561c147b5e43a9429a1a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textBoxManager: {fileID: 0}
-  textType: 
+  textBoxManager: {fileID: 1684528386}
+  textType: Loop
 --- !u!1 &215979685
 GameObject:
   m_ObjectHideFlags: 0
@@ -1477,8 +1477,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cba5e27af561c147b5e43a9429a1a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textBoxManager: {fileID: 0}
-  textType: 
+  textBoxManager: {fileID: 1684528386}
+  textType: WhileLoop
 --- !u!1 &242437229
 GameObject:
   m_ObjectHideFlags: 0
@@ -1714,8 +1714,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cba5e27af561c147b5e43a9429a1a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textBoxManager: {fileID: 0}
-  textType: 
+  textBoxManager: {fileID: 1684528386}
+  textType: Class
 --- !u!1 &303186674
 GameObject:
   m_ObjectHideFlags: 0
@@ -2653,8 +2653,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cba5e27af561c147b5e43a9429a1a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textBoxManager: {fileID: 0}
-  textType: 
+  textBoxManager: {fileID: 1684528386}
+  textType: ConditionalStatement
 --- !u!1 &494450833
 GameObject:
   m_ObjectHideFlags: 0
@@ -3531,8 +3531,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cba5e27af561c147b5e43a9429a1a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textBoxManager: {fileID: 0}
-  textType: 
+  textBoxManager: {fileID: 1684528386}
+  textType: IfStatement
 --- !u!1 &711708988
 GameObject:
   m_ObjectHideFlags: 0
@@ -4280,8 +4280,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cba5e27af561c147b5e43a9429a1a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textBoxManager: {fileID: 0}
-  textType: 
+  textBoxManager: {fileID: 1684528386}
+  textType: Integer
 --- !u!1001 &841796543
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4590,8 +4590,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cba5e27af561c147b5e43a9429a1a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textBoxManager: {fileID: 0}
-  textType: 
+  textBoxManager: {fileID: 1684528386}
+  textType: String
 --- !u!1 &932432889
 GameObject:
   m_ObjectHideFlags: 0
@@ -5228,8 +5228,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cba5e27af561c147b5e43a9429a1a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textBoxManager: {fileID: 0}
-  textType: 
+  textBoxManager: {fileID: 1684528386}
+  textType: Nested
 --- !u!1 &1106723972
 GameObject:
   m_ObjectHideFlags: 0
@@ -5671,8 +5671,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cba5e27af561c147b5e43a9429a1a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textBoxManager: {fileID: 0}
-  textType: 
+  textBoxManager: {fileID: 1684528386}
+  textType: ForLoop
 --- !u!1 &1122129363
 GameObject:
   m_ObjectHideFlags: 0
@@ -5820,8 +5820,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cba5e27af561c147b5e43a9429a1a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textBoxManager: {fileID: 0}
-  textType: 
+  textBoxManager: {fileID: 1684528386}
+  textType: Operator
 --- !u!1 &1135438776
 GameObject:
   m_ObjectHideFlags: 0
@@ -6056,8 +6056,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cba5e27af561c147b5e43a9429a1a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textBoxManager: {fileID: 0}
-  textType: 
+  textBoxManager: {fileID: 1684528386}
+  textType: ElseStatement
 --- !u!1 &1153090373
 GameObject:
   m_ObjectHideFlags: 0
@@ -8656,8 +8656,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cba5e27af561c147b5e43a9429a1a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textBoxManager: {fileID: 0}
-  textType: 
+  textBoxManager: {fileID: 1684528386}
+  textType: Variable
 --- !u!1 &1917692938
 GameObject:
   m_ObjectHideFlags: 0
@@ -9147,8 +9147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cba5e27af561c147b5e43a9429a1a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textBoxManager: {fileID: 0}
-  textType: 
+  textBoxManager: {fileID: 1684528386}
+  textType: Double
 --- !u!1 &2037846146
 GameObject:
   m_ObjectHideFlags: 0
@@ -9509,8 +9509,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cba5e27af561c147b5e43a9429a1a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textBoxManager: {fileID: 0}
-  textType: 
+  textBoxManager: {fileID: 1684528386}
+  textType: Iteration
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
