@@ -25,13 +25,31 @@ public class SortingManager : MonoBehaviour
     {
         if (gameOver || !booksInZones.ContainsKey(zone)) return;
 
-        if (!booksInZones[zone].Contains(book))
-        {
-            booksInZones[zone].Add(book);
-        }
+        DragAndDrop bookScript = book.GetComponent<DragAndDrop>();
+        if (bookScript == null || bookScript.currentDropZone == null) return;
 
-        CheckGameEnd();
+        DropZone dropZone = bookScript.currentDropZone.GetComponent<DropZone>();
+        if (dropZone == null) return;
+
+        // Only add book if it's in the correct drop zone
+        if (dropZone.requiredCategory == bookScript.category)
+        {
+            if (!booksInZones[zone].Contains(book))
+            {
+                booksInZones[zone].Add(book);
+            }
+
+            Debug.Log($"✅ {book.name} correctly placed in {zone}. Now: LeftZone={booksInZones["LeftZone"].Count}, RightZone={booksInZones["RightZone"].Count}");
+
+            CheckGameEnd();
+        }
+        else
+        {
+            Debug.Log($"❌ {book.name} does NOT belong in {zone}, ignoring.");
+        }
     }
+
+
 
     public void RemoveBookFromZone(string zone, GameObject book)
     {
@@ -41,26 +59,77 @@ public class SortingManager : MonoBehaviour
         {
             booksInZones[zone].Remove(book);
         }
+
+        Debug.Log($"❌ {book.name} removed from {zone}. Now: LeftZone={booksInZones["LeftZone"].Count}, RightZone={booksInZones["RightZone"].Count}");
     }
+
 
     void CheckGameEnd()
     {
-        if (booksInZones["LeftZone"].Count == booksNeededToWin && booksInZones["RightZone"].Count == booksNeededToWin)
+        int correctLeft = 0;
+        int correctRight = 0;
+
+        Debug.Log("Checking game end...");
+
+        foreach (GameObject book in booksInZones["LeftZone"])
         {
+            DragAndDrop bookScript = book.GetComponent<DragAndDrop>();
+
+            if (bookScript != null && bookScript.currentDropZone != null)
+            {
+                DropZone dropZone = bookScript.currentDropZone.GetComponent<DropZone>();
+
+                if (dropZone != null && dropZone.requiredCategory == bookScript.category)
+                {
+                    correctLeft++;
+                }
+            }
+        }
+
+        foreach (GameObject book in booksInZones["RightZone"])
+        {
+            DragAndDrop bookScript = book.GetComponent<DragAndDrop>();
+
+            if (bookScript != null && bookScript.currentDropZone != null)
+            {
+                DropZone dropZone = bookScript.currentDropZone.GetComponent<DropZone>();
+
+                if (dropZone != null && dropZone.requiredCategory == bookScript.category)
+                {
+                    correctRight++;
+                }
+            }
+        }
+
+        Debug.Log($"✅ LeftZone Correct Count: {correctLeft}, RightZone Correct Count: {correctRight}");
+
+        if (correctLeft == booksNeededToWin && correctRight == booksNeededToWin)
+        {
+            Debug.Log("🎉 All books are correctly placed! Ending game...");
             gameOver = true;
             EndGame();
         }
     }
 
+
+
+
     void EndGame()
     {
+        Debug.Log("🎉 GAME OVER! Both drop zones are correctly filled!");
+
+        // Make sure the win message appears
         if (winSprite != null)
         {
             winSprite.SetActive(true);
+            Debug.Log("✅ WinSprite is now visible!");
+        }
+        else
+        {
+            Debug.LogError("❌ WinSprite is NOT assigned in the Inspector!");
         }
 
-        HideBackgroundBooks();
-
+        // Disable dragging after win
         foreach (var zone in booksInZones)
         {
             foreach (GameObject book in zone.Value)
@@ -72,6 +141,8 @@ public class SortingManager : MonoBehaviour
             }
         }
     }
+
+
 
     void HideBackgroundBooks()
     {

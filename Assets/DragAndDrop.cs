@@ -5,9 +5,9 @@ public class DragAndDrop : MonoBehaviour
     private bool isDragging = false;
     private Vector3 offset;
     private Vector3 startPosition;
-    private Collider2D currentDropZone = null;
+    public Collider2D currentDropZone = null;
 
-    [SerializeField] private string category; // Assign in Inspector
+    [SerializeField] public string category; // Assign in Inspector
 
     void Start()
     {
@@ -60,14 +60,44 @@ public class DragAndDrop : MonoBehaviour
             }
         }
 
-        if (newDropZone != null)
+        if (newDropZone != null) // If the book is placed correctly
         {
             transform.position = newDropZone.transform.position;
-            currentDropZone = newDropZone;
+
+            // If book is moving to a new drop zone, remove it from the old one
+            if (currentDropZone != null && currentDropZone != newDropZone)
+            {
+                SortingManager sortingManager = FindFirstObjectByType<SortingManager>();
+                if (sortingManager != null)
+                {
+                    sortingManager.RemoveBookFromZone(currentDropZone.gameObject.name, gameObject);
+                }
+            }
+
+            currentDropZone = newDropZone; // Update zone
+
+            // Notify SortingManager that book is placed correctly
+            SortingManager sortingManager2 = FindFirstObjectByType<SortingManager>();
+            if (sortingManager2 != null)
+            {
+                sortingManager2.AddBookToZone(newDropZone.gameObject.name, gameObject);
+            }
         }
-        else
+        else // If the book is NOT placed correctly, remove it from SortingManager
         {
-            transform.position = startPosition;
+            if (currentDropZone != null)
+            {
+                SortingManager sortingManager = FindFirstObjectByType<SortingManager>();
+                if (sortingManager != null)
+                {
+                    sortingManager.RemoveBookFromZone(currentDropZone.gameObject.name, gameObject);
+                }
+                currentDropZone = null;
+            }
+
+            transform.position = startPosition; // Move book back
         }
     }
+
+
 }

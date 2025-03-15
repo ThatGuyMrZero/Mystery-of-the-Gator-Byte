@@ -354,6 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46faa88978d97994a89cbfd87a488bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentDropZone: {fileID: 0}
   category: Math
 --- !u!50 &189889410
 Rigidbody2D:
@@ -1171,6 +1172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46faa88978d97994a89cbfd87a488bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentDropZone: {fileID: 0}
   category: English
 --- !u!50 &669150705
 Rigidbody2D:
@@ -2002,6 +2004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46faa88978d97994a89cbfd87a488bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentDropZone: {fileID: 0}
   category: Math
 --- !u!50 &1105489208
 Rigidbody2D:
@@ -2753,7 +2756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ad67c8a46611344b28908ed54f49b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredCategory: 
+  requiredCategory: Math
 --- !u!114 &1710731694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3002,6 +3005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46faa88978d97994a89cbfd87a488bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentDropZone: {fileID: 0}
   category: English
 --- !u!50 &1864615118
 Rigidbody2D:
@@ -3178,6 +3182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46faa88978d97994a89cbfd87a488bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentDropZone: {fileID: 0}
   category: English
 --- !u!50 &1865007303
 Rigidbody2D:
@@ -3354,6 +3359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46faa88978d97994a89cbfd87a488bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentDropZone: {fileID: 0}
   category: Math
 --- !u!50 &2070314479
 Rigidbody2D:
