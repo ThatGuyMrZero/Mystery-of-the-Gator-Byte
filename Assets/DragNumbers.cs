@@ -7,7 +7,7 @@ public class DragNumbers : MonoBehaviour
     private Vector3 offset;
     private Vector3 origPos;
 
-    public Transform snapTarget;
+    public Transform[] snapTargets;
     public float snapRange = 0.5f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -41,10 +41,22 @@ public class DragNumbers : MonoBehaviour
         {
             isDragging = false;
 
-            // Check if close to snap target
-            if (Vector3.Distance(transform.position, snapTarget.position) <= snapRange)
+            float closestDistance = Mathf.Infinity;
+            Transform closestTarget = null;
+
+            foreach (Transform target in snapTargets)
             {
-                transform.position = snapTarget.position;
+                float distance = Vector3.Distance(transform.position, target.position);
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestTarget = target;
+                }
+            }
+
+            if (closestDistance <= snapRange && closestTarget != null)
+            {
+                transform.position = closestTarget.position;
             }
         }
     }
