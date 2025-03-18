@@ -10,6 +10,15 @@ public class WinConditionManager : MonoBehaviour
 
     public TextMeshProUGUI minigameText;
 
+    public GameObject input1;
+    public GameObject input2;
+
+    private void Start()
+    {
+        input1.SetActive(true);
+        input2.SetActive(false);
+    }
+
     public void CheckWinCondition()
     {
         if (areYaWinningSon) return;
@@ -31,6 +40,8 @@ public class WinConditionManager : MonoBehaviour
             Debug.Log("You are a winner!");
             areYaWinningSon = true;
             minigameText.text = "else if (score ==      ) {\r\n\tpoints +=\r\n\tif (score ==      ) {\r\n\t\tpoints +=\r\n\t} else if (score ==      ) {\r\n\t\tpoints +=\r\n\t}\r\n}";
+            input1.SetActive(false);
+            input2.SetActive(true);
         }
     }
 }
