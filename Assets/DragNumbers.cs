@@ -9,11 +9,13 @@ public class DragNumbers : MonoBehaviour
 
     public Transform[] snapTargets;
     public float snapRange = 0.5f;
+    private WinConditionManager wcm;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         origPos = transform.position;
+        wcm = FindAnyObjectByType<WinConditionManager>();
     }
 
     // Update is called once per frame
@@ -57,6 +59,11 @@ public class DragNumbers : MonoBehaviour
             if (closestDistance <= snapRange && closestTarget != null)
             {
                 transform.position = closestTarget.position;
+            }
+
+            if (wcm != null)
+            {
+                wcm.CheckWinCondition();
             }
         }
     }

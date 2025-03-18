@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class WinConditionManager : MonoBehaviour
 {
@@ -7,12 +8,9 @@ public class WinConditionManager : MonoBehaviour
 
     private bool areYaWinningSon = false;
 
-    private void Update()
-    {
-        CheckWinCondition();
-    }
+    public TextMeshProUGUI minigameText;
 
-    void CheckWinCondition()
+    public void CheckWinCondition()
     {
         if (areYaWinningSon) return;
 
@@ -32,6 +30,7 @@ public class WinConditionManager : MonoBehaviour
         {
             Debug.Log("You are a winner!");
             areYaWinningSon = true;
+            minigameText.text = "else if (score ==      ) {\r\n\tpoints +=\r\n\tif (score ==      ) {\r\n\t\tpoints +=\r\n\t} else if (score ==      ) {\r\n\t\tpoints +=\r\n\t}\r\n}";
         }
     }
 }
