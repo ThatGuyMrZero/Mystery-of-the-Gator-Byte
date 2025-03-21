@@ -6,14 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/Classroom.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/stadium.unity
-    guid: 863e7ab376670c84eaaa88ba115cd7a7
-  - enabled: 1
-    path: Assets/stadium_game.unity
-    guid: 39fef842582f5e3449397ab867445bd9
+    path: Assets/Scenes/MiniGame.unity
+    guid: 797e3fe4fb85b5645b2a01957c983b09
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
