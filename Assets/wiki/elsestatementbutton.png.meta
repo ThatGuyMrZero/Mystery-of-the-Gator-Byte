@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      elsestatementbutton_0: 4808806617988214182
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
