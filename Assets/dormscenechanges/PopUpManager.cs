@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class PopUpManager : MonoBehaviour
 {
-    public void ClosePopUp()
+    public GameObject popUp;
+
+    private void OnMouseDown()
     {
-        gameObject.SetActive(false); // Hides the pop-up
+        popUp.SetActive(false); // Hide the pop-up
     }
 }
