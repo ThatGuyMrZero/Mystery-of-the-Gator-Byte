@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ClickTest : MonoBehaviour
+public class ClickTest1 : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
 
