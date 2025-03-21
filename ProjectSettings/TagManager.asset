@@ -3,10 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags:
-  - DropZone
-  - Book
-  - BackgroundBook
+  tags: []
   layers:
   - Default
   - TransparentFX
