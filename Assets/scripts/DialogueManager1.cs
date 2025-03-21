@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DialogueManager : MonoBehaviour
+public class DialogueManager1 : MonoBehaviour
 {
     public GameObject textBox; // Assign the text box sprite
     public GameObject[] textSprites; // Assign 8 text sprites in order
