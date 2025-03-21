@@ -2039,7 +2039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneLoader: {fileID: 1098338945}
-  sceneToLoad: LibraryScene
+  sceneToLoad: 2-1
 --- !u!61 &316878165
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2305,7 +2305,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &329057188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4145,7 +4145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneLoader: {fileID: 1098338945}
-  sceneToLoad: StadiumScene
+  sceneToLoad: stadium
 --- !u!61 &589348930
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8913,7 +8913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneLoader: {fileID: 1098338945}
-  sceneToLoad: CafeteriaScene
+  sceneToLoad: Scenes/Cafeteria
 --- !u!61 &1550017315
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10397,7 +10397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneLoader: {fileID: 1098338945}
-  sceneToLoad: ClassroomScene
+  sceneToLoad: Scenes/Classroom
 --- !u!61 &1778093791
 BoxCollider2D:
   m_ObjectHideFlags: 0
