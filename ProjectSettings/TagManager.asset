@@ -4,8 +4,8 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - GradedZone
-  - NotGradedZone
+    - GradedZone
+    - NotGradedZone
   layers:
   - Default
   - TransparentFX
