@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      rippedcloth_0: -1510240213998661786
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
