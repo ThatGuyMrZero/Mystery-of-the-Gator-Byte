@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      crumplednapkin_0: 3374481074890131692
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
