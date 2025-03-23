@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      classroombutton_0: 3097900010847278966
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

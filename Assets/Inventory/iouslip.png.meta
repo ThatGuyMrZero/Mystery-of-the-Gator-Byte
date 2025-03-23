@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9bd805ee13502024f85cd73e54643b61
+guid: a3911a05555202f44a1aac9fc1cbabf7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6600188527403793633
-    second: librarybutton_0
+      213: -4487426756366692871
+    second: iouslip_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: librarybutton_0
+      name: iouslip_0
       rect:
         serializedVersion: 2
-        x: 419
-        y: 689
-        width: 422
-        height: 153
+        x: 336
+        y: 423
+        width: 926
+        height: 446
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1ecf2821f74989b50800000000000000
-      internalID: 6600188527403793633
+      spriteID: 9fd0e27f32579b1c0800000000000000
+      internalID: -4487426756366692871
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      librarybutton_0: 6600188527403793633
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
