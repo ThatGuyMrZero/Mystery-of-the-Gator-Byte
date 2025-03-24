@@ -6,6 +6,13 @@ public class DraggablePaper : MonoBehaviour
     private Vector3 offset;
     private bool isDragging = false;
 
+    [Header("Drop Detection Area")]
+    [SerializeField] private Vector2 dropDetectionSize = new Vector2(3.5f, 5.5f); // Visible in Inspector
+
+    [Header("Random Drop Offset")]
+    [SerializeField] private float maxOffsetX = 0.3f;
+    [SerializeField] private float maxOffsetY = 0.1f;
+
     void OnMouseDown()
     {
         originalPosition = transform.position;
@@ -28,8 +35,7 @@ public class DraggablePaper : MonoBehaviour
     {
         isDragging = false;
 
-        Vector2 boxSize = new Vector2(0.5f, 0.5f);
-        Collider2D[] hits = Physics2D.OverlapBoxAll(transform.position, boxSize, 0f);
+        Collider2D[] hits = Physics2D.OverlapBoxAll(transform.position, dropDetectionSize, 0f);
 
         bool droppedOnZone = false;
         Paper paper = GetComponent<Paper>();
@@ -38,19 +44,15 @@ public class DraggablePaper : MonoBehaviour
         {
             if (hit.CompareTag("GradedZone") && paper.grade >= 50)
             {
-                Vector3 randomOffset = new Vector3(Random.Range(-0.3f, 0.3f), Random.Range(-0.15f, 0.15f), 0);
-                transform.position = hit.transform.position + randomOffset;
-
-                Debug.Log("Paper graded correctly with increased random offset!");
+                SnapToZone(hit);
+                Debug.Log("Paper graded correctly!");
                 droppedOnZone = true;
                 break;
             }
             else if (hit.CompareTag("NotGradedZone") && paper.grade < 50)
             {
-                Vector3 randomOffset = new Vector3(Random.Range(-0.3f, 0.3f), Random.Range(-0.15f, 0.15f), 0);
-                transform.position = hit.transform.position + randomOffset;
-
-                Debug.Log("Paper discarded correctly with increased random offset!");
+                SnapToZone(hit);
+                Debug.Log("Paper discarded correctly!");
                 droppedOnZone = true;
                 break;
             }
@@ -58,21 +60,30 @@ public class DraggablePaper : MonoBehaviour
 
         if (!droppedOnZone)
         {
-            Debug.Log("Invalid drop zone, returning to original position.");
+            Debug.Log("Invalid drop zone. Returning to original position.");
             transform.position = originalPosition;
         }
         else
         {
-
-            this.enabled = false;
+            this.enabled = false; // Disable dragging after a successful drop
         }
     }
 
+    private void SnapToZone(Collider2D zone)
+    {
+        Vector3 randomOffset = new Vector3(
+            Random.Range(-maxOffsetX, maxOffsetX),
+            Random.Range(-maxOffsetY, maxOffsetY),
+            0
+        );
 
+        transform.position = zone.transform.position + randomOffset;
+    }
 
+    // Optional: Visualize the drop detection area in the Scene view
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube(transform.position, new Vector3(0.5f, 0.5f, 0));
+        Gizmos.DrawWireCube(transform.position, new Vector3(dropDetectionSize.x, dropDetectionSize.y, 0));
     }
 }
