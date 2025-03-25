@@ -89,7 +89,7 @@ public class DraggablePaper : MonoBehaviour
     private IEnumerator ShowErrorMessage()
     {
         errorMessage.SetActive(true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         errorMessage.SetActive(false);
     }
 
