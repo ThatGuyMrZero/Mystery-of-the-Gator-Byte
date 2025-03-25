@@ -50,11 +50,17 @@ public class DialogueManager : MonoBehaviour
             // If all text is shown, hide everything and re-enable book interaction
             textSprites[currentTextIndex].SetActive(false);
             textBox.SetActive(false);
+
+            // ✅ Add item to inventory here!
+            InventoryManager.Instance.AddItem("Library Key");
+
             if (greenBook != null)
             {
                 greenBook.GetComponent<Collider2D>().enabled = true;
             }
-            Debug.Log("🎉 Dialogue finished! Game starts now.");
+
+            Debug.Log("🎉 Dialogue finished! Library Key added to inventory.");
         }
     }
+
 }

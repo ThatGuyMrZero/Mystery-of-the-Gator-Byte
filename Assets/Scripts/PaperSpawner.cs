@@ -3,7 +3,8 @@ using UnityEngine;
 public class PaperSpawner : MonoBehaviour
 {
     public GameObject paperPrefab;
-    public Transform spawnPoint;
+    public RectTransform spawnPoint;
+    public RectTransform canvasTransform;
 
     [Header("Settings")]
     public int numberOfPapers = 10;
@@ -27,8 +28,9 @@ public class PaperSpawner : MonoBehaviour
     {
         if (spawnedCount >= numberOfPapers) return;
 
-        Vector3 spawnPos = spawnPoint.position + new Vector3(0, 0.1f * spawnedCount, 0);
-        GameObject paper = Instantiate(paperPrefab, spawnPos, Quaternion.identity);
+        Vector3 spawnPos = spawnPoint.position + new Vector3(Random.Range(-1, 1), 10 * spawnedCount, 0);
+
+        GameObject paper = Instantiate(paperPrefab, spawnPos, Quaternion.identity, canvasTransform);
 
         Paper paperScript = paper.GetComponent<Paper>();
         paperScript.grade = Random.Range(30, 100);
