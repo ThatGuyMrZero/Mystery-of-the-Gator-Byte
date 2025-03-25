@@ -14,12 +14,18 @@ public class Paper : MonoBehaviour
         UpdateGradeVisual();
     }
 
-
     public void UpdateGradeVisual()
     {
         if (gradeText != null)
         {
             gradeText.text = grade.ToString();
+            gradeText.ForceMeshUpdate();
+            Debug.Log($"{gameObject.name} updated grade text to: {gradeText.text}");
+        }
+        else
+        {
+            Debug.LogWarning("gradeText is not assigned in " + gameObject.name);
         }
     }
+
 }

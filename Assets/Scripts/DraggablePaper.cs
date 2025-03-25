@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class DraggablePaper : MonoBehaviour
 {
@@ -6,17 +7,18 @@ public class DraggablePaper : MonoBehaviour
     private Vector3 offset;
     private bool isDragging = false;
 
-    [Header("Drop Detection Area")]
-    [SerializeField] private Vector2 dropDetectionSize = new Vector2(3.5f, 5.5f); // Visible in Inspector
+    [SerializeField] private Vector2 dropDetectionSize = new Vector2(0.5f, 0.5f);
 
-    [Header("Random Drop Offset")]
-    [SerializeField] private float maxOffsetX = 0.3f;
-    [SerializeField] private float maxOffsetY = 0.1f;
+    [SerializeField] private float dropRandomXMin = -10f;
+    [SerializeField] private float dropRandomXMax = 10f;
+    [SerializeField] private float dropRandomYMin = -10f;
+    [SerializeField] private float dropRandomYMax = 10f;
+
+    public GameObject errorMessage;
 
     void OnMouseDown()
     {
         originalPosition = transform.position;
-
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         offset = transform.position - new Vector3(mousePos.x, mousePos.y, transform.position.z);
         isDragging = true;
@@ -36,7 +38,6 @@ public class DraggablePaper : MonoBehaviour
         isDragging = false;
 
         Collider2D[] hits = Physics2D.OverlapBoxAll(transform.position, dropDetectionSize, 0f);
-
         bool droppedOnZone = false;
         Paper paper = GetComponent<Paper>();
 
@@ -44,15 +45,23 @@ public class DraggablePaper : MonoBehaviour
         {
             if (hit.CompareTag("GradedZone") && paper.grade >= 50)
             {
-                SnapToZone(hit);
-                Debug.Log("Paper graded correctly!");
+                Vector3 randomOffset = new Vector3(
+                    Random.Range(dropRandomXMin, dropRandomXMax),
+                    Random.Range(dropRandomYMin, dropRandomYMax),
+                    0);
+                transform.position = hit.transform.position + randomOffset;
+                Debug.Log("Paper graded correctly with drop offset!");
                 droppedOnZone = true;
                 break;
             }
             else if (hit.CompareTag("NotGradedZone") && paper.grade < 50)
             {
-                SnapToZone(hit);
-                Debug.Log("Paper discarded correctly!");
+                Vector3 randomOffset = new Vector3(
+                    Random.Range(dropRandomXMin, dropRandomXMax),
+                    Random.Range(dropRandomYMin, dropRandomYMax),
+                    0);
+                transform.position = hit.transform.position + randomOffset;
+                Debug.Log("Paper discarded correctly with drop offset!");
                 droppedOnZone = true;
                 break;
             }
@@ -62,10 +71,17 @@ public class DraggablePaper : MonoBehaviour
         {
             Debug.Log("Invalid drop zone. Returning to original position.");
             transform.position = originalPosition;
+            if (errorMessage != null)
+            {
+                StartCoroutine(ShowErrorMessage());
+            }
         }
         else
         {
-            this.enabled = false; // Disable dragging after a successful drop
+
+            transform.SetAsLastSibling();
+
+            this.enabled = false;
         }
     }
 
@@ -77,7 +93,11 @@ public class DraggablePaper : MonoBehaviour
             0
         );
 
-        transform.position = zone.transform.position + randomOffset;
+    private IEnumerator ShowErrorMessage()
+    {
+        errorMessage.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        errorMessage.SetActive(false);
     }
 
     // Optional: Visualize the drop detection area in the Scene view
