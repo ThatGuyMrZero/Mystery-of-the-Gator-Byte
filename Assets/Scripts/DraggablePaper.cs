@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class DraggablePaper : MonoBehaviour
 {
@@ -52,6 +53,12 @@ public class DraggablePaper : MonoBehaviour
                 transform.position = hit.transform.position + randomOffset;
                 Debug.Log("Paper graded correctly with drop offset!");
                 droppedOnZone = true;
+
+                DropZoneTransparency dz = hit.GetComponent<DropZoneTransparency>();
+                if (dz != null)
+                {
+                    dz.MakeTransparent();
+                }
                 break;
             }
             else if (hit.CompareTag("NotGradedZone") && paper.grade < 50)
@@ -63,13 +70,19 @@ public class DraggablePaper : MonoBehaviour
                 transform.position = hit.transform.position + randomOffset;
                 Debug.Log("Paper discarded correctly with drop offset!");
                 droppedOnZone = true;
+
+                DropZoneTransparency dz = hit.GetComponent<DropZoneTransparency>();
+                if (dz != null)
+                {
+                    dz.MakeTransparent();
+                }
                 break;
             }
         }
 
         if (!droppedOnZone)
         {
-            Debug.Log("Invalid drop zone. Returning to original position.");
+            Debug.Log("Invalid drop zone, returning to original position.");
             transform.position = originalPosition;
             if (errorMessage != null)
             {
@@ -78,20 +91,10 @@ public class DraggablePaper : MonoBehaviour
         }
         else
         {
-
             transform.SetAsLastSibling();
-
             this.enabled = false;
         }
     }
-
-    private void SnapToZone(Collider2D zone)
-    {
-        Vector3 randomOffset = new Vector3(
-            Random.Range(-maxOffsetX, maxOffsetX),
-            Random.Range(-maxOffsetY, maxOffsetY),
-            0
-        );
 
     private IEnumerator ShowErrorMessage()
     {
@@ -100,7 +103,6 @@ public class DraggablePaper : MonoBehaviour
         errorMessage.SetActive(false);
     }
 
-    // Optional: Visualize the drop detection area in the Scene view
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;

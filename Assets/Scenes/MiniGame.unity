@@ -540,6 +540,7 @@ GameObject:
   - component: {fileID: 606553893}
   - component: {fileID: 606553894}
   - component: {fileID: 606553895}
+  - component: {fileID: 606553896}
   m_Layer: 0
   m_Name: To Be Graded
   m_TagString: NotGradedZone
@@ -663,6 +664,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &606553896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606553892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efaddf93e5d1b1c4c8284789a195f551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &686299542
 GameObject:
   m_ObjectHideFlags: 0
@@ -1057,6 +1070,8 @@ MonoBehaviour:
   dropRandomXMax: 10
   dropRandomYMin: -10
   dropRandomYMax: 10
+  maxOffsetX: 10
+  maxOffsetY: 10
   errorMessage: {fileID: 0}
 --- !u!1 &1015760208
 GameObject:
@@ -1235,7 +1250,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 568719682}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 762376969}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1015760214
 MonoBehaviour:
@@ -1254,6 +1269,8 @@ MonoBehaviour:
   dropRandomXMax: 10
   dropRandomYMin: -10
   dropRandomYMax: 10
+  maxOffsetX: 10
+  maxOffsetY: 10
   errorMessage: {fileID: 530229338}
 --- !u!1 &1249462674
 GameObject:
@@ -1711,6 +1728,8 @@ MonoBehaviour:
   dropRandomXMax: 10
   dropRandomYMin: -10
   dropRandomYMax: 10
+  maxOffsetX: 10
+  maxOffsetY: 10
   errorMessage: {fileID: 0}
 --- !u!114 &1573632960
 MonoBehaviour:
@@ -2237,6 +2256,7 @@ GameObject:
   - component: {fileID: 2015066020}
   - component: {fileID: 2015066021}
   - component: {fileID: 2015066022}
+  - component: {fileID: 2015066023}
   m_Layer: 0
   m_Name: Graded Papers
   m_TagString: GradedZone
@@ -2360,6 +2380,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2015066023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015066019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efaddf93e5d1b1c4c8284789a195f551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
