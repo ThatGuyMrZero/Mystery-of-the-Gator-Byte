@@ -1,75 +1,28 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ItemSpawner : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class ItemSpawner : MonoBehaviour 
 {
-    
-    private GameObject draggedItem;
-    private RectTransform rectTransform;
-    private CanvasGroup canvasGroup;
-    private Vector2 originalPosition;
-    private Transform originalParent;
+
+    public GameObject itemPrefab;
+    private Vector2 spawnPosition;
+    private Transform parentContainer;
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rectTransform = GetComponent<RectTransform>();
-        canvasGroup = GetComponent<CanvasGroup>();
-        originalPosition = rectTransform.anchoredPosition;
-        originalParent = transform.parent;
+        spawnPosition = GetComponent<RectTransform>().anchoredPosition;
+        parentContainer = transform.parent;
+        SpawnNewItem();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SpawnNewItem()
     {
-        
+        GameObject newItem = Instantiate(itemPrefab, parentContainer);
+        newItem.GetComponent<RectTransform>().anchoredPosition = spawnPosition;
+        newItem.GetComponent<ItemStack>().SetSpawner(this);
+        newItem.transform.SetParent(parentContainer, false);
+        Debug.Log($"Spawned new {newItem.name} at original spawn position.");
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        draggedItem = Instantiate(gameObject, originalParent);
-        draggedItem.transform.SetParent(rectTransform.root, false);
-        draggedItem.GetComponent<CanvasGroup>().blocksRaycasts = false;
-    }
-
-    public void OnDrag(PointerEventData eventData)
-    {
-        if (draggedItem != null)
-        {
-            draggedItem.GetComponent<RectTransform>().anchoredPosition += eventData.delta;
-        }
-    }
-
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        if (draggedItem != null)
-        {
-            draggedItem.GetComponent<CanvasGroup>().blocksRaycasts = true;
-
-            if (ValidDropLocation(draggedItem))
-            {
-                Destroy(draggedItem);
-                SpawnNewItem();
-            }
-            else
-            {
-                Destroy(draggedItem);
-            }
-            draggedItem = null;
-        }
-    }
-
-    private bool ValidDropLocation(GameObject item)
-    {
-        TrayHandler tray = FindObjectOfType<TrayHandler>();
-        RectTransform trayRect = tray.GetComponent<RectTransform>();
-        return RectTransformUtility.RectangleContainsScreenPoint(trayRect, item.GetComponent<RectTransform>().position, null);
-    }
-
-    private void SpawnNewItem()
-    {
-        GameObject newItem = Instantiate(gameObject, originalParent);
-        newItem.GetComponent<RectTransform>().anchoredPosition = originalPosition;
-    }
 }

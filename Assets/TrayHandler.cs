@@ -3,12 +3,22 @@ using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
-public class TrayHandler : MonoBehaviour, IDropHandler
+public class TrayHandler : MonoBehaviour
 {
+    // new stuff
+    public RectTransform trayContainer;
+    public GameObject smallTrayPrefab;
+    private List<GameObject> traySlots = new List<GameObject>();
+    private Dictionary<SmallTray, GameObject> trayContents = new Dictionary<SmallTray,GameObject>();
+    public float traySpacing = 120f;
 
-    public List<Transform> stackPositions;
-    private List<GameObject> stackedItems = new List<GameObject>();
+    // old stuff not being used rn
+    //public List<Transform> stackPositions;
+    //private List<GameObject> stackedItems = new List<GameObject>();
+
+    // original stuff still being used
     private List<string> currentOrder;
     public OrderGenerator orderManager;
     public TextMeshProUGUI scoreText;
@@ -16,95 +26,112 @@ public class TrayHandler : MonoBehaviour, IDropHandler
 
     void Start()
     {
-        currentOrder = orderManager.GetActiveOrder(); // comes from the queue of orders in OrderGenerator.cs
+        currentOrder = orderManager.GetActiveOrder();
+        GenerateTrays(currentOrder.Count);
         UpdateScoreUI();
     }
 
 
-    public void OnDrop(PointerEventData eventData)
+    public void OnDrop(SmallTray tray, GameObject droppedItem)
     {
-        GameObject droppedItem = eventData.pointerDrag;
-        if (droppedItem != null && stackedItems.Count < stackPositions.Count)
+        if (droppedItem == null) return;
+
+        Debug.Log($"TrayHandler received drop for {droppedItem.name} on {tray.name}");
+
+        PlaceItemInTray(tray.gameObject, droppedItem);
+    }
+
+    private void PlaceItemInTray(GameObject trayObject, GameObject newItem)
+    {
+        SmallTray tray = trayObject.GetComponent<SmallTray>();
+
+        if (tray == null)
         {
-            ItemStack stackable = droppedItem.GetComponent<ItemStack>();
-            if (stackable != null)
+            Debug.Log($"SmallTray component not found on {trayObject.name}");
+            return;
+        }
+
+        if (trayContents.ContainsKey(tray) && trayContents[tray] != null)
+        {
+            Debug.Log($"Replacing {trayContents[tray].name} with {newItem.name} in {tray.name}");
+            Destroy(trayContents[tray]);
+        }
+
+        trayContents[tray] = newItem;
+
+        RectTransform itemRect = newItem.GetComponent<RectTransform>();
+        newItem.transform.SetParent(tray.transform, false);
+        newItem.transform.SetAsLastSibling();
+        itemRect.anchoredPosition = Vector2.zero;
+        Debug.Log($"Placed {newItem.name} in {tray.name}");
+        CheckIfOrderCompleted();
+    }
+
+    private GameObject GetClosestEmptyTray(Vector2 dropPosition)
+    {
+        foreach (GameObject tray in traySlots)
+        {
+            RectTransform trayRect = tray.GetComponent<RectTransform>();
+
+            if (RectTransformUtility.RectangleContainsScreenPoint(trayRect, dropPosition, null))
             {
-                // implement this function after getting stacking working
-                //if (IsDuplicateLayer(stackable))
-                //{
-                //    Debug.Log("Cant add duplicate layers for " + stackable.name);
-                //    return;
-                //}
-
-                string itemName = stackable.name;
-                int stackIndex = stackedItems.Count;
-
-                Debug.Log($"Item name: {itemName}, stack index: {stackIndex}, Order Item Name: {currentOrder[stackIndex]}");
-
-                if (stackIndex < currentOrder.Count && itemName == currentOrder[stackIndex])
-                {
-                    RectTransform itemRect = droppedItem.GetComponent<RectTransform>();
-                    //Debug.Log($"Before Drop: {droppedItem.name} | Anchors: {itemRect.anchorMin}, {itemRect.anchorMax} | Size: {itemRect.sizeDelta} | Scale: {droppedItem.transform.localScale}");
-
-                    droppedItem.transform.SetParent(transform, false);
-                    droppedItem.transform.SetAsLastSibling();
-
-                    itemRect.anchorMin = new Vector2(0.5f, 0.5f);
-                    itemRect.anchorMax = new Vector2(0.5f, 0.5f);
-                    itemRect.pivot = new Vector2(0.5f, 0.5f);
-                    itemRect.anchoredPosition = stackPositions[stackedItems.Count].GetComponent<RectTransform>().anchoredPosition;
-
-                    //itemRect.sizeDelta = new Vector2(100, 100);
-                    //droppedItem.transform.localScale = Vector3.one;
-
-                    stackedItems.Add(droppedItem);
-                    score += 10;
-                    UpdateScoreUI();
-
-                    if (stackedItems.Count == currentOrder.Count)
-                    {
-                        Debug.Log("Order complete");
-                        stackedItems.Clear();
-                        orderManager.CompleteOrder();
-                        currentOrder = orderManager.GetActiveOrder();
-                    }
-
-
-                    //Canvas.ForceUpdateCanvases();
-                    //itemRect.ForceUpdateRectTransforms();
-
-                    //stackedItems.Add(droppedItem);
-
-                    //Debug.Log($"After Drop: {droppedItem.name} | Anchors: {itemRect.anchorMin}, {itemRect.anchorMax} | Size: {itemRect.sizeDelta} | Scale: {droppedItem.transform.localScale}");
-                }
-                else
-                {
-                    Debug.Log("Incorrect item, game over");
-                    GameOver();
-                }
-
-                
-
-
-
-
+                return tray;
             }
         }
+        return null;
     }
+
+    private void GenerateTrays(int count)
+    {
+        foreach (GameObject tray in traySlots)
+        {
+            Destroy(tray);
+        }
+        traySlots.Clear();
+        trayContents.Clear();
+
+        float startX = -((count - 1) * traySpacing) / 2;
+
+        for (int i = 0; i < count; i++)
+        {
+            GameObject newTray = Instantiate(smallTrayPrefab, trayContainer);
+            RectTransform trayRect = newTray.GetComponent<RectTransform>();
+            trayRect.anchoredPosition = new Vector2(startX + (i * traySpacing), 0);
+            traySlots.Add(newTray);
+        }
+    }
+
+    private void CheckIfOrderCompleted()
+    {
+        List<string> placedItems = new List<string>();
+
+        foreach (var entry in trayContents)
+        {
+            placedItems.Add(entry.Value.name);
+        }
+
+        if (placedItems.Count == currentOrder.Count && !currentOrder.Except(placedItems).Any())
+        {
+            Debug.Log("Order Complete!");
+            score += 50;
+            UpdateScoreUI();
+            orderManager.CompleteOrder();
+            currentOrder = orderManager.GetActiveOrder();
+            GenerateTrays(currentOrder.Count);
+        }
+    }
+
 
     private void UpdateScoreUI()
     {
         scoreText.text = "Score: " + score;
     }
 
+    // not using rn, might delete
     private void GameOver()
     {
         scoreText.text = "Game Over";
         Time.timeScale = 0;
     }
 
-    private bool IsDuplicateLayer(ItemStack stackable)
-    {
-        return false;
-    }
 }

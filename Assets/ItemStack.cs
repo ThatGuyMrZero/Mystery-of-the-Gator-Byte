@@ -4,25 +4,34 @@ using UnityEngine.EventSystems;
 
 public class ItemStack : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
-    public GameObject prefabToSpawn;
-    public bool isPizzaTopping = false;
+
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
-    private Transform originalParent;
-    private Vector2 originalPosition;
+    private ItemSpawner spawner;
+    private Transform spawnParent;
+
 
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
+        spawnParent = transform.parent;
     }
-    
+
+    public void SetSpawner(ItemSpawner itemSpawner)
+    {
+        spawner = itemSpawner;
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         canvasGroup.alpha = 0.6f;
         canvasGroup.blocksRaycasts = false;
-        originalParent = transform.parent;
-        originalPosition = rectTransform.anchoredPosition;
+
+        if (spawner != null && transform.parent == spawnParent)
+        {
+            spawner.SpawnNewItem();
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -35,66 +44,47 @@ public class ItemStack : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
 
-        GameObject tray = GameObject.Find("Tray");
-        RectTransform trayRect = tray.GetComponent<RectTransform>();
+        GameObject closestTray = GetClosestTray(eventData.position);
 
-        if (RectTransformUtility.RectangleContainsScreenPoint(trayRect, Input.mousePosition, Camera.main))
+        if (closestTray != null)
         {
-            Debug.Log("Dropped on tray: " + gameObject.name);
-            transform.SetParent(tray.transform, false);
-            transform.SetAsLastSibling();
-            rectTransform.anchoredPosition = Vector2.zero;
-        }
-        else
-        {
-            Debug.Log("Not on tray, returning to start.");
-            transform.SetParent(originalParent);
-            rectTransform.anchoredPosition = originalPosition;
-        }
+            SmallTray smallTray = closestTray.GetComponent<SmallTray>();
 
+            if (smallTray != null)
+            {
+                Debug.Log($"Valid drop for {gameObject.name} on {smallTray.name}");
+                SnapToTray(closestTray);
+                return;
+            }
+        }
+        Debug.Log($"Invalid drop for {gameObject.name}, destroying dragged item");
+        Destroy(gameObject);
     }
 
-    // dont need ondrop here since we use it inside trayhandler now instead to stack properly on the tray
-
-    //public void OnDrop(PointerEventData eventData)
-    //{
-    //    GameObject droppedItem = eventData.pointerDrag;
-
-    //    if (droppedItem != null)
-    //    {
-    //        ItemStack stackable = droppedItem.GetComponent<ItemStack>();
-    //        if(stackable != null)
-    //        {
-    //            if(stackable.isPizzaTopping && stackable.prefabToSpawn != null)
-    //            {
-    //                SpawnToppings(stackable.prefabToSpawn, rectTransform);
-    //            }
-    //            else
-    //            {
-    //                droppedItem.transform.SetParent(transform);
-    //                droppedItem.transform.localPosition = Vector3.zero;
-    //            }
-    //        }
-    //    }
-    //}
-
-
-    private void SpawnToppings(GameObject prefab, Transform parent)
+    private GameObject GetClosestTray(Vector2 dropPosition)
     {
-        int numToppings = 5;
-        float radius = 0.3f;
-
-        for(int i=0; i<numToppings; i++)
+        foreach (SmallTray tray in FindObjectsByType<SmallTray>(FindObjectsSortMode.None))
         {
-            Vector3 randomOffset = new Vector3(
-                Random.Range(-radius, radius),
-                Random.Range(-radius, radius),
-                0
-            );
+            RectTransform trayRect = tray.GetComponent<RectTransform>();
 
-            GameObject newTopping = Instantiate(prefab, parent.position + randomOffset, Quaternion.identity);
-            newTopping.transform.SetParent(parent);
+            if (RectTransformUtility.RectangleContainsScreenPoint(trayRect, dropPosition, Camera.main))
+            {
+                Debug.Log($"Detected tray {tray.name} under mouse");
+                return tray.gameObject; 
+            }
         }
+
+        Debug.Log("No tray detected under mouse");
+        return null;
+    }
+
+
+    private void SnapToTray(GameObject tray)
+    {
+        transform.SetParent(tray.transform, false);
+        transform.SetAsLastSibling();
+        rectTransform.anchoredPosition = Vector2.zero;
+
     }
 
 }
