@@ -42,14 +42,15 @@ public class DraggablePaper : MonoBehaviour
         bool droppedOnZone = false;
         Paper paper = GetComponent<Paper>();
 
+        Vector3 randomOffset = new Vector3(
+            Random.Range(dropRandomXMin, dropRandomXMax),
+            Random.Range(dropRandomYMin, dropRandomYMax),
+            0);
+
         foreach (Collider2D hit in hits)
         {
             if (hit.CompareTag("GradedZone") && paper.grade >= 50)
             {
-                Vector3 randomOffset = new Vector3(
-                    Random.Range(dropRandomXMin, dropRandomXMax),
-                    Random.Range(dropRandomYMin, dropRandomYMax),
-                    0);
                 transform.position = hit.transform.position + randomOffset;
                 Debug.Log("Paper graded correctly with drop offset!");
                 droppedOnZone = true;
@@ -63,10 +64,6 @@ public class DraggablePaper : MonoBehaviour
             }
             else if (hit.CompareTag("NotGradedZone") && paper.grade < 50)
             {
-                Vector3 randomOffset = new Vector3(
-                    Random.Range(dropRandomXMin, dropRandomXMax),
-                    Random.Range(dropRandomYMin, dropRandomYMax),
-                    0);
                 transform.position = hit.transform.position + randomOffset;
                 Debug.Log("Paper discarded correctly with drop offset!");
                 droppedOnZone = true;
@@ -82,7 +79,7 @@ public class DraggablePaper : MonoBehaviour
 
         if (!droppedOnZone)
         {
-            Debug.Log("Invalid drop zone, returning to original position.");
+
             transform.position = originalPosition;
             if (errorMessage != null)
             {
@@ -93,6 +90,11 @@ public class DraggablePaper : MonoBehaviour
         {
             transform.SetAsLastSibling();
             this.enabled = false;
+
+            if (PaperDropManager.Instance != null)
+            {
+                PaperDropManager.Instance.PaperDroppedCorrectly();
+            }
         }
     }
 
