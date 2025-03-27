@@ -64,7 +64,7 @@ public class TrayHandler : MonoBehaviour
         newItem.transform.SetAsLastSibling();
         itemRect.anchoredPosition = Vector2.zero;
         Debug.Log($"Placed {newItem.name} in {tray.name}");
-        CheckIfOrderCompleted();
+        //CheckIfOrderCompleted();
     }
 
     private GameObject GetClosestEmptyTray(Vector2 dropPosition)
@@ -132,6 +132,71 @@ public class TrayHandler : MonoBehaviour
     {
         scoreText.text = "Game Over";
         Time.timeScale = 0;
+    }
+
+    public void CheckOrder()
+    {
+        // new function for checking order on button press
+        // old function is CheckIfOrderCompleted
+
+        if(currentOrder == null)
+        {
+            Debug.Log("No active order");
+            return;
+        }
+
+        List<string> placedIngredients = new List<string>();
+        foreach (var tray in trayContents)
+        {
+            if (tray.Value != null)
+            {
+                placedIngredients.Add(tray.Value.tag);
+            }   
+        }
+
+
+        Debug.Log("Tray Contents:");
+        foreach (var entry in trayContents)
+        {
+            string ingredientTag = entry.Value != null ? entry.Value.tag : "EMPTY";
+            Debug.Log("Tray " + entry.Key.name + ": " + ingredientTag);
+        }
+
+        Debug.Log("Placed Ingredients: " + string.Join(", ", placedIngredients));
+        Debug.Log("Expected Order: " + string.Join(", ", currentOrder));
+
+
+
+        bool orderMatched = false;
+
+        if ((placedIngredients.Count == currentOrder.Count) &&(!currentOrder.Except(placedIngredients).Any()))
+        {
+            orderMatched = true;
+        }
+
+        if (orderMatched)
+        {
+            Debug.Log("Order Complete");
+            score += 50;
+            UpdateScoreUI();
+            orderManager.CompleteOrder();
+            currentOrder = orderManager.GetActiveOrder();
+            if (currentOrder != null)
+            { 
+                GenerateTrays(currentOrder.Count);
+            }
+            else
+            {
+                Debug.Log("Current order is null");
+                GenerateTrays(0);
+            }
+        
+        }
+        else
+        {
+            Debug.Log("Order is incorrect or incomplete");
+        }
+
     }
 
 }

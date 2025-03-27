@@ -6,7 +6,6 @@ using System.Collections.Generic;
 public class OrderGenerator : MonoBehaviour
 {
 
-
     public TextMeshProUGUI orderText;
     //public GameObject orderCard;
     //public Transform orderQueueParent;
