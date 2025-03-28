@@ -9,6 +9,18 @@ public class ItemSpawner : MonoBehaviour
     private Transform parentContainer;
 
 
+    //public GameManager gamemanager;
+
+    //void OnEnable()
+    //{
+    //    GameManager.OnGameStart += StartGame;
+    //}
+
+    //void OnDisable()
+    //{
+    //    GameManager.OnGameStart -= StartGame;
+    //}
+
     void Start()
     {
         spawnPosition = GetComponent<RectTransform>().anchoredPosition;

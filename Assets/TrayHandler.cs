@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
@@ -14,6 +15,12 @@ public class TrayHandler : MonoBehaviour
     private Dictionary<SmallTray, GameObject> trayContents = new Dictionary<SmallTray,GameObject>();
     public float traySpacing = 120f;
 
+    public GameObject incorrectOrderPopup;
+    public float popupDuration = 3f;
+
+    public ScoreManager scoremanager;
+
+
     // old stuff not being used rn
     //public List<Transform> stackPositions;
     //private List<GameObject> stackedItems = new List<GameObject>();
@@ -24,11 +31,34 @@ public class TrayHandler : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public int score = 0;
 
+    //public GameManager gamemanager;
+
+    void OnEnable()
+    {
+        GameManager.OnGameStart += StartGame;
+    }
+
+    void OnDisable()
+    {
+        GameManager.OnGameStart -= StartGame;
+    }
+
     void Start()
+    {
+        incorrectOrderPopup.SetActive(false);
+        //currentOrder = orderManager.GetActiveOrder();
+        //GenerateTrays(currentOrder.Count);
+        //scoremanager.StartOrderScoring();
+        //UpdateScoreUI();
+    }
+
+    private void StartGame()
     {
         currentOrder = orderManager.GetActiveOrder();
         GenerateTrays(currentOrder.Count);
+        scoremanager.StartOrderScoring();
         UpdateScoreUI();
+        
     }
 
 
@@ -124,7 +154,7 @@ public class TrayHandler : MonoBehaviour
 
     private void UpdateScoreUI()
     {
-        scoreText.text = "Score: " + score;
+        scoreText.text = "Score: " + scoremanager.totalScore;
     }
 
     // not using rn, might delete
@@ -176,8 +206,11 @@ public class TrayHandler : MonoBehaviour
 
         if (orderMatched)
         {
+            incorrectOrderPopup.SetActive(false);
             Debug.Log("Order Complete");
-            score += 50;
+
+            //score += 50;
+            scoremanager.CompleteOrderScoring();
             UpdateScoreUI();
             orderManager.CompleteOrder();
             currentOrder = orderManager.GetActiveOrder();
@@ -195,7 +228,20 @@ public class TrayHandler : MonoBehaviour
         else
         {
             Debug.Log("Order is incorrect or incomplete");
+            StartCoroutine(ShowIncorrectOrderPopup(popupDuration));
         }
+
+    }
+
+    private IEnumerator ShowIncorrectOrderPopup(float duration)
+    {
+        incorrectOrderPopup.SetActive(true);
+        yield return new WaitForSeconds(duration);
+        incorrectOrderPopup.SetActive(false);
+    }
+
+    private void calculateScore(float startTime, float endTime)
+    {
 
     }
 

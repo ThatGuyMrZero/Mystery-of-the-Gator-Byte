@@ -20,18 +20,24 @@ public class OrderGenerator : MonoBehaviour
 
     private Queue<List<string>> orderQueue = new Queue<List<string>>();
 
+    //public GameManager gamemanager;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void OnEnable()
+    {
+        GameManager.OnGameStart += StartGame;
+    }
+
+    void OnDisable()
+    {
+        GameManager.OnGameStart -= StartGame;
+    }
+
+
+    public void StartGame()
     {
         StartCoroutine(OrderTimer());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     void GenerateOrder()
     {

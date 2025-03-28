@@ -10,6 +10,18 @@ public class ItemStack : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
     private ItemSpawner spawner;
     private Transform spawnParent;
 
+    //public GameManager gamemanager;
+
+    //void OnEnable()
+    //{
+    //    GameManager.OnGameStart += StartGame;
+    //}
+
+    //void OnDisable()
+    //{
+    //    GameManager.OnGameStart -= StartGame;
+    //}
+
 
     void Start()
     {
