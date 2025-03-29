@@ -28,9 +28,12 @@ public class PaperSpawner : MonoBehaviour
     {
         if (spawnedCount >= numberOfPapers) return;
 
-        Vector3 spawnPos = spawnPoint.position + new Vector3(Random.Range(-1, 1), 10 * spawnedCount, 0);
+        float zOffset = -0.1f * spawnedCount;
+        Vector3 spawnPos = spawnPoint.position + new Vector3(0, 0, zOffset);
 
         GameObject paper = Instantiate(paperPrefab, spawnPos, Quaternion.identity, canvasTransform);
+
+        paper.tag = "Paper";
 
         Paper paperScript = paper.GetComponent<Paper>();
         paperScript.grade = Random.Range(30, 100);
@@ -38,4 +41,24 @@ public class PaperSpawner : MonoBehaviour
 
         spawnedCount++;
     }
+
+    public void ResetBoard()
+    {
+        Debug.Log("ResetBoard called. Checking children of canvasTransform...");
+
+        foreach (Transform child in canvasTransform)
+        {
+            Debug.Log("Found child: " + child.name + " with tag: " + child.tag);
+
+            if (child.CompareTag("Paper"))
+            {
+                Debug.Log("Destroying " + child.name);
+                Destroy(child.gameObject);
+            }
+        }
+
+        spawnedCount = 0;
+        SpawnPapers();
+    }
+
 }

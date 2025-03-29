@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GradedZone
   - NotGradedZone
+  - Paper
   layers:
   - Default
   - TransparentFX
