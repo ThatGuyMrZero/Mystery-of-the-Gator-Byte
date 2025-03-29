@@ -35,25 +35,27 @@ public class FakeLoadingScreen : MonoBehaviour
             yield return null;
         }
 
-        startButton.interactable = true;
-        startButton.gameObject.SetActive(true);
+        
         loading = false;
-        loadingBar.gameObject.SetActive(false);
+        
     }
 
     IEnumerator AnimateLoadingText()
     {
-            while (loading)
-            {
-                loadingText.text = "Loading.";
-                yield return new WaitForSeconds(0.5f);
-                loadingText.text = "Loading..";
-                yield return new WaitForSeconds(0.5f);
-                loadingText.text = "Loading...";
-                yield return new WaitForSeconds(0.5f);
-            }
+        while (loading)
+        {
+            loadingText.text = "Loading.";
+            yield return new WaitForSeconds(0.5f);
+            loadingText.text = "Loading..";
+            yield return new WaitForSeconds(0.5f);
+            loadingText.text = "Loading...";
+            yield return new WaitForSeconds(0.5f);
+        }
 
+        loadingBar.gameObject.SetActive(false);
         loadingText.text = "Ready to start!";
+        startButton.interactable = true;
+        startButton.gameObject.SetActive(true);
     }
 
     public void StartGame()
