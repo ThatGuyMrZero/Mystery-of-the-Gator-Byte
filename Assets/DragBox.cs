@@ -1,24 +1,40 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class DragBox : MonoBehaviour, IDragHandler, IEndDragHandler
+public class DragBox : MonoBehaviour
 {
-    public string boxType; // "string", "int", "bool"
-    private Vector3 startPosition;
+    private bool isDragging = false;
+    private Vector3 offset;
+    private Vector3 originalPosition;
 
-    private void Start()
+    void Start()
     {
-        startPosition = transform.position;  // Save original position
+        // Store the original position when the game starts
+        originalPosition = transform.position;
     }
 
-    public void OnDrag(PointerEventData eventData)
+    void OnMouseDown()
     {
-        transform.position = Input.mousePosition;  // Follow mouse position
+        isDragging = true;
+
+        // Calculate the offset between mouse position and object position
+        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        offset = transform.position - new Vector3(mouseWorldPos.x, mouseWorldPos.y, transform.position.z);
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    void OnMouseUp()
     {
-        // Snap the box back to the original position if not dropped in the correct place
-        transform.position = startPosition; 
+        isDragging = false;
+
+        // Snap back to the original position
+        transform.position = originalPosition;
+    }
+
+    void Update()
+    {
+        if (isDragging)
+        {
+            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            transform.position = new Vector3(mouseWorldPos.x, mouseWorldPos.y, transform.position.z) + offset;
+        }
     }
 }

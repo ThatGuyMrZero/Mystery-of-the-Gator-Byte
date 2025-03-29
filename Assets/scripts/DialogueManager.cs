@@ -35,19 +35,17 @@ public class DialogueManager : MonoBehaviour
     {
         if (currentTextIndex < textSprites.Length - 1)
         {
-            // Hide current text, show next text
             textSprites[currentTextIndex].SetActive(false);
             currentTextIndex++;
             textSprites[currentTextIndex].SetActive(true);
         }
         else
         {
-            // If all text is shown, hide everything
             textSprites[currentTextIndex].SetActive(false);
             textBox.SetActive(false);
-            Debug.Log("🎉 Dialogue finished! Game starts now.");
+            Debug.Log("🎉 Dialogue finished!");
 
-                        // Enable hover effect after dialogue is finished
+            // Enable hover effect after dialogue is finished
             if (hoverBounceScript != null)
             {
                 hoverBounceScript.StartHovering();
@@ -56,10 +54,12 @@ public class DialogueManager : MonoBehaviour
             {
                 isVisibleScript.ShowObject();  // Make the object visible
             }
+
+            // Disable DialogueManager script
+            this.enabled = false;
         }
     }
 }
-
 /*
 using UnityEngine;
 using TMPro;

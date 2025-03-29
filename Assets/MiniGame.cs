@@ -1,85 +1,84 @@
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class MiniGame : MonoBehaviour
 {
-    public GameObject[] dataBoxes;  // The 3 data type boxes (string, int, bool)
-    public GameObject fallingDataPrefab; // The falling data prefab
-    public GameObject[] dataTextSprites;  // Array of 8 empty GameObjects to assign in the inspector
-    public float spawnRate = 2f;  // Time interval between asset spawns
-    private int score = 0;  // The player's score
+    [Header("Falling Data Settings")]
+    public GameObject[] dataTextPrefabs;
+    public float spawnInterval = 2f;
+    public float minX = -5f;
+    public float maxX = 5f;
+    public float spawnY = 12f;
 
-    // UI Text for the score (can take an empty GameObject as well)
-    public Text scoreText;  // UI Text to display the score, can be null (empty) or missing
-    public SpriteRenderer scoreSprite;  // Can take an empty sprite for score feedback
+    [Header("Score Zones")]
+    public ScoreZone stringBox;
+    public ScoreZone intBox;
+    public ScoreZone boolBox;
 
-    private void Start()
+    [Header("World-Space Score Text (TextMeshPro)")]
+    public TextMeshPro stringScore;
+    public TextMeshPro intScore;
+    public TextMeshPro boolScore;
+
+    private int currentIndex = 0;
+    private bool isSpawning = false;
+
+    void Update()
     {
-        // Start spawning falling data
-        InvokeRepeating("SpawnFallingData", 0f, spawnRate);
+        UpdateScoreUI();
     }
 
-    private void SpawnFallingData()
+    public void StartMiniGame()
     {
-        // Debug log to check if fallingDataPrefab is assigned
-        if (fallingDataPrefab == null)
+        Debug.Log("🚀 StartMiniGame() was called!");
+
+        if (!isSpawning && dataTextPrefabs.Length > 0)
         {
-            Debug.LogError("fallingDataPrefab is not assigned in the Inspector!");
-            return;
-        }
-
-        // Spawn the falling data at a random X position and above the screen
-        float spawnX = Random.Range(-5f, 5f);
-        Vector3 spawnPosition = new Vector3(spawnX, 6f, 0f);
-
-        GameObject newData = Instantiate(fallingDataPrefab, spawnPosition, Quaternion.identity);
-
-        // Debug log to check if the prefab contains the FallingData script
-        FallingData fallingDataScript = newData.GetComponent<FallingData>();
-        if (fallingDataScript == null)
-        {
-            Debug.LogError("FallingData script is not attached to the prefab!");
-            return;
-        }
-
-        // Pass the dataTextSprites to the FallingData component
-        fallingDataScript.dataText = dataTextSprites;
-
-        // Debug log to ensure dataTextSprites is assigned
-        if (dataTextSprites == null || dataTextSprites.Length == 0)
-        {
-            Debug.LogError("dataTextSprites is not assigned or is empty!");
-            return;
+            InvokeRepeating(nameof(SpawnText), 0f, spawnInterval);
+            isSpawning = true;
+            Debug.Log("✅ MiniGame is now spawning text.");
         }
     }
 
-    public void IncreaseScore()
+    public void StopMiniGame()
     {
-        score++;
-        UpdateScoreDisplay();
+        CancelInvoke(nameof(SpawnText));
+        isSpawning = false;
+        Debug.Log("⛔ MiniGame stopped.");
+        ShowScores();
     }
 
-    private void UpdateScoreDisplay()
+    void SpawnText()
     {
-        // Check if scoreText is assigned and update it
-        if (scoreText != null)
-        {
-            scoreText.text = "Score: " + score; // Update the score UI
-        }
-        else
-        {
-            Debug.LogWarning("scoreText is not assigned in the inspector.");
-        }
+        if (dataTextPrefabs.Length == 0) return;
 
-        // Check if scoreSprite is assigned and update it (optional)
-        if (scoreSprite != null)
-        {
-            // You can add feedback here for the sprite (e.g., changing color on score update)
-            scoreSprite.color = Color.green;  // Just an example of sprite feedback
-        }
-        else
-        {
-            Debug.LogWarning("scoreSprite is not assigned in the inspector.");
-        }
+        GameObject prefabToSpawn = dataTextPrefabs[currentIndex];
+
+        float spawnX = Random.Range(minX, maxX);
+        Vector3 spawnPosition = new Vector3(spawnX, spawnY, 0f);
+
+        Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
+
+        currentIndex = (currentIndex + 1) % dataTextPrefabs.Length;
+    }
+
+    void UpdateScoreUI()
+    {
+        if (stringScore != null && stringBox != null)
+            stringScore.text = $"String: {stringBox.GetScore()}";
+
+        if (intScore != null && intBox != null)
+            intScore.text = $"Int: {intBox.GetScore()}";
+
+        if (boolScore != null && boolBox != null)
+            boolScore.text = $"Bool: {boolBox.GetScore()}";
+    }
+
+    public void ShowScores()
+    {
+        Debug.Log("📊 Final Scores:");
+        if (stringBox != null) Debug.Log($"String Score: {stringBox.GetScore()}");
+        if (intBox != null) Debug.Log($"Int Score: {intBox.GetScore()}");
+        if (boolBox != null) Debug.Log($"Bool Score: {boolBox.GetScore()}");
     }
 }
