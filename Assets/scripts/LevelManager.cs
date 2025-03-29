@@ -13,15 +13,10 @@ public class LevelManager : MonoBehaviour
     public GameObject level2Object1;
     public GameObject level2Object2;
 
-    // Level 3a Objects
-    public GameObject level3aObject1;
-    public GameObject level3aObject2;
-    public GameObject level3aObject3;
-    
-    // Level 3b Objects
-    public GameObject level3bObject1;
-    public GameObject level3bObject2;
-    public GameObject level3bObject3;
+    // Level 3 Objects
+    public GameObject level3Object1;
+    public GameObject level3Object2;
+    public GameObject level3Object3;
 
     // Level 4 Objects
     public GameObject level4Object1;
@@ -57,17 +52,11 @@ public class LevelManager : MonoBehaviour
             if (level2Object1 != null) level2Object1.SetActive(true);
             if (level2Object2 != null) level2Object2.SetActive(true);
         }
-        else if (levelName == "Level3a")
+        else if (levelName == "Level3")
         {
-            if (level3aObject1 != null) level3aObject1.SetActive(true);
-            if (level3aObject2 != null) level3aObject2.SetActive(true);
-            if (level3aObject3 != null) level3aObject3.SetActive(true);
-        }
-        else if (levelName == "Level3b")
-        {
-            if (level3bObject1 != null) level3bObject1.SetActive(true);
-            if (level3bObject2 != null) level3bObject2.SetActive(true);
-            if (level3bObject3 != null) level3bObject3.SetActive(true);
+            if (level3Object1 != null) level3Object1.SetActive(true);
+            if (level3Object2 != null) level3Object2.SetActive(true);
+            if (level3Object3 != null) level3Object3.SetActive(true);
         }
         else if (levelName == "Level4")
         {
@@ -91,13 +80,9 @@ public class LevelManager : MonoBehaviour
         if (level2Object1 != null) level2Object1.SetActive(false);
         if (level2Object2 != null) level2Object2.SetActive(false);
         
-        if (level3aObject1 != null) level3aObject1.SetActive(false);
-        if (level3aObject2 != null) level3aObject2.SetActive(false);
-        if (level3aObject3 != null) level3aObject3.SetActive(false);
-
-        if (level3bObject1 != null) level3bObject1.SetActive(false);
-        if (level3bObject2 != null) level3bObject2.SetActive(false);
-        if (level3bObject3 != null) level3bObject3.SetActive(false);
+        if (level3Object1 != null) level3Object1.SetActive(false);
+        if (level3Object2 != null) level3Object2.SetActive(false);
+        if (level3Object3 != null) level3Object3.SetActive(false);
         
         if (level4Object1 != null) level4Object1.SetActive(false);
         if (level4Object2 != null) level4Object2.SetActive(false);

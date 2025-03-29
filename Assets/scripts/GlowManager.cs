@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class GlowManager : MonoBehaviour
 {
-    private Material objectMaterial;
-    public Color hoverGlowColor = Color.white; 
+    private Material objectMaterial; // Material Object reference 
+    public Color hoverGlowColor = Color.white; // Glow color when hovered
     private Color originalColor;
     public float glowStrength = 5.0f;
 

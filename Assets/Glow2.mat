@@ -60,7 +60,7 @@ Material:
     - _OutlineShape: 0
     - _Thickness: 40
     - _TileMode: 0
-    - _Weight: 0.44
+    - _Weight: 0.429
     - _ZWrite: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
