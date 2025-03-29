@@ -9,14 +9,17 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/CafeteriaStart.unity
+    path: Assets/Scenes/CafeteriaLoadingScreen.unity
     guid: e0e44b636a54dec4ebc89135fbbaea7d
   - enabled: 1
-    path: Assets/Scenes/CafeteriaLoadingScreen.unity
+    path: Assets/Scenes/CafeteriaStartScreen.unity
     guid: 846df3a724465454d883b8ce3096497a
   - enabled: 1
     path: Assets/Scenes/Cafeteria.unity
     guid: 0fadb5873fdc12b45abd12e3df24cfac
+  - enabled: 1
+    path: Assets/Scenes/CafeteriaEndScreen.unity
+    guid: d50fdde5995a19349966049dd1576f42
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -18,6 +18,9 @@ public class PregameManager : MonoBehaviour
     public GameManager gamemanager;
 
     public GameObject gamecanvas;
+    public GameObject endScreen;
+
+    public OrderGenerator ordergenerator;
 
     //public TrayHandler trayhandler;
     //public OrderGenerator ordergenerator;
@@ -26,6 +29,7 @@ public class PregameManager : MonoBehaviour
 
     void Start()
     {
+        endScreen.SetActive(false);
         gamecanvas.SetActive(false);
         difficultyPanel.SetActive(true);
         countdownPanel.SetActive(false);
@@ -36,14 +40,17 @@ public class PregameManager : MonoBehaviour
         if(EasyToggle.isOn)
         {
             scoremanager.difficultyMultiplier = 0.7f;
+            ordergenerator.gameDifficulty = OrderGenerator.Difficulty.Easy;
         }
         else if(NormalToggle.isOn)
         {
             scoremanager.difficultyMultiplier = 1.0f;
+            ordergenerator.gameDifficulty = OrderGenerator.Difficulty.Normal;
         } 
         else if(HardToggle.isOn)
         {
             scoremanager.difficultyMultiplier = 1.5f;
+            ordergenerator.gameDifficulty = OrderGenerator.Difficulty.Hard;
         }
 
         difficultyPanel.SetActive(false);
