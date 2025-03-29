@@ -3,6 +3,12 @@
 public class DropZone : MonoBehaviour
 {
     [SerializeField] public string requiredCategory;
+
+    internal void PlacePaperOnTop(GameObject gameObject)
+    {
+        throw new System.NotImplementedException();
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log($"📌 {gameObject.name}: Something entered! Object = {other.gameObject.name}");

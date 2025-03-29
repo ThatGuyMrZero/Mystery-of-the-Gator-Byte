@@ -5,9 +5,9 @@ public class Paper : MonoBehaviour
 {
     [Header("Paper Data")]
     public int grade;
-
-    [Header("UI")]
-    public TextMeshProUGUI gradeText;
+    public TextMeshPro gradeText;
+    //[Header("UI")]
+    //public TextMeshProUGUI gradeText;
 
     void Start()
     {
