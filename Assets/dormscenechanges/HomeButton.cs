@@ -10,4 +10,10 @@ public class HomeButton : MonoBehaviour
         Debug.Log("Going home...");
         SceneManager.LoadScene(homeScene);
     }
+
+    public void GoHome()
+    {
+        Debug.Log("Going home...");
+        SceneManager.LoadScene(homeScene);
+    }
 }
