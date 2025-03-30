@@ -506,6 +506,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a26836d64134cb4fbd3f4026f857793, type: 3}
+--- !u!1 &720262360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 720262361}
+  m_Layer: 0
+  m_Name: fakegreenbook
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &720262361
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720262360}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.0680678, y: -0.5435584, z: 2.4223905}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &758556154 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4227097420965754624, guid: 69aa9e89e12134c428223f23cb8136d6, type: 3}
@@ -637,6 +668,14 @@ PrefabInstance:
     - target: {fileID: 4227097420965754624, guid: 69aa9e89e12134c428223f23cb8136d6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8019033700045740894, guid: 69aa9e89e12134c428223f23cb8136d6, type: 3}
+      propertyPath: greenBook
+      value: 
+      objectReference: {fileID: 720262360}
+    - target: {fileID: 8019033700045740894, guid: 69aa9e89e12134c428223f23cb8136d6, type: 3}
+      propertyPath: itemNameToAdd
+      value: Crumpled Napkin
       objectReference: {fileID: 0}
     - target: {fileID: 8019033700045740894, guid: 69aa9e89e12134c428223f23cb8136d6, type: 3}
       propertyPath: textSprites.Array.size
@@ -1121,3 +1160,4 @@ SceneRoots:
   - {fileID: 1023206237}
   - {fileID: 629939892}
   - {fileID: 860391782}
+  - {fileID: 720262361}
