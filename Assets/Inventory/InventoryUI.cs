@@ -52,7 +52,10 @@ public class InventoryUI : MonoBehaviour
             if (itemPrefabLookup.ContainsKey(item))
             {
                 GameObject newItem = Instantiate(itemPrefabLookup[item], itemHolder);
-                newItem.transform.localPosition = new Vector3(0, -i * 1.5f, 0);
+                if (i == 0)
+                { newItem.transform.localPosition = new Vector3(-2, -i * 1.5f, 3); }
+                else if (i == 1)
+                { newItem.transform.localPosition = new Vector3(0, -i * 1.5f, 0); }
                 i++;
             }
             else
