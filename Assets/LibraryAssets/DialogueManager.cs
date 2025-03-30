@@ -6,6 +6,7 @@ public class DialogueManager : MonoBehaviour
     public GameObject[] textSprites; // Assign 8 text sprites in order
     public GameObject greenBook; // Assign the green book GameObject
     private int currentTextIndex = 0;
+    public string itemNameToAdd; // << NEW FIELD
 
     void Start()
     {
@@ -52,7 +53,10 @@ public class DialogueManager : MonoBehaviour
             textBox.SetActive(false);
 
             // ✅ Add item to inventory here!
-            InventoryManager.Instance.AddItem("Library Key");
+            if (InventoryManager.Instance != null && !string.IsNullOrEmpty(itemNameToAdd))
+            {
+                InventoryManager.Instance.AddItem(itemNameToAdd);
+            }
 
             if (greenBook != null)
             {
