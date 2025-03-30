@@ -4690,7 +4690,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe297e26ce5039d49a4fd08bdfd95771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
+  items:
+  - 
 --- !u!4 &799175393
 Transform:
   m_ObjectHideFlags: 0
@@ -8968,6 +8969,7 @@ MonoBehaviour:
   inventoryPanel: {fileID: 1557384161}
   itemHolder: {fileID: 517121659}
   libraryKeyPrefab: {fileID: 5507500154396719735, guid: 59cae19dd7f3adc49b170844b305b738, type: 3}
+  crumpledNapkinPrefab: {fileID: 3567074054402745885, guid: 2273a5818efb0ee46985cce3e66c48aa, type: 3}
 --- !u!1 &1560965775
 GameObject:
   m_ObjectHideFlags: 0

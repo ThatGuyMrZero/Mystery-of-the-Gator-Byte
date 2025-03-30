@@ -8,7 +8,7 @@ public class InventoryUI : MonoBehaviour
 
     // Item prefab references
     public GameObject libraryKeyPrefab;
-
+    public GameObject crumpledNapkinPrefab;
 
     private Dictionary<string, GameObject> itemPrefabLookup;
 
@@ -19,6 +19,7 @@ public class InventoryUI : MonoBehaviour
         itemPrefabLookup = new Dictionary<string, GameObject>
         {
             { "Library Key", libraryKeyPrefab },
+            { "Crumpled Napkin", crumpledNapkinPrefab },
 
         };
 

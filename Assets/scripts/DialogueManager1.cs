@@ -42,22 +42,17 @@ public class DialogueManager1 : MonoBehaviour
         }
         else
         {
-            // If all text is shown, hide everything
+            // If all text is shown, hide everything and re-enable book interaction
             textSprites[currentTextIndex].SetActive(false);
             textBox.SetActive(false);
-            Debug.Log("🎉 Dialogue finished! Game starts now.");
 
-                        // Enable hover effect after dialogue is finished
-            if (hoverBounceScript != null)
-            {
-                hoverBounceScript.StartHovering();
-            }
-            if (isVisibleScript != null)
-            {
-                isVisibleScript.ShowObject();  // Make the object visible
-            }
+            // ✅ Add item to inventory here!
+            InventoryManager.Instance.AddItem("CrumpledNapkin");
+
+            Debug.Log("🎉 Dialogue finished! Library Key added to inventory.");
         }
-    }
+    
+}
 }
 
 /*
