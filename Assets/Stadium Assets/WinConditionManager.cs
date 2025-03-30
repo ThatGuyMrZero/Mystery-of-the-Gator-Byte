@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class WinConditionManager : MonoBehaviour
 {
@@ -39,9 +40,10 @@ public class WinConditionManager : MonoBehaviour
         {
             Debug.Log("You are a winner!");
             areYaWinningSon = true;
-            minigameText.text = "else if (score ==      ) {\r\n\tpoints +=\r\n\tif (score ==      ) {\r\n\t\tpoints +=\r\n\t} else if (score ==      ) {\r\n\t\tpoints +=\r\n\t}\r\n}";
-            input1.SetActive(false);
-            input2.SetActive(true);
+            SceneManager.LoadScene("stadium");
+            //minigameText.text = "else if (score ==      ) {\r\n\tpoints +=\r\n\tif (score ==      ) {\r\n\t\tpoints +=\r\n\t} else if (score ==      ) {\r\n\t\tpoints +=\r\n\t}\r\n}";
+            //input1.SetActive(false);
+            //input2.SetActive(true);
         }
     }
 }
