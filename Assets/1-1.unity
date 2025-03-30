@@ -8601,7 +8601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneLoader: {fileID: 1098338945}
-  sceneToLoad: Scenes/Cafeteria
+  sceneToLoad: CafeteriaStartScreen
 --- !u!61 &1550017315
 BoxCollider2D:
   m_ObjectHideFlags: 0
