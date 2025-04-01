@@ -1175,14 +1175,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 744212967}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48a766fdf5959184dabc008d0bd74772, type: 3}
+  m_Script: {fileID: 11500000, guid: f005b2d5d2fd24f47954ca620bf2832f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueText: {fileID: 1065634581}
   dialoguePanel: {fileID: 744212967}
   dialogueLines:
-  - Loops are an important part of programming.
-  - They allow you to have limits and restrictions on how many times you do an action.
+  - Loops are an important part of coding.
+  - Go through and sort the papers based on their grade.
 --- !u!1 &762376965
 GameObject:
   m_ObjectHideFlags: 0
