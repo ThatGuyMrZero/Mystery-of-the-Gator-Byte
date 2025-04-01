@@ -9,10 +9,10 @@ EditorBuildSettings:
     path: Assets/1-1.unity
     guid: 7e0d36159cec4a14d940331101fa148d
   - enabled: 1
-    path: Assets/Scenes/Classroom.unity
+    path: Assets/Scenes/Classroom2.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/MiniGame.unity
+    path: Assets/Scenes/MiniGame2.unity
     guid: 797e3fe4fb85b5645b2a01957c983b09
   - enabled: 1
     path: Assets/2-1.unity
