@@ -8,6 +8,9 @@ public class DialogueManager : MonoBehaviour
     private int currentTextIndex = 0;
     public string itemNameToAdd; // << NEW FIELD
 
+    public HoverBounce hoverBounceScript; //hover bounce script for pc
+    public IsVisible isVisibleScript; //is visible script for tutorial box after dialogue is finished in level 1
+
     void Start()
     {
         // Hide all text sprites except the first one
@@ -51,6 +54,7 @@ public class DialogueManager : MonoBehaviour
             // If all text is shown, hide everything and re-enable book interaction
             textSprites[currentTextIndex].SetActive(false);
             textBox.SetActive(false);
+            Debug.Log("Dialogue Finished");
 
             // ✅ Add item to inventory here!
             if (InventoryManager.Instance != null && !string.IsNullOrEmpty(itemNameToAdd))
@@ -64,6 +68,19 @@ public class DialogueManager : MonoBehaviour
             }
 
             Debug.Log("🎉 Dialogue finished! Library Key added to inventory.");
+
+            // Enable hover effect after dialogue is finished
+            if (hoverBounceScript != null)
+            {
+                hoverBounceScript.StartHovering();
+            }
+            if (isVisibleScript != null)
+            {
+                isVisibleScript.ShowObject();  // Make the object visible
+            }
+
+            // Disable DialogueManager script
+            this.enabled = false;
         }
     }
 
