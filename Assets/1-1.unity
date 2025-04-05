@@ -8974,6 +8974,9 @@ MonoBehaviour:
   itemHolder: {fileID: 517121659}
   libraryKeyPrefab: {fileID: 5507500154396719735, guid: 59cae19dd7f3adc49b170844b305b738, type: 3}
   crumpledNapkinPrefab: {fileID: 3567074054402745885, guid: 2273a5818efb0ee46985cce3e66c48aa, type: 3}
+  iouSlipPrefab: {fileID: 1750883230764329276, guid: ccea7f7e51450454a8b63cc26439f1dd, type: 3}
+  rippedClothPrefab: {fileID: 6465216605675425943, guid: 1526d27c7e81265458085677d6eb9a5a, type: 3}
+  keyPrefab: {fileID: 313072514842011672, guid: b6e20111ff7d3c74e8f5dd4ac7278613, type: 3}
 --- !u!1 &1560965775
 GameObject:
   m_ObjectHideFlags: 0
