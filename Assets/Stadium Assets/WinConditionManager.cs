@@ -1,23 +1,49 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Runtime.CompilerServices;
+using UnityEngine.InputSystem;
+using System.Collections;
 
 public class WinConditionManager : MonoBehaviour
 {
-    public DragNumbers[] draggableObjects;
-    public Transform[] correctPositions;
+    public DragNumbers[] draggableObjectsPhase1;
+    public DragNumbers[] draggableObjectsPhase2;
+    public DragNumbers[] draggableObjectsPhase3;
+    private DragNumbers[] draggableObjectsCurrentPhase;
+
+    public Transform[] correctPositionsPhase1;
+    public Transform[] correctPositionsPhase2;
+    public Transform[] correctPositionsPhase3;
+    private Transform[] correctPositionsCurrentPhase;
 
     private bool areYaWinningSon = false;
 
     public TextMeshProUGUI minigameText;
 
-    public GameObject input1;
-    public GameObject input2;
+    public GameObject[] inputs;
+
+    private DragNumbers[] allDraggables;
+    private int currentPhase = 1;
 
     private void Start()
     {
-        input1.SetActive(true);
-        input2.SetActive(false);
+        allDraggables = FindObjectsByType<DragNumbers>(FindObjectsSortMode.None);
+        
+        foreach (var input in inputs)
+        {
+            input.SetActive(false);
+        }
+
+        inputs[currentPhase - 1].SetActive(true);
+
+        draggableObjectsCurrentPhase = draggableObjectsPhase1;
+        correctPositionsCurrentPhase = correctPositionsPhase1;
+
+        foreach (DragNumbers drag in allDraggables)
+        {
+            drag.SetSnapTargets(correctPositionsPhase1);
+        }
     }
 
     public void CheckWinCondition()
@@ -26,24 +52,75 @@ public class WinConditionManager : MonoBehaviour
 
         bool allCorrect = true;
 
-        for (int i = 0; i < draggableObjects.Length; i++)
+        for (int i = 0; i < draggableObjectsCurrentPhase.Length; i++)
         {
-            float distance = Vector3.Distance(draggableObjects[i].transform.position, correctPositions[i].position);
-            if (distance > draggableObjects[i].snapRange)
+            float distance = Vector3.Distance(draggableObjectsCurrentPhase[i].transform.position, correctPositionsCurrentPhase[i].position);
+            if (distance > draggableObjectsCurrentPhase[i].snapRange)
             {
                 allCorrect = false;
                 break;
             }
         }
 
+
         if (allCorrect)
         {
-            Debug.Log("You are a winner!");
-            areYaWinningSon = true;
-            SceneManager.LoadScene("stadium");
-            //minigameText.text = "else if (score ==      ) {\r\n\tpoints +=\r\n\tif (score ==      ) {\r\n\t\tpoints +=\r\n\t} else if (score ==      ) {\r\n\t\tpoints +=\r\n\t}\r\n}";
-            //input1.SetActive(false);
-            //input2.SetActive(true);
+            if (currentPhase == 1)
+            {
+                Debug.Log("Phase 1 complete, moving to phase 2...");
+                minigameText.text = "else if (score ==      ) {\r\n\tpoints +=\r\n\tif (score ==      ) {\r\n\t\tpoints +=\r\n\t} else if (score ==      ) {\r\n\t\tpoints +=\r\n\t}\r\n}";
+                inputs[0].SetActive(false);
+                inputs[1].SetActive(true);
+                draggableObjectsCurrentPhase = draggableObjectsPhase2;
+                correctPositionsCurrentPhase = correctPositionsPhase2;
+
+                foreach (DragNumbers drag in allDraggables)
+                {
+                    drag.SetSnapTargets(correctPositionsPhase2);
+                }
+
+                currentPhase++;
+            }
+            else if (currentPhase == 2)
+            {
+                Debug.Log("Phase 2 complete, moving to phase 3...");
+                minigameText.text = "else {\r\n\tpoints += \r\n}";
+                inputs[1].SetActive(false);
+                inputs[2].SetActive(true);
+                draggableObjectsCurrentPhase = draggableObjectsPhase3;
+                correctPositionsCurrentPhase = correctPositionsPhase3;
+
+                foreach (DragNumbers drag in allDraggables)
+                {
+                    drag.SetSnapTargets(correctPositionsPhase3);
+                }
+
+                currentPhase++;
+            }
+            else if (currentPhase == 3)
+            {
+                Debug.Log("Minigame complete!");
+                areYaWinningSon = true;
+                SceneManager.LoadScene("stadium");
+            }
+
+            StartCoroutine(SnapAllObjectsBack());
+            allCorrect = false;
         }
+    }
+
+    private System.Collections.IEnumerator SnapAllObjectsBack()
+    {
+        yield return null;
+
+        foreach (DragNumbers dragNumbers in allDraggables)
+        {
+            dragNumbers.SnapBackToPosition();
+        }
+    }
+
+    private IEnumerator Wait(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
     }
 }
