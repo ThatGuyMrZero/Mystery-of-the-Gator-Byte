@@ -62,51 +62,77 @@ public class WinConditionManager : MonoBehaviour
             }
         }
 
-
         if (allCorrect)
         {
             if (currentPhase == 1)
             {
                 Debug.Log("Phase 1 complete, moving to phase 2...");
-                minigameText.text = "else if (score ==      ) {\r\n\tpoints +=\r\n\tif (score ==      ) {\r\n\t\tpoints +=\r\n\t} else if (score ==      ) {\r\n\t\tpoints +=\r\n\t}\r\n}";
+                minigameText.text = "Correct! Now onto the else if portion...";
                 inputs[0].SetActive(false);
-                inputs[1].SetActive(true);
-                draggableObjectsCurrentPhase = draggableObjectsPhase2;
-                correctPositionsCurrentPhase = correctPositionsPhase2;
 
-                foreach (DragNumbers drag in allDraggables)
+                // Wait for 4 seconds, then move to phase 2
+                StartCoroutine(PhaseTransitionWait(4f, () =>
                 {
-                    drag.SetSnapTargets(correctPositionsPhase2);
-                }
+                    minigameText.text = "else if (score ==      ) {\r\n\tpoints +=\r\n\tif (score ==      ) {\r\n\t\tpoints +=\r\n\t} else if (score ==      ) {\r\n\t\tpoints +=\r\n\t}\r\n}";
+                    inputs[1].SetActive(true);
+                    draggableObjectsCurrentPhase = draggableObjectsPhase2;
+                    correctPositionsCurrentPhase = correctPositionsPhase2;
 
-                currentPhase++;
+                    foreach (DragNumbers drag in allDraggables)
+                    {
+                        drag.SetSnapTargets(correctPositionsPhase2);
+                    }
+
+                    currentPhase = 2;
+                }));
             }
             else if (currentPhase == 2)
             {
                 Debug.Log("Phase 2 complete, moving to phase 3...");
-                minigameText.text = "else {\r\n\tpoints += \r\n}";
+                minigameText.text = "Correct! You're almost there, now just the else block is left!";
                 inputs[1].SetActive(false);
-                inputs[2].SetActive(true);
-                draggableObjectsCurrentPhase = draggableObjectsPhase3;
-                correctPositionsCurrentPhase = correctPositionsPhase3;
 
-                foreach (DragNumbers drag in allDraggables)
+                // Wait for 4 seconds, then move to phase 3
+                StartCoroutine(PhaseTransitionWait(4f, () =>
                 {
-                    drag.SetSnapTargets(correctPositionsPhase3);
-                }
+                    minigameText.text = "else {\r\n\tpoints += \r\n}";
+                    inputs[2].SetActive(true);
+                    draggableObjectsCurrentPhase = draggableObjectsPhase3;
+                    correctPositionsCurrentPhase = correctPositionsPhase3;
 
-                currentPhase++;
+                    foreach (DragNumbers drag in allDraggables)
+                    {
+                        drag.SetSnapTargets(correctPositionsPhase3);
+                    }
+
+                    currentPhase = 3;
+                }));
             }
             else if (currentPhase == 3)
             {
                 Debug.Log("Minigame complete!");
-                areYaWinningSon = true;
-                SceneManager.LoadScene("stadium");
+                minigameText.color = Color.blue;
+                minigameText.text = "Congratulations, you successfully filled in the if-else statement and completed the minigame!";
+                inputs[2].SetActive(false);
+
+                // Wait for 4 seconds, then return to the main stadium scene
+                StartCoroutine(PhaseTransitionWait(4f, () =>
+                {
+                    areYaWinningSon = true;
+                    SceneManager.LoadScene("stadium");           
+                }));
             }
 
             StartCoroutine(SnapAllObjectsBack());
             allCorrect = false;
         }
+    }
+
+
+    private IEnumerator PhaseTransitionWait(float waitTime, System.Action onComplete)
+    {
+        yield return new WaitForSeconds(waitTime);
+        onComplete?.Invoke();
     }
 
     private System.Collections.IEnumerator SnapAllObjectsBack()
@@ -117,10 +143,5 @@ public class WinConditionManager : MonoBehaviour
         {
             dragNumbers.SnapBackToPosition();
         }
-    }
-
-    private IEnumerator Wait(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
     }
 }
