@@ -6,6 +6,7 @@ public class DialogueScript : MonoBehaviour
     private Transform[] textSprites;
     private int currentIndex = 0;
     public GameController gameController;
+    private bool dialogueComplete = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,7 +27,7 @@ public class DialogueScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !dialogueComplete)
         {
             Debug.Log("Mouse button pressed!");
             CycleText();
@@ -47,6 +48,7 @@ public class DialogueScript : MonoBehaviour
             currentIndex = -1;
             // Make text box border invisible
             textSprites[textSprites.Length - 1].gameObject.SetActive(false);
+            dialogueComplete = true;
         }
     }
 }
