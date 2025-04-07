@@ -11,7 +11,10 @@ public class InventoryUI : MonoBehaviour
     public GameObject crumpledNapkinPrefab;
     public GameObject iouSlipPrefab;
     public GameObject rippedClothPrefab;
-    public GameObject keyPrefab;
+    public GameObject keyPrefab; 
+    public GameObject dormRoomKeyObject; // Drag the key GameObject from the scene
+
+
 
     private Dictionary<string, GameObject> itemPrefabLookup;
 
@@ -73,13 +76,47 @@ public class InventoryUI : MonoBehaviour
                     newItem.transform.localPosition = new Vector3(-1, -i * 1.5f, 2);
                 else
                     newItem.transform.localPosition = new Vector3(2, -i * 1.5f, 0); // Fallback for extras
-
                 i++;
             }
             else
             {
                 Debug.LogWarning($"No prefab found for item '{item}'");
             }
+
+
         }
+
+        CheckDormKeyCondition();
     }
+
+
+    void CheckDormKeyCondition()
+    {
+        if (dormRoomKeyObject == null) return;
+
+        // These are the 4 required items
+        List<string> requiredItems = new List<string>
+        {
+            "Library Key",
+            "Crumpled Napkin",
+            "IOU Slip",
+            "Ripped Cloth"
+        };
+
+        bool hasAll = true;
+        foreach (string item in requiredItems)
+        {
+            if (!InventoryManager.Instance.items.Contains(item))
+            {
+                hasAll = false;
+                break;
+            }
+        }
+
+        // Show the key in the dorm if all items are collected
+        dormRoomKeyObject.SetActive(hasAll);
+        if (hasAll) Debug.Log("🔑 Dorm key revealed!");
+    }
+
+
 }
