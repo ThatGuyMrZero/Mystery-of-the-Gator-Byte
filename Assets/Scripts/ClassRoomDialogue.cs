@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
@@ -13,6 +13,9 @@ public class ClassRoomDialogue : MonoBehaviour
     private int currentLine = 0;
 
     public static bool classroomDialogueShown = false;
+
+    public string itemNameToAdd;
+
 
     void Start()
     {
@@ -68,5 +71,13 @@ public class ClassRoomDialogue : MonoBehaviour
         {
             classroomDialogueShown = true;
         }
+
+        // ✅ Add item to inventory here
+        if (InventoryManager.Instance != null && !string.IsNullOrEmpty(itemNameToAdd))
+        {
+            InventoryManager.Instance.AddItem(itemNameToAdd);
+            Debug.Log("🎉 Added item to inventory: " + itemNameToAdd);
+        }
     }
+
 }

@@ -1270,7 +1270,7 @@ MonoBehaviour:
 
 '
   - I should look around for some clues.
-  currentLine: 0
+  itemNameToAdd: IOU Slip
 --- !u!1 &808759757
 GameObject:
   m_ObjectHideFlags: 0
