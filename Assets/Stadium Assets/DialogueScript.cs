@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Rendering.UI;
 
 public class DialogueScript : MonoBehaviour
@@ -7,6 +7,8 @@ public class DialogueScript : MonoBehaviour
     private int currentIndex = 0;
     public GameController gameController;
     private bool dialogueComplete = false;
+    public string itemNameToAdd; // << NEW FIELD
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -42,13 +44,22 @@ public class DialogueScript : MonoBehaviour
         currentIndex++;
 
         if (currentIndex < textSprites.Length - 1)  // Ignore text box border
+        {
             textSprites[currentIndex].gameObject.SetActive(true);
+        }
         else
         {
             currentIndex = -1;
-            // Make text box border invisible
-            textSprites[textSprites.Length - 1].gameObject.SetActive(false);
+            textSprites[textSprites.Length - 1].gameObject.SetActive(false); // Hide the text box border
             dialogueComplete = true;
+
+            // ✅ NOW add the inventory item once dialogue is finished
+            if (InventoryManager.Instance != null && !string.IsNullOrEmpty(itemNameToAdd))
+            {
+                InventoryManager.Instance.AddItem(itemNameToAdd);
+                Debug.Log("✅ Added item to inventory: " + itemNameToAdd);
+            }
         }
     }
+
 }
