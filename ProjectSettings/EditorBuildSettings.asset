@@ -39,8 +39,8 @@ EditorBuildSettings:
     path: Assets/Scenes/CafeteriaScenes/Cafeteria.unity
     guid: 69f0f3412f59ed943a0a24d43c4e552e
   - enabled: 1
-    path: Assets/Scenes/Classroom.unity
-    guid: e3de2e5951bcafd41924240459c4e2c3
+    path: Assets/stadium_game.unity
+    guid: 39fef842582f5e3449397ab867445bd9
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

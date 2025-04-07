@@ -67,4 +67,14 @@ public class DragNumbers : MonoBehaviour
             }
         }
     }
+
+    public void SnapBackToPosition()
+    {
+        transform.position = origPos;
+    }
+
+    public void SetSnapTargets(Transform[] newTargets)
+    {
+        snapTargets = newTargets;
+    }
 }
