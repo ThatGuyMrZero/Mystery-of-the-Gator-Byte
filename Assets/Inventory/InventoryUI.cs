@@ -55,19 +55,25 @@ public class InventoryUI : MonoBehaviour
         int i = 0;
         foreach (string item in InventoryManager.Instance.items)
         {
+            Debug.Log($"🧾 Inventory contains: '{item}'");
             if (itemPrefabLookup.ContainsKey(item))
             {
                 GameObject newItem = Instantiate(itemPrefabLookup[item], itemHolder);
+
+                // Add positioning based on index
                 if (i == 0)
-                { newItem.transform.localPosition = new Vector3(-2, -i * 1.5f, 3); }
+                    newItem.transform.localPosition = new Vector3(-2, -i * 1.5f, 3);
                 else if (i == 1)
-                { newItem.transform.localPosition = new Vector3(0, -i * 1.5f, 0); }
+                    newItem.transform.localPosition = new Vector3(0, -i * 1.5f, 0);
                 else if (i == 2)
-                { newItem.transform.localPosition = new Vector3(0, -i * 1.5f, 2); }
+                    newItem.transform.localPosition = new Vector3(0, -i * 1.5f, 2);
                 else if (i == 3)
-                { newItem.transform.localPosition = new Vector3(1, -i * 1.5f, 0); }
+                    newItem.transform.localPosition = new Vector3(1, -i * 1.5f, 0);
                 else if (i == 4)
-                { newItem.transform.localPosition = new Vector3(-1, -i * 1.5f, 2); }
+                    newItem.transform.localPosition = new Vector3(-1, -i * 1.5f, 2);
+                else
+                    newItem.transform.localPosition = new Vector3(2, -i * 1.5f, 0); // Fallback for extras
+
                 i++;
             }
             else

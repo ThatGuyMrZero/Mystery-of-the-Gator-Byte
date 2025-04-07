@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Classroom2.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MiniGame2.unity
     guid: 797e3fe4fb85b5645b2a01957c983b09
   - enabled: 1
@@ -39,8 +39,11 @@ EditorBuildSettings:
     path: Assets/Scenes/CafeteriaScenes/Cafeteria.unity
     guid: 69f0f3412f59ed943a0a24d43c4e552e
   - enabled: 1
-    path: Assets/stadium_game.unity
-    guid: 39fef842582f5e3449397ab867445bd9
+    path: Assets/Scenes/Classroom.unity
+    guid: e3de2e5951bcafd41924240459c4e2c3
+  - enabled: 1
+    path: Assets/Scenes/MiniGame.unity
+    guid: 763530a721dfd124b8f9e4b6d965d41a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

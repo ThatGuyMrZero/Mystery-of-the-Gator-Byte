@@ -724,6 +724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameController: {fileID: 1814341442}
+  itemNameToAdd: 
 --- !u!224 &356012013
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1620,6 +1621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameController: {fileID: 1814341442}
+  itemNameToAdd: Ripped Cloth
 --- !u!1 &1407051708
 GameObject:
   m_ObjectHideFlags: 0
