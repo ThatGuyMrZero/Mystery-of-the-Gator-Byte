@@ -24,35 +24,14 @@ public class MiniGame : MonoBehaviour
     public TextMeshPro boolScore;
     public TextMeshPro totalScore;
 
-    private int currentIndex = 0; //tracks which prefab to spawn next, cycle through the array when at the end
-    private bool isSpawning = false; // tracks if text is spawning 
+    // ~~~~~ Win/Lose Screens ~~~~~ //
+    [Header("Win/Lose Screen")]
+    public GameObject winPopup;  // assign in Inspector, set inactive by default
+    public GameObject losePopup; // assign in Inspector, set inactive by default
 
-    [Header("Win Screen")]
-    public GameObject winPopup; // Assign in the Inspector and make sure it's deactivated by default
-
-
-    private bool hasPlayerWon = false; 
-
-    bool CheckTotalWinCondition()
-    {
-        int total = 0;
-
-        if (stringBox != null) total += stringBox.GetScore();
-        if (intBox != null) total += intBox.GetScore();
-        if (boolBox != null) total += boolBox.GetScore();
-
-        return total >= 8;
-    }
-
-    void HandleWin()
-    {
-        Debug.Log("🎉 Player reached total score of 8! MiniGame won.");
-
-        StopMiniGame(); // stop further spawns
-
-        if (winPopup != null)
-            winPopup.SetActive(true); // show win screen
-    }
+    private int currentIndex = 0;
+    private bool isSpawning = false;
+    private bool hasPlayerWon = false;
 
     void Update()
     {
@@ -84,6 +63,12 @@ public class MiniGame : MonoBehaviour
         isSpawning = false;
         Debug.Log("⛔ MiniGame stopped.");
         ShowScores();
+
+        // Check if player won by the time they stopped
+        if (!hasPlayerWon && !CheckTotalWinCondition())
+        {
+            HandleLose(); // Only show Lose if not already won
+        }
     }
 
     void SpawnText()
@@ -112,13 +97,41 @@ public class MiniGame : MonoBehaviour
             boolScore.text = $"Bool: {boolBox.GetScore()}";
 
         int total = 0;
-
         if (stringBox != null) total += stringBox.GetScore();
         if (intBox != null) total += intBox.GetScore();
         if (boolBox != null) total += boolBox.GetScore();
 
         if (totalScore != null)
             totalScore.text = $"Total: {total}";
+    }
+
+    bool CheckTotalWinCondition()
+    {
+        int total = 0;
+
+        if (stringBox != null) total += stringBox.GetScore();
+        if (intBox != null) total += intBox.GetScore();
+        if (boolBox != null) total += boolBox.GetScore();
+
+        return total >= 8;
+    }
+
+    void HandleWin()
+    {
+        Debug.Log("🎉 Player reached total score of 8! MiniGame won.");
+
+        StopMiniGame(); // stop spawning
+
+        if (winPopup != null)
+            winPopup.SetActive(true);
+    }
+
+    void HandleLose()
+    {
+        Debug.Log("💔 Player stopped the game with less than 8 total. MiniGame lost!");
+
+        if (losePopup != null)
+            losePopup.SetActive(true);
     }
 
     public void ShowScores()
@@ -136,5 +149,4 @@ public class MiniGame : MonoBehaviour
         Debug.Log($"🟩 Bool Score: {boolScoreValue}");
         Debug.Log($"🧮 Total Score: {total}");
     }
-
 }
