@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 77fca061beccd5f46853425eb0a761bd
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 185515
+  packageName: Star Pack - Advanced Sparkle System
+  packageVersion: 2.0
+  assetPath: Assets/Andtech/Star Pack/Editor/Andtech.StarPack.Editor.asmdef
+  uploadId: 427451

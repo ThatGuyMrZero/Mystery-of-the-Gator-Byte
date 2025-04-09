@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: e925a56984b8e944ea8f2bbab79a4bea
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 185515
+  packageName: Star Pack - Advanced Sparkle System
+  packageVersion: 2.0
+  assetPath: Assets/Andtech/Star Pack/Editor/Scripts/ParticleStandardGlowShaderGUI.cs
+  uploadId: 427451

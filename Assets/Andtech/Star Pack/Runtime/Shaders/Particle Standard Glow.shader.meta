@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 8f79c5c3294633943aac3ced5bdbb8d5
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 185515
+  packageName: Star Pack - Advanced Sparkle System
+  packageVersion: 2.0
+  assetPath: Assets/Andtech/Star Pack/Runtime/Shaders/Particle Standard Glow.shader
+  uploadId: 427451
