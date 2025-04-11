@@ -19,6 +19,7 @@ public class PregameManager : MonoBehaviour
 
     public GameObject gamecanvas;
     public GameObject endScreen;
+    public GameObject startcanvas;
 
     public OrderGenerator ordergenerator;
 
@@ -31,6 +32,7 @@ public class PregameManager : MonoBehaviour
     {
         endScreen.SetActive(false);
         gamecanvas.SetActive(false);
+        startcanvas.SetActive(true);
         difficultyPanel.SetActive(true);
         countdownPanel.SetActive(false);
     }
@@ -79,6 +81,7 @@ public class PregameManager : MonoBehaviour
     private void StartGame()
     {
         countdownPanel.SetActive(false);
+        startcanvas.SetActive(false);
         gamecanvas.SetActive(true);
         Debug.Log("Game Started");
         gamemanager.StartGame();
