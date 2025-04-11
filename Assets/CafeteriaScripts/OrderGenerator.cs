@@ -20,7 +20,7 @@ public class OrderGenerator : MonoBehaviour
     public int completedOrders = 0;
     //public float orderDuration = 7f;
 
-    private List<string> menuItems = new List<string> { "Pizza", "Burger", "Dessert"};
+    private List<string> menuItems = new List<string> { "Pizza", "Burger" };
     private List<string> pizzaToppings = new List<string> { "Pepperoni", "Mushroom", "Pineapple" };
     private List<string> burgerToppings = new List<string> { "Cheese", "Ketchup", "Mustard", "Lettuce", "Tomato", "Onion" };
 
@@ -77,8 +77,17 @@ public class OrderGenerator : MonoBehaviour
 
         //int orderType = Random.Range(0, 3);
         //string orderType = menuItems[Random.Range(0, menuItems.Count)];
-        string orderType = "Pizza";
-        int dessertOrdered = Random.Range(0,2); // 0 is no, 1 is yes 
+        string orderType = "";
+        int randomOrder = Random.Range(0,2); // 0 is no, 1 is yes 
+
+        if(randomOrder == 0)
+        {
+            orderType = "Pizza";
+        }
+        else
+        {
+            orderType = "Burger";
+        }    
 
         List<string> orderItems = new List<string>();
 
@@ -114,7 +123,39 @@ public class OrderGenerator : MonoBehaviour
             }
 
         }
-        // burger logic here
+        else if(orderType == "Burger")
+        {
+            // burger logic here
+            orderItems.Add("Bun");
+            orderItems.Add("Patty");
+
+            int numToppings = 0;
+            switch(gameDifficulty)
+            {
+                case Difficulty.Easy:
+                    numToppings = Random.Range(0, 2);
+                    break;
+                case Difficulty.Normal:
+                    numToppings = Random.Range(0, 3);
+                    break;
+                case Difficulty.Hard:
+                    numToppings = Random.Range(0, burgerToppings.Count + 1);
+                    break;
+            }
+
+            //int numToppings = Random.Range(0, 3);
+            for (int i = 0; i < numToppings; i++)
+            {
+                string topping = burgerToppings[Random.Range(0, burgerToppings.Count)];
+                if(!orderItems.Contains(topping))
+                {
+                    orderItems.Add(topping);
+                }
+            }
+
+            orderItems.Add("Bun");
+        }
+
 
         Debug.Log(string.Join(", ", orderItems));
 
