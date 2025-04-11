@@ -1290,7 +1290,7 @@ MonoBehaviour:
   maxOrders: 10
   orderCount: 0
   completedOrders: 0
-  gameDuration: 15
+  gameDuration: 30
   gameDifficulty: 1
   difficultyText: {fileID: 1032986650}
   gameTimer: {fileID: 1430185423}
@@ -1351,8 +1351,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.87, y: 0.000040054}
-  m_SizeDelta: {x: 415.41, y: 672.3}
+  m_AnchoredPosition: {x: 0.00050926, y: -5.5}
+  m_SizeDelta: {x: 470.63, y: 683.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &170208775
 MonoBehaviour:
@@ -1514,8 +1514,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -734.17, y: -181.85}
-  m_SizeDelta: {x: 405.67, y: 672.3}
+  m_AnchoredPosition: {x: -724.68, y: -192.85002}
+  m_SizeDelta: {x: 470.63, y: 694.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &206681630
 GameObject:
@@ -1813,7 +1813,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 72.29986, y: 48.662857, z: 18.074852, w: 58.395752}
+  m_margin: {x: 42.71763, y: 48.662857, z: -6.362694, w: 37.816803}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

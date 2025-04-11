@@ -203,9 +203,14 @@ public class OrderGenerator : MonoBehaviour
         string ordersDisplay = "";
         int orderNumber = 1;
 
+        ordersDisplay += $"Orders in queue: {orderQueue.Count}\n\n";
+
         foreach (var order in orderQueue)
         {
-            ordersDisplay += $"Order {orderNumber}: {string.Join(", ", order)}\n\n";
+            if (orderNumber < 5) 
+            {
+                ordersDisplay += $"Order {orderNumber}: {string.Join(", ", order)}\n\n";
+            }
             orderNumber++;
         }
 
