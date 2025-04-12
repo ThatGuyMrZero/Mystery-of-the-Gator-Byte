@@ -1266,10 +1266,9 @@ MonoBehaviour:
   dialogueText: {fileID: 591018826}
   dialoguePanel: {fileID: 796449240}
   dialogueLines:
-  - 'I wonder why I was sent to my coding class.
-
-'
-  - I should look around for some clues.
+  - Have you heard about the missing mascot costume?
+  - Hmm....maybe. I loaned out some poster boards and paint yesterday...
+  - 'Someone said something about as "School Spirit Emergency". '
   itemNameToAdd: IOU Slip
 --- !u!1 &808759757
 GameObject:
