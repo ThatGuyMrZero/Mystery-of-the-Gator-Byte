@@ -5,6 +5,8 @@ public class DialogueManager : MonoBehaviour
     public GameObject textBox; // Assign the text box sprite
     public GameObject[] textSprites; // Assign 8 text sprites in order
     public GameObject characterSprite; // << NEW: The character sprite to show only during first text
+    public string itemNameToAdd; // << NEW FIELD
+
 
     private int currentTextIndex = 0;
 
@@ -67,6 +69,12 @@ public class DialogueManager : MonoBehaviour
                 characterSprite.SetActive(false);
             }
 
+        }
+        // ✅ NOW add the inventory item once dialogue is finished
+        if (InventoryManager.Instance != null && !string.IsNullOrEmpty(itemNameToAdd))
+        {
+            InventoryManager.Instance.AddItem(itemNameToAdd);
+            Debug.Log("✅ Added item to inventory: " + itemNameToAdd);
         }
     }
 }

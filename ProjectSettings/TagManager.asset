@@ -6,6 +6,21 @@ TagManager:
   tags:
   - GradedZone
   - NotGradedZone
+  - SmallTray
+  - Pepperoni
+  - Mushroom
+  - Cheese
+  - Sauce
+  - Pineapple
+  - Dough
+  - Ketchup
+  - Mustard
+  - Lettuce
+  - Sausage
+  - Tomato
+  - Onion
+  - Bun
+  - Patty
   layers:
   - Default
   - TransparentFX
