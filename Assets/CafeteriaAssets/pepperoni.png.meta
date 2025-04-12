@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      pepperoni_0: 5580886705232534535
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
