@@ -7,6 +7,7 @@ public class DialogueManager1 : MonoBehaviour
     private int currentTextIndex = 0;
     public HoverBounce hoverBounceScript;
     public IsVisible isVisibleScript;
+    public GameObject characterSprite;
 
     void Start()
     {
@@ -16,12 +17,20 @@ public class DialogueManager1 : MonoBehaviour
             textSprites[i].SetActive(i == 0);
         }
 
+        // Show character sprite only during the first text
+        if (characterSprite != null)
+        {
+            characterSprite.SetActive(true);
+        }
+
         // Ensure the text box is visible
         if (textBox != null)
         {
             textBox.SetActive(true);
         }
+
     }
+
 
     void Update()
     {
@@ -39,17 +48,30 @@ public class DialogueManager1 : MonoBehaviour
             textSprites[currentTextIndex].SetActive(false);
             currentTextIndex++;
             textSprites[currentTextIndex].SetActive(true);
+
+            // Hide character sprite after first text
+            if (currentTextIndex > 0 && characterSprite != null)
+            {
+                characterSprite.SetActive(false);
+            }
         }
         else
         {
-            // If all text is shown, hide everything and re-enable book interaction
+            // Hide final text and box
             textSprites[currentTextIndex].SetActive(false);
             textBox.SetActive(false);
 
-            // ✅ Add item to inventory here!
+            // ✅ Add item to inventory
+       
+
+
+            // Just in case, hide character sprite if still active
+            if (characterSprite != null)
+            {
+                characterSprite.SetActive(false);
+            }
 
         }
-    
-}
+    }
 }
 
