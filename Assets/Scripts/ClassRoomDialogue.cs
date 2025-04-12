@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class ClassRoomDialogue : MonoBehaviour
 {
-
     public TextMeshProUGUI dialogueText;
     public GameObject dialoguePanel;
     [TextArea(3, 10)]
@@ -16,6 +15,7 @@ public class ClassRoomDialogue : MonoBehaviour
 
     public string itemNameToAdd;
 
+    public GameObject characterSprite; // ✅ New: character sprite to appear only during first line
 
     void Start()
     {
@@ -23,11 +23,18 @@ public class ClassRoomDialogue : MonoBehaviour
         {
             if (dialoguePanel != null)
                 dialoguePanel.SetActive(false);
+
+            if (characterSprite != null)
+                characterSprite.SetActive(false);
+
             return;
         }
 
         if (dialoguePanel != null)
             dialoguePanel.SetActive(true);
+
+        if (characterSprite != null)
+            characterSprite.SetActive(true); // ✅ Show sprite initially
 
         currentLine = 0;
         ShowCurrentDialogue();
@@ -55,6 +62,12 @@ public class ClassRoomDialogue : MonoBehaviour
         if (currentLine < dialogueLines.Length)
         {
             ShowCurrentDialogue();
+
+            // ✅ Hide sprite when advancing past first line
+            if (currentLine > 0 && characterSprite != null)
+            {
+                characterSprite.SetActive(false);
+            }
         }
         else
         {
@@ -67,17 +80,19 @@ public class ClassRoomDialogue : MonoBehaviour
         if (dialoguePanel != null)
             dialoguePanel.SetActive(false);
 
+        if (characterSprite != null)
+            characterSprite.SetActive(false); // Just in case
+
         if (SceneManager.GetActiveScene().name == "Classroom")
         {
             classroomDialogueShown = true;
         }
 
-        // ✅ Add item to inventory here
+        // ✅ Add item to inventory
         if (InventoryManager.Instance != null && !string.IsNullOrEmpty(itemNameToAdd))
         {
             InventoryManager.Instance.AddItem(itemNameToAdd);
             Debug.Log("🎉 Added item to inventory: " + itemNameToAdd);
         }
     }
-
 }
