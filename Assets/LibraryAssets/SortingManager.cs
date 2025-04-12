@@ -112,8 +112,6 @@ public class SortingManager : MonoBehaviour
     }
 
 
-
-
     void EndGame()
     {
         Debug.Log("🎉 GAME OVER! Both drop zones are correctly filled!");
@@ -129,6 +127,9 @@ public class SortingManager : MonoBehaviour
             Debug.LogError("❌ WinSprite is NOT assigned in the Inspector!");
         }
 
+        // ✅ Hide background books
+        HideBackgroundBooks();
+
         // Disable dragging after win
         foreach (var zone in booksInZones)
         {
@@ -141,6 +142,7 @@ public class SortingManager : MonoBehaviour
             }
         }
     }
+
 
 
 
