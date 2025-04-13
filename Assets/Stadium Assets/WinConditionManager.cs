@@ -35,8 +35,6 @@ public class WinConditionManager : MonoBehaviour
             input.SetActive(false);
         }
 
-        inputs[currentPhase - 1].SetActive(true);
-
         draggableObjectsCurrentPhase = draggableObjectsPhase1;
         correctPositionsCurrentPhase = correctPositionsPhase1;
 
@@ -44,6 +42,8 @@ public class WinConditionManager : MonoBehaviour
         {
             drag.SetSnapTargets(correctPositionsPhase1);
         }
+
+        StartCoroutine(ShowInstructionsAndCountdown());
     }
 
     public void CheckWinCondition()
@@ -142,5 +142,21 @@ public class WinConditionManager : MonoBehaviour
         {
             dragNumbers.SnapBackToPosition();
         }
+    }
+
+    private IEnumerator ShowInstructionsAndCountdown()
+    {
+        minigameText.fontSize = 9;
+
+        for (int i = 10; i > 0; i--)
+        {
+            minigameText.text = $"Instructions\r\n\r\nYou will be presented with an incomplete portion of a standard if-else statement. Your goal is to use the numbers below you and the scoring methods to the right to correctly complete the statement defining scoring methods in football and the points each method earns.\r\n\r\nDrag each number or scoring method into one of the white rectangles to fill in your answer. Upon successful completion of each phase, the next one will begin immediately after. There are 3 phases in total.\r\n\r\nAs a review, here are the basic rules of scoring in football:\r\n* A SAFETY is worth 2 points.\r\n* A FIELD GOAL is worth 3 points.\r\n* A TOUCHDOWN is worth 6 points.\r\n\t* After a touchdown, either a KICK can be performed afterwards for 1 additional point, or a TWO-POINT CONVERSION, which should be self-explanatory.\r\n\r\nYou can review the rules at any time by clicking the ? in the upper-left hand corner.\r\n\r\nThe minigame will begin in {i} second{(i == 1 ? "" : "s")}. Good luck!";
+            yield return new WaitForSeconds(1f);
+        }
+
+        minigameText.fontSize = 24;
+        minigameText.text = "points = 0\r\nif (score ==      ) {\r\n\tpoints += \r\n}\r\nelse if (score ==      ) {\r\n\tpoints += \r\n}";
+
+        inputs[0].SetActive(true);
     }
 }
