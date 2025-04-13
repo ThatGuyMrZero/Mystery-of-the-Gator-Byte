@@ -15,7 +15,6 @@ public class GameController : MonoBehaviour
         {
             initialized = true;
             TextBeforeGame.SetActive(true);
-            TextAfterGame.SetActive(false);
             football.SetActive(true);
             Debug.Log("Pregame text activated");
             SceneManager.sceneLoaded += OnSceneLoaded;
@@ -42,9 +41,7 @@ public class GameController : MonoBehaviour
     public void EndMinigame()
     {
         TextBeforeGame.SetActive(false);
-        football.SetActive(false);
-        TextAfterGame.SetActive(true);
-        Debug.Log("Endgame text activated");
+        Debug.Log("Returning to stadium scene...");
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
