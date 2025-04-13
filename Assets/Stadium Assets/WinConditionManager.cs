@@ -111,7 +111,6 @@ public class WinConditionManager : MonoBehaviour
             else if (currentPhase == 3)
             {
                 Debug.Log("Minigame complete!");
-                minigameText.color = Color.blue;
                 minigameText.text = "Congratulations, you successfully filled in the if-else statement and completed the minigame!";
                 inputs[2].SetActive(false);
 
