@@ -15,7 +15,7 @@ public class ClassRoomDialogue : MonoBehaviour
 
     public string itemNameToAdd;
 
-    public GameObject characterSprite; // ✅ New: character sprite to appear only during first line
+    public GameObject characterSprite;
 
     void Start()
     {
@@ -34,7 +34,7 @@ public class ClassRoomDialogue : MonoBehaviour
             dialoguePanel.SetActive(true);
 
         if (characterSprite != null)
-            characterSprite.SetActive(true); // ✅ Show sprite initially
+            characterSprite.SetActive(true);
 
         currentLine = 0;
         ShowCurrentDialogue();
@@ -63,7 +63,6 @@ public class ClassRoomDialogue : MonoBehaviour
         {
             ShowCurrentDialogue();
 
-            // ✅ Hide sprite when advancing past first line
             if (currentLine > 0 && characterSprite != null)
             {
                 characterSprite.SetActive(false);
@@ -81,14 +80,14 @@ public class ClassRoomDialogue : MonoBehaviour
             dialoguePanel.SetActive(false);
 
         if (characterSprite != null)
-            characterSprite.SetActive(false); // Just in case
+            characterSprite.SetActive(false);
 
         if (SceneManager.GetActiveScene().name == "Classroom")
         {
             classroomDialogueShown = true;
         }
 
-        // ✅ Add item to inventory
+
         if (InventoryManager.Instance != null && !string.IsNullOrEmpty(itemNameToAdd))
         {
             InventoryManager.Instance.AddItem(itemNameToAdd);
