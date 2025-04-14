@@ -3,7 +3,9 @@ using System.Collections.Generic;
 
 public class DormKeyRevealer : MonoBehaviour
 {
-    public GameObject keyObject; // Assign your DormKey scene object
+    public GameObject keyObject;
+    public GameObject noteObject;
+
 
     private List<string> requiredItems = new List<string>
     {
@@ -17,11 +19,12 @@ public class DormKeyRevealer : MonoBehaviour
     {
         if (keyObject == null)
         {
-            Debug.LogWarning("❗ DormKeyRevealer: No key object assigned!");
+            Debug.LogWarning("DormKeyRevealer: No key object assigned!");
             return;
         }
 
         keyObject.SetActive(false); // Hide by default
+        noteObject.SetActive(false);
 
         // Check if all required items are in the inventory
         bool hasAllItems = true;
@@ -37,7 +40,8 @@ public class DormKeyRevealer : MonoBehaviour
         if (hasAllItems)
         {
             keyObject.SetActive(true);
-            Debug.Log("✅ Dorm key auto-revealed at scene start!");
+            noteObject.SetActive(true);
+            Debug.Log("Dorm key auto-revealed at scene start!");
         }
     }
 }
