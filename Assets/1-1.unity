@@ -2687,8 +2687,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 329057187}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.8172915, y: 1.053816, z: 0.11504795}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.603156, y: -0.10468602, z: 0.08564844}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2698,7 +2698,7 @@ Transform:
   - {fileID: 316878163}
   - {fileID: 589348928}
   - {fileID: 1010908559}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1891015951}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &337953151
 GameObject:
@@ -4537,12 +4537,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 516899311}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.1927314, y: 1.5, z: 0.12028217}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.9785957, y: 0.34149802, z: 0.09088267}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1891015951}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &517121658
 GameObject:
@@ -10175,9 +10175,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level0Object1: {fileID: 2119724636}
-  level0Object2: {fileID: 0}
+  level0Object2: {fileID: 1891015950}
   level1Object1: {fileID: 312827463}
-  level1Object2: {fileID: 0}
+  level1Object2: {fileID: 1891015950}
   level1Object3: {fileID: 0}
   level2Object1: {fileID: 1395489187}
   level2Object2: {fileID: 0}
@@ -13150,8 +13150,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1489822151}
   - component: {fileID: 1489822150}
+  - component: {fileID: 1489822152}
   m_Layer: 0
-  m_Name: Music
+  m_Name: MusicManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13172,7 +13173,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -13269,6 +13270,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1489822152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489822149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ccaf02ce47a945e9a577525efdfedc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1500012351
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16598,6 +16611,39 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 1883550830}
   m_maskType: 0
+--- !u!1 &1891015950
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1891015951}
+  m_Layer: 0
+  m_Name: Door
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1891015951
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891015950}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.7858644, y: 1.158502, z: 0.029399505}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 516899314}
+  - {fileID: 329057189}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1917692938
 GameObject:
   m_ObjectHideFlags: 0
@@ -19112,10 +19158,9 @@ SceneRoots:
   - {fileID: 1106723973}
   - {fileID: 1208993754}
   - {fileID: 780127643}
-  - {fileID: 516899314}
-  - {fileID: 329057189}
   - {fileID: 1098338946}
   - {fileID: 799175393}
   - {fileID: 1557384163}
   - {fileID: 1031658549}
   - {fileID: 2120065193}
+  - {fileID: 1891015951}
