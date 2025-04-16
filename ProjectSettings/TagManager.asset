@@ -21,6 +21,7 @@ TagManager:
   - Onion
   - Bun
   - Patty
+  - FallingText
   layers:
   - Default
   - TransparentFX
