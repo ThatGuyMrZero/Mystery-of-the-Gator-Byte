@@ -239,14 +239,13 @@ public class OrderGenerator : MonoBehaviour
             //}
             UpdateOrderUI();
         }
-
     }
 
     public void EndGame()
     {
         orderText.text = "Game Over!";
         Debug.Log("Game over");
-        Time.timeScale = 0;
+        gameTimer.text = "Time Left: 0";
         endgamemanager.EndGame();
     }
 

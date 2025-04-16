@@ -9,6 +9,7 @@ public class ItemStack : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
     private CanvasGroup canvasGroup;
     private ItemSpawner spawner;
     private Transform spawnParent;
+    private Canvas canvas;
 
     //public GameManager gamemanager;
 
@@ -28,6 +29,7 @@ public class ItemStack : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         spawnParent = transform.parent;
+        canvas = GetComponentInParent<Canvas>();
     }
 
     public void SetSpawner(ItemSpawner itemSpawner)
@@ -48,7 +50,8 @@ public class ItemStack : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
 
     public void OnDrag(PointerEventData eventData)
     {
-        rectTransform.anchoredPosition += eventData.delta;
+        float scale = canvas.scaleFactor;
+        rectTransform.anchoredPosition += eventData.delta / scale;
     }
 
     public void OnEndDrag(PointerEventData eventData)
