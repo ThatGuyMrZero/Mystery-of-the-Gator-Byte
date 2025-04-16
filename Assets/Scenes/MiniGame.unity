@@ -468,8 +468,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -77.65399, y: 248.73999}
-  m_SizeDelta: {x: -1317.2072, y: -774.5178}
+  m_AnchoredPosition: {x: 4.6176147, y: 187.51709}
+  m_SizeDelta: {x: -1152.7, y: -652.0719}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &490226785
 MonoBehaviour:
@@ -484,7 +484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1141,7 +1141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2524,8 +2524,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 83.411865, y: -16.196594}
+  m_SizeDelta: {x: 619.4902, y: 189.2902}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1480097259
 MonoBehaviour:
@@ -2547,7 +2547,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Nicely Done
+  m_text: "Player\r\n\u201CHave you heard about the missing mascot costume?\u201D\r\n\r\nProfessor\r\n\u201CHmm\u2026
+    maybe. I loaned out some poster boards and paint yesterday. Someone said something
+    about a \u2018School Spirit Emergency\u2019.\u201D\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

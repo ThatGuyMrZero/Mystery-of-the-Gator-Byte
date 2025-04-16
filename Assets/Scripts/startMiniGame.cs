@@ -6,13 +6,13 @@ public class startMiniGame : MonoBehaviour
     //public GameObject MiniGame;
     public void StartMiniGame()
     {
-        if (Application.CanStreamedLevelBeLoaded("MiniGame"))
+        if (Application.CanStreamedLevelBeLoaded("ClassroomLoadingScreen"))
         {
-            SceneManager.LoadScene("MiniGame");
+            SceneManager.LoadScene("ClassroomLoadingScreen");
         }
         else
         {
-            Debug.LogError("MiniGame Scene not found! Check if it's in Build Settings.");
+            Debug.LogError("ClassroomLoadingScreen Scene not found! Check if it's in Build Settings.");
         }
     }
     void Start()
