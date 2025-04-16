@@ -29,7 +29,7 @@ public class EndgameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene("CafeteriaLoadingScreen");
+        SceneManager.LoadScene("CafeteriaLoadingScreen", LoadSceneMode.Single);
     }
 
     public void ContinueButton()

@@ -242,7 +242,7 @@ public class OrderGenerator : MonoBehaviour
 
     }
 
-    void EndGame()
+    public void EndGame()
     {
         orderText.text = "Game Over!";
         Debug.Log("Game over");
