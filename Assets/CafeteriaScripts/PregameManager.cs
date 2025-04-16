@@ -23,6 +23,8 @@ public class PregameManager : MonoBehaviour
 
     public OrderGenerator ordergenerator;
 
+    public GameObject instructionsPanel;
+
     //public TrayHandler trayhandler;
     //public OrderGenerator ordergenerator;
     //public ItemSpawner itemspawner;
@@ -35,6 +37,7 @@ public class PregameManager : MonoBehaviour
         startcanvas.SetActive(true);
         difficultyPanel.SetActive(true);
         countdownPanel.SetActive(false);
+        instructionsPanel.SetActive(false);
     }
 
     public void OnBeginPress()
