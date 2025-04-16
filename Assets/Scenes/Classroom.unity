@@ -1270,6 +1270,7 @@ MonoBehaviour:
   - Hmm....maybe. I loaned out some poster boards and paint yesterday...
   - 'Someone said something about as "School Spirit Emergency". '
   itemNameToAdd: IOU Slip
+  characterSprite: {fileID: 0}
 --- !u!1 &808759757
 GameObject:
   m_ObjectHideFlags: 0
@@ -1340,7 +1341,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 808759757}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!20 &808759760
 Camera:
   m_ObjectHideFlags: 0
