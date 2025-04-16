@@ -146,6 +146,7 @@ public class WinConditionManager : MonoBehaviour
 
     private IEnumerator ShowInstructionsAndCountdown()
     {
+        Time.timeScale = 1f;
         minigameText.fontSize = 9;
 
         for (int i = 10; i > 0; i--)
