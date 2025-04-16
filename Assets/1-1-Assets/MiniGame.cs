@@ -69,7 +69,15 @@ public class MiniGame : MonoBehaviour
         {
             HandleLose(); // Only show Lose if not already won
         }
+
+        // Destroy all spawned falling text objects
+        GameObject[] fallingTexts = GameObject.FindGameObjectsWithTag("FallingText");
+        foreach (GameObject text in fallingTexts)
+        {
+            Destroy(text);
+        }
     }
+
 
     void SpawnText()
     {
