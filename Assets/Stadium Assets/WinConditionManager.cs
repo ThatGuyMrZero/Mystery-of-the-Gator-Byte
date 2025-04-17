@@ -129,7 +129,7 @@ public class WinConditionManager : MonoBehaviour
                 StartCoroutine(PhaseTransitionWait(4f, () =>
                 {
                     areYaWinningSon = true;
-                    SceneManager.LoadScene("stadium");           
+                    SceneManager.LoadScene("stadium_end");           
                 }));
             }
 
