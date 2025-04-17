@@ -40,7 +40,8 @@ public class GameController : MonoBehaviour
 
     public void EndMinigame()
     {
-        TextBeforeGame.SetActive(false);
+        if (InventoryManager.Instance != null && InventoryManager.Instance.items.Contains("Ripped Cloth"))
+            TextBeforeGame.SetActive(false);
         Debug.Log("Returning to stadium scene...");
     }
 
