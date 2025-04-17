@@ -1211,6 +1211,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 720262360}
     - target: {fileID: 8019033700045740894, guid: 69aa9e89e12134c428223f23cb8136d6, type: 3}
+      propertyPath: panelBlocker
+      value: 
+      objectReference: {fileID: 72306457}
+    - target: {fileID: 8019033700045740894, guid: 69aa9e89e12134c428223f23cb8136d6, type: 3}
       propertyPath: itemNameToAdd
       value: Crumpled Napkin
       objectReference: {fileID: 0}

@@ -150,7 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startButton: {fileID: 1425273170}
   nextScene: Cafeteria
-  delay: 10
+  delay: 5
   loadingText: {fileID: 1702824842}
   loadingBar: {fileID: 1981320522}
 --- !u!4 &10883707
