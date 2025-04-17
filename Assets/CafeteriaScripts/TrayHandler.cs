@@ -146,9 +146,27 @@ public class TrayHandler : MonoBehaviour
             score += 50;
             UpdateScoreUI();
             orderManager.CompleteOrder();
-            currentOrder = orderManager.GetActiveOrder();
-            GenerateTrays(currentOrder.Count);
+            //currentOrder = orderManager.GetActiveOrder();
+            //while(currentOrder == null)
+            //{
+            //    WaitFor
+            //    currentOrder = orderManager.GetActiveOrder();
+            //}
+            //GenerateTrays(currentOrder.Count);
+            StartCoroutine(WaitForNextOrder());
         }
+    }
+
+    private IEnumerator WaitForNextOrder()
+    {
+        currentOrder = orderManager.GetActiveOrder();
+        while (currentOrder == null)
+        {
+            GenerateTrays(0);
+            yield return new WaitForSeconds(0.25f);
+            currentOrder = orderManager.GetActiveOrder();
+        }
+        GenerateTrays(currentOrder.Count);
     }
 
 
@@ -220,8 +238,7 @@ public class TrayHandler : MonoBehaviour
             }
             else
             {
-                Debug.Log("Current order is null");
-                GenerateTrays(0);
+                StartCoroutine(WaitForNextOrder());
             }
         
         }

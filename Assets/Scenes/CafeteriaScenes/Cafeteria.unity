@@ -1291,7 +1291,7 @@ MonoBehaviour:
   maxOrders: 10
   orderCount: 0
   completedOrders: 0
-  gameDuration: 30
+  gameDuration: 90
   gameDifficulty: 1
   difficultyText: {fileID: 1032986650}
   gameTimer: {fileID: 1430185423}

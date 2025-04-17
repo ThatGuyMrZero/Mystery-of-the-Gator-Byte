@@ -7,11 +7,17 @@ public class DialogueManager : MonoBehaviour
     public GameObject characterSprite; // << NEW: The character sprite to show only during first text
     public string itemNameToAdd; // << NEW FIELD
 
+    public GameObject panelBlocker;
+
 
     private int currentTextIndex = 0;
 
     void Start()
     {
+        if(panelBlocker != null)
+        {
+            panelBlocker.SetActive(true);
+        }
         // Hide all text sprites except the first one
         for (int i = 0; i < textSprites.Length; i++)
         {
@@ -69,6 +75,11 @@ public class DialogueManager : MonoBehaviour
                 characterSprite.SetActive(false);
             }
 
+            if (panelBlocker != null)
+            {
+                panelBlocker.SetActive(false);
+            }
+
         }
         // ✅ NOW add the inventory item once dialogue is finished
         if (InventoryManager.Instance != null && !string.IsNullOrEmpty(itemNameToAdd))
@@ -76,5 +87,7 @@ public class DialogueManager : MonoBehaviour
             InventoryManager.Instance.AddItem(itemNameToAdd);
             Debug.Log("✅ Added item to inventory: " + itemNameToAdd);
         }
+
+        
     }
 }
