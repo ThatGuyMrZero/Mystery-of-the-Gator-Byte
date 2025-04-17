@@ -26,6 +26,8 @@ public class WinConditionManager : MonoBehaviour
     private DragNumbers[] allDraggables;
     private int currentPhase = 1;
 
+    public GameObject instructions;
+
     private void Start()
     {
         allDraggables = FindObjectsByType<DragNumbers>(FindObjectsSortMode.None);
@@ -42,6 +44,8 @@ public class WinConditionManager : MonoBehaviour
         {
             drag.SetSnapTargets(correctPositionsPhase1);
         }
+
+        instructions.SetActive(false);
 
         StartCoroutine(ShowInstructionsAndCountdown());
     }
@@ -69,12 +73,15 @@ public class WinConditionManager : MonoBehaviour
                 Debug.Log("Phase 1 complete, moving to phase 2...");
                 minigameText.text = "Correct! Now onto the else if portion...";
                 inputs[0].SetActive(false);
+                instructions.SetActive(false);
 
                 // Wait for 4 seconds, then move to phase 2
                 StartCoroutine(PhaseTransitionWait(4f, () =>
                 {
                     minigameText.text = "else if (score ==      ) {\r\n\tpoints +=\r\n\tif (score ==      ) {\r\n\t\tpoints +=\r\n\t} else if (score ==      ) {\r\n\t\tpoints +=\r\n\t}\r\n}";
                     inputs[1].SetActive(true);
+                    instructions.SetActive(true);
+
                     draggableObjectsCurrentPhase = draggableObjectsPhase2;
                     correctPositionsCurrentPhase = correctPositionsPhase2;
 
@@ -91,12 +98,15 @@ public class WinConditionManager : MonoBehaviour
                 Debug.Log("Phase 2 complete, moving to phase 3...");
                 minigameText.text = "Correct! You're almost there, now just the else block is left!";
                 inputs[1].SetActive(false);
+                instructions.SetActive(false);
 
                 // Wait for 4 seconds, then move to phase 3
                 StartCoroutine(PhaseTransitionWait(4f, () =>
                 {
                     minigameText.text = "else {\r\n\tpoints += \r\n}";
                     inputs[2].SetActive(true);
+                    instructions.SetActive(true);
+
                     draggableObjectsCurrentPhase = draggableObjectsPhase3;
                     correctPositionsCurrentPhase = correctPositionsPhase3;
 
@@ -113,6 +123,7 @@ public class WinConditionManager : MonoBehaviour
                 Debug.Log("Minigame complete!");
                 minigameText.text = "Congratulations, you successfully filled in the if-else statement and completed the minigame!";
                 inputs[2].SetActive(false);
+                instructions.SetActive(false);
 
                 // Wait for 4 seconds, then return to the main stadium scene
                 StartCoroutine(PhaseTransitionWait(4f, () =>
@@ -127,6 +138,32 @@ public class WinConditionManager : MonoBehaviour
         }
     }
 
+    public void DisableCurrentPhase()
+    {
+        inputs[currentPhase - 1].SetActive(false);
+        StartCoroutine(SnapAllObjectsBack());
+        minigameText.fontSize = 9;
+        minigameText.text = "Instructions\r\n\r\nYou will be presented with an incomplete portion of a standard if-else statement. Your goal is to use the numbers below you and the scoring methods to the right to correctly complete the statement defining scoring methods in football and the points each method earns.\r\n\r\nDrag each number or scoring method into one of the white rectangles to fill in your answer. Upon successful completion of each phase, the next one will begin immediately after. There are 3 phases in total.\r\n\r\nAs a review, here are the basic rules of scoring in football:\r\n* A SAFETY is worth 2 points.\r\n* A FIELD GOAL is worth 3 points.\r\n* A TOUCHDOWN is worth 6 points.\r\n\t* After a touchdown, either a KICK can be performed afterwards for 1 additional point, or a TWO-POINT CONVERSION, which should be self-explanatory.\r\n\r\nYou can review the rules at any time by clicking the ? in the upper-left hand corner.\r\n\r\nClick the ? again to close these instructions and return to the game.";
+    }
+
+    public void ReenableCurrentPhase()
+    {
+        inputs[currentPhase - 1].SetActive(true);
+        minigameText.fontSize = 24;
+
+        switch (currentPhase)
+        {
+            case 1:
+                minigameText.text = "points = 0\r\nif (score ==      ) {\r\n\tpoints += \r\n}\r\nelse if (score ==      ) {\r\n\tpoints += \r\n}";
+                break;
+            case 2:
+                minigameText.text = "else if (score ==      ) {\r\n\tpoints +=\r\n\tif (score ==      ) {\r\n\t\tpoints +=\r\n\t} else if (score ==      ) {\r\n\t\tpoints +=\r\n\t}\r\n}";
+                break;
+            case 3:
+                minigameText.text = "else {\r\n\tpoints += \r\n}";
+                break;
+        }
+    }
 
     private IEnumerator PhaseTransitionWait(float waitTime, System.Action onComplete)
     {
@@ -159,5 +196,6 @@ public class WinConditionManager : MonoBehaviour
         minigameText.text = "points = 0\r\nif (score ==      ) {\r\n\tpoints += \r\n}\r\nelse if (score ==      ) {\r\n\tpoints += \r\n}";
 
         inputs[0].SetActive(true);
+        instructions.SetActive(true);
     }
 }
