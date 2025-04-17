@@ -6,12 +6,12 @@ public class GameController : MonoBehaviour
 {
     public GameObject TextBeforeGame;
     public GameObject football;
-    public GameObject pc;
 
     public TextMeshProUGUI miscText;
     public GameObject textBackground;
 
     private bool isPCActive = false;
+    private bool isHelmetActive = false;
 
     private static bool initialized = false;
 
@@ -73,6 +73,7 @@ public class GameController : MonoBehaviour
         if (!isPCActive)
         {
             isPCActive = true;
+            isHelmetActive = false;
             textBackground.SetActive(true);
             miscText.fontSize = 65;
             miscText.text = "BREAKING NEWS: Florida defeats Houston in nail-biter to win first national championship since 2007.\r\n\r\nGO GATORS!!!!";
@@ -80,6 +81,24 @@ public class GameController : MonoBehaviour
         else
         {
             isPCActive = false;
+            textBackground.SetActive(false);
+            miscText.text = "";
+        }
+    }
+
+    public void HelmetClicked()
+    {
+        if (!isHelmetActive)
+        {
+            isHelmetActive = true;
+            isPCActive = false;
+            textBackground.SetActive(true);
+            miscText.fontSize = 63;
+            miscText.text = "Hmmm, looks like someone left their helmet here... and a football too! But I thought the team was supposed to be playing today!\r\nSomething must be wrong, maybe I should go check the football...";
+        }
+        else
+        {
+            isHelmetActive = false;
             textBackground.SetActive(false);
             miscText.text = "";
         }
