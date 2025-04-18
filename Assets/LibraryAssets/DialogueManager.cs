@@ -4,40 +4,46 @@ public class DialogueManager : MonoBehaviour
 {
     public GameObject textBox; // Assign the text box sprite
     public GameObject[] textSprites; // Assign 8 text sprites in order
-    public GameObject characterSprite; // << NEW: The character sprite to show only during first text
-    public string itemNameToAdd; // << NEW FIELD
-
-    public GameObject panelBlocker;
-
+    public GameObject characterSprite; // Character sprite shown during first text only
+    public string itemNameToAdd; // Name of the item to add to inventory
+    public GameObject panelBlocker; // UI blocker to prevent other interaction
+    public GameObject greenBook; // The green book to disable during dialogue
 
     private int currentTextIndex = 0;
 
     void Start()
     {
-        if(panelBlocker != null)
+        // Enable panel blocker to prevent clicking other things
+        if (panelBlocker != null)
         {
             panelBlocker.SetActive(true);
         }
-        // Hide all text sprites except the first one
+
+        // Show first text, hide others
         for (int i = 0; i < textSprites.Length; i++)
         {
             textSprites[i].SetActive(i == 0);
         }
 
-        // Show character sprite only during the first text
+        // Show character sprite at start
         if (characterSprite != null)
         {
             characterSprite.SetActive(true);
         }
 
-        // Ensure the text box is visible
+        // Show text box
         if (textBox != null)
         {
             textBox.SetActive(true);
         }
 
-        // Disable book interaction while dialogue is active
-
+        // Disable interaction with green book while dialogue is active
+        if (greenBook != null)
+        {
+            Collider2D col = greenBook.GetComponent<Collider2D>();
+            if (col != null)
+                col.enabled = false;
+        }
     }
 
     void Update()
@@ -52,7 +58,6 @@ public class DialogueManager : MonoBehaviour
     {
         if (currentTextIndex < textSprites.Length - 1)
         {
-            // Hide current text, show next text
             textSprites[currentTextIndex].SetActive(false);
             currentTextIndex++;
             textSprites[currentTextIndex].SetActive(true);
@@ -65,11 +70,10 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            // Hide final text and box
+            // End of dialogue
             textSprites[currentTextIndex].SetActive(false);
             textBox.SetActive(false);
 
-            // Just in case, hide character sprite if still active
             if (characterSprite != null)
             {
                 characterSprite.SetActive(false);
@@ -80,14 +84,20 @@ public class DialogueManager : MonoBehaviour
                 panelBlocker.SetActive(false);
             }
 
-        }
-        // ✅ NOW add the inventory item once dialogue is finished
-        if (InventoryManager.Instance != null && !string.IsNullOrEmpty(itemNameToAdd))
-        {
-            InventoryManager.Instance.AddItem(itemNameToAdd);
-            Debug.Log("✅ Added item to inventory: " + itemNameToAdd);
-        }
+            // Re-enable green book interaction
+            if (greenBook != null)
+            {
+                Collider2D col = greenBook.GetComponent<Collider2D>();
+                if (col != null)
+                    col.enabled = true;
+            }
 
-        
+            // Add item to inventory
+            if (InventoryManager.Instance != null && !string.IsNullOrEmpty(itemNameToAdd))
+            {
+                InventoryManager.Instance.AddItem(itemNameToAdd);
+                Debug.Log("✅ Added item to inventory: " + itemNameToAdd);
+            }
+        }
     }
 }
