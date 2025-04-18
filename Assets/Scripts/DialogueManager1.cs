@@ -7,6 +7,7 @@ public class DialogueManager1 : MonoBehaviour
     private int currentTextIndex = 0;
     public HoverBounce hoverBounceScript;
     public IsVisible isVisibleScript;
+    public GameObject characterSprite;
 
     void Start()
     {
@@ -16,12 +17,20 @@ public class DialogueManager1 : MonoBehaviour
             textSprites[i].SetActive(i == 0);
         }
 
+        // Show character sprite only during the first text
+        if (characterSprite != null)
+        {
+            characterSprite.SetActive(true);
+        }
+
         // Ensure the text box is visible
         if (textBox != null)
         {
             textBox.SetActive(true);
         }
+
     }
+
 
     void Update()
     {
@@ -39,111 +48,30 @@ public class DialogueManager1 : MonoBehaviour
             textSprites[currentTextIndex].SetActive(false);
             currentTextIndex++;
             textSprites[currentTextIndex].SetActive(true);
+
+            // Hide character sprite after first text
+            if (currentTextIndex > 0 && characterSprite != null)
+            {
+                characterSprite.SetActive(false);
+            }
         }
         else
         {
-            // If all text is shown, hide everything and re-enable book interaction
+            // Hide final text and box
             textSprites[currentTextIndex].SetActive(false);
             textBox.SetActive(false);
 
-            // ✅ Add item to inventory here!
-            InventoryManager.Instance.AddItem("CrumpledNapkin");
+            // ✅ Add item to inventory
+       
 
-            Debug.Log("🎉 Dialogue finished! Library Key added to inventory.");
+
+            // Just in case, hide character sprite if still active
+            if (characterSprite != null)
+            {
+                characterSprite.SetActive(false);
+            }
+
         }
-    
+    }
 }
-}
 
-/*
-using UnityEngine;
-using TMPro;
-
-public class DialogueManager : MonoBehaviour
-{
-    public GameObject textBox; // Assign the text box sprite
-    public GameObject[] textSprites; // Assign 8 text sprites in order
-    public TextMeshProUGUI textComponent; // TMPro instance
-    public string[] lines; // store dialogue lines in array
-
-    private int currentTextIndex = 0;
-
-    void Start()
-    {
-        // if there are textSprites, show them, otherwise show lines of text
-        if (textSprites.Length > 0)
-        {
-             // Hide all text sprites except the first one
-            for (int i = 0; i < textSprites.Length; i++)
-            {
-                textSprites[i].SetActive(i == 0);
-            }
-        }
-        else if (lines.Length > 0)
-        {
-            // Display the first line of text if no sprites are available
-            ShowLine(lines[0]);
-        }
-
-
-        // Ensure the text box is visible
-        if (textBox != null)
-        {
-            textBox.SetActive(true);
-        }
-    }
-
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0)) // Click to progress dialogue
-        {
-            AdvanceDialogue();
-        }
-    }
-
-    void AdvanceDialogue()
-    {
-        if (textSprites.Length > 0)
-        {
-            if (currentTextIndex < textSprites.Length - 1)
-            {
-                // Hide current text, show next text
-                textSprites[currentTextIndex].SetActive(false);
-                currentTextIndex++;
-                textSprites[currentTextIndex].SetActive(true);
-            }
-            else
-            {
-                // If all text is shown, hide everything
-                textSprites[currentTextIndex].SetActive(false);
-                textBox.SetActive(false);
-                Debug.Log("🎉 Dialogue finished! Game starts now.");
-            }
-        }
-        
-
-        else if (lines.Length > 0)
-        {
-            // if using lines of text, show next line
-            if (currentTextIndex < lines.Length - 1)
-            {
-                currentTextIndex++;
-                ShowLine(lines[currentTextIndex]);
-            }
-            else
-            {
-                // If all text is shown, hide everything
-                textSprites[currentTextIndex].SetActive(false);
-                textBox.SetActive(false);
-                Debug.Log("🎉 Dialogue finished! Game starts now.");
-            }
-        }
-    }
-    void ShowLine(string line)
-    {
-        // Display the current line of text, this could be done using a UI Text component
-        Debug.Log(line); // For demonstration, we log the line
-    }
-
-}
-*/
