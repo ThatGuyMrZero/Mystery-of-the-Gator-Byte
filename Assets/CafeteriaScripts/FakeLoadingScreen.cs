@@ -13,15 +13,33 @@ public class FakeLoadingScreen : MonoBehaviour
     public TMP_Text loadingText;
     private bool loading;
     public Slider loadingBar;
+    private bool initialized = false;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void OnEnable()
     {
-        startButton.interactable = false;
-        startButton.gameObject.SetActive(false);
-        loading = true;
-        StartCoroutine(EnableButtonAfterDelay());
-        StartCoroutine(AnimateLoadingText());
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "CafeteriaLoadingScreen" && !initialized)
+        {
+            initialized = true;
+            Debug.Log("Loading screen run from OnSceneLoaded function");
+            Time.timeScale = 1f;
+
+            startButton.interactable = false;
+            startButton.gameObject.SetActive(false);
+            loading = true;
+            loadingBar.gameObject.SetActive(true);
+            StartCoroutine(EnableButtonAfterDelay());
+            StartCoroutine(AnimateLoadingText());
+        }
     }
 
     IEnumerator EnableButtonAfterDelay()
@@ -35,9 +53,7 @@ public class FakeLoadingScreen : MonoBehaviour
             yield return null;
         }
 
-        
         loading = false;
-        
     }
 
     IEnumerator AnimateLoadingText()

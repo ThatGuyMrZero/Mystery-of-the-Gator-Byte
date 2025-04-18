@@ -28,7 +28,7 @@ public class PaperSpawner : MonoBehaviour
     {
         if (spawnedCount >= numberOfPapers) return;
 
-        float zOffset = -0.1f * spawnedCount;
+        float zOffset = -1.0f * spawnedCount;
         Vector3 spawnPos = spawnPoint.position + new Vector3(0, 0, zOffset);
 
         GameObject paper = Instantiate(paperPrefab, spawnPos, Quaternion.identity, canvasTransform);
