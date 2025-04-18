@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 226e6e4d02451664aa082b8464a9b6fd
+guid: 9e47f84dee0401c45b1f88ada300dbca
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2276113771024626944
-    second: exitgame_0
+      213: 4128282270740213429
+    second: inventorylabel_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: exitgame_0
+      name: inventorylabel_0
       rect:
         serializedVersion: 2
-        x: 42
-        y: 97
-        width: 1508
-        height: 398
+        x: 306
+        y: 310
+        width: 1034
+        height: 611
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 00bc3b9a59e9960e0800000000000000
-      internalID: -2276113771024626944
+      spriteID: 5be63084ada9a4930800000000000000
+      internalID: 4128282270740213429
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      exitgame_0: -2276113771024626944
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
