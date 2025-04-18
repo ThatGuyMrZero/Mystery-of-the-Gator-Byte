@@ -1,10 +1,9 @@
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
 public class ClassRoomDialogue : MonoBehaviour
 {
-
     public TextMeshProUGUI dialogueText;
     public GameObject dialoguePanel;
     [TextArea(3, 10)]
@@ -14,17 +13,28 @@ public class ClassRoomDialogue : MonoBehaviour
 
     public static bool classroomDialogueShown = false;
 
+    public string itemNameToAdd;
+
+    public GameObject characterSprite;
+
     void Start()
     {
         if (SceneManager.GetActiveScene().name == "Classroom" && classroomDialogueShown)
         {
             if (dialoguePanel != null)
                 dialoguePanel.SetActive(false);
+
+            if (characterSprite != null)
+                characterSprite.SetActive(false);
+
             return;
         }
 
         if (dialoguePanel != null)
             dialoguePanel.SetActive(true);
+
+        if (characterSprite != null)
+            characterSprite.SetActive(true);
 
         currentLine = 0;
         ShowCurrentDialogue();
@@ -52,6 +62,11 @@ public class ClassRoomDialogue : MonoBehaviour
         if (currentLine < dialogueLines.Length)
         {
             ShowCurrentDialogue();
+
+            if (currentLine > 0 && characterSprite != null)
+            {
+                characterSprite.SetActive(false);
+            }
         }
         else
         {
@@ -64,9 +79,19 @@ public class ClassRoomDialogue : MonoBehaviour
         if (dialoguePanel != null)
             dialoguePanel.SetActive(false);
 
+        if (characterSprite != null)
+            characterSprite.SetActive(false);
+
         if (SceneManager.GetActiveScene().name == "Classroom")
         {
             classroomDialogueShown = true;
+        }
+
+
+        if (InventoryManager.Instance != null && !string.IsNullOrEmpty(itemNameToAdd))
+        {
+            InventoryManager.Instance.AddItem(itemNameToAdd);
+            Debug.Log("🎉 Added item to inventory: " + itemNameToAdd);
         }
     }
 }

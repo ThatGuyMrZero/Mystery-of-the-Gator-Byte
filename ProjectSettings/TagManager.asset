@@ -6,6 +6,22 @@ TagManager:
   tags:
   - GradedZone
   - NotGradedZone
+  - SmallTray
+  - Pepperoni
+  - Mushroom
+  - Cheese
+  - Sauce
+  - Pineapple
+  - Dough
+  - Ketchup
+  - Mustard
+  - Lettuce
+  - Sausage
+  - Tomato
+  - Onion
+  - Bun
+  - Patty
+  - FallingText
   layers:
   - Default
   - TransparentFX
@@ -40,6 +56,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Front
+    uniqueID: 631016141
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
@@ -48,3 +67,4 @@ TagManager:
     locked: 0
   m_RenderingLayers:
   - Default
+  - Layer 1
