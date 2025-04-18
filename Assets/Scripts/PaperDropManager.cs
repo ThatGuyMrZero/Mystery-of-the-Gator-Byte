@@ -35,25 +35,25 @@ public class PaperDropManager : MonoBehaviour
                 winMessagePanel.SetActive(true);
                 Debug.Log("Nicely done!");
             }
-            StartCoroutine(WaitAndResetBoard());
+            //StartCoroutine(WaitAndResetBoard());
         }
     }
 
-    private IEnumerator WaitAndResetBoard()
-    {
-        yield return new WaitForSeconds(3f);
-        if (winMessagePanel != null)
-            winMessagePanel.SetActive(false);
-        if (paperSpawner != null)
-        {
-            Debug.Log("Calling ResetBoard on PaperSpawner.");
-            paperSpawner.ResetBoard();
-        }
-        else
-        {
-            Debug.LogError("PaperSpawner reference is null in PaperDropManager!");
-        }
-        droppedCount = 0;
-    }
+    //private IEnumerator WaitAndResetBoard()
+    //{
+    //    yield return new WaitForSeconds(3f);
+    //    if (winMessagePanel != null)
+    //        winMessagePanel.SetActive(false);
+    //    if (paperSpawner != null)
+    //    {
+    //        Debug.Log("Calling ResetBoard on PaperSpawner.");
+    //        paperSpawner.ResetBoard();
+    //    }
+    //    else
+    //    {
+    //        Debug.LogError("PaperSpawner reference is null in PaperDropManager!");
+    //    }
+    //    droppedCount = 0;
+    //}
 
 }
