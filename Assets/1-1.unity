@@ -8124,6 +8124,7 @@ GameObject:
   - component: {fileID: 1557384163}
   - component: {fileID: 1557384162}
   - component: {fileID: 1557384164}
+  - component: {fileID: 1557384165}
   m_Layer: 0
   m_Name: InventoryPanel
   m_TagString: Untagged
@@ -8222,6 +8223,52 @@ MonoBehaviour:
   rippedClothPrefab: {fileID: 6465216605675425943, guid: 1526d27c7e81265458085677d6eb9a5a, type: 3}
   keyPrefab: {fileID: 313072514842011672, guid: b6e20111ff7d3c74e8f5dd4ac7278613, type: 3}
   dormRoomKeyObject: {fileID: 1031658547}
+--- !u!61 &1557384165
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557384161}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 11.59, y: 9.3}
+    newSize: {x: 11.59, y: 9.3}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 11.59, y: 9.3}
+  m_EdgeRadius: 0
 --- !u!1 &1560965775
 GameObject:
   m_ObjectHideFlags: 0
