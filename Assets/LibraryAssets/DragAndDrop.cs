@@ -70,8 +70,9 @@ public class DragAndDrop : MonoBehaviour
                 SortingManager sortingManager = FindFirstObjectByType<SortingManager>();
                 if (sortingManager != null)
                 {
-                    sortingManager.RemoveBookFromZone(currentDropZone.gameObject.name, gameObject);
+                    sortingManager.CheckGameEnd();
                 }
+
             }
 
             currentDropZone = newDropZone; // Update zone
@@ -80,7 +81,7 @@ public class DragAndDrop : MonoBehaviour
             SortingManager sortingManager2 = FindFirstObjectByType<SortingManager>();
             if (sortingManager2 != null)
             {
-                sortingManager2.AddBookToZone(newDropZone.gameObject.name, gameObject);
+                sortingManager2.CheckGameEnd();
             }
         }
         else // If the book is NOT placed correctly, remove it from SortingManager
@@ -90,7 +91,7 @@ public class DragAndDrop : MonoBehaviour
                 SortingManager sortingManager = FindFirstObjectByType<SortingManager>();
                 if (sortingManager != null)
                 {
-                    sortingManager.RemoveBookFromZone(currentDropZone.gameObject.name, gameObject);
+                    sortingManager.CheckGameEnd();
                 }
                 currentDropZone = null;
             }
