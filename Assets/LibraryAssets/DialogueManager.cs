@@ -1,43 +1,55 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
-    public GameObject textBox; // Assign the text box sprite
-    public GameObject[] textSprites; // Assign 8 text sprites in order
-    public GameObject characterSprite; // Character sprite shown during first text only
-    public string itemNameToAdd; // Name of the item to add to inventory
-    public GameObject panelBlocker; // UI blocker to prevent other interaction
-    public GameObject greenBook; // The green book to disable during dialogue
+    public GameObject textBox;
+    public GameObject[] textSprites;
+    public GameObject characterSprite;
+    public string itemNameToAdd;
+    public GameObject panelBlocker;
+    public GameObject greenBook;
+
+    public static bool dormDialogueShown = false;
 
     private int currentTextIndex = 0;
+    private bool dialogueWasShown = false; // ✅ Only true if full dialogue is shown this session
 
     void Start()
     {
-        // Enable panel blocker to prevent clicking other things
+        // ✅ If we've already seen Dorm dialogue, skip it
+        if (SceneManager.GetActiveScene().name == "1-1" && dormDialogueShown)
+        {
+            if (textBox != null) textBox.SetActive(false);
+            if (characterSprite != null) characterSprite.SetActive(false);
+            if (panelBlocker != null) panelBlocker.SetActive(false);
+            foreach (GameObject sprite in textSprites)
+                if (sprite != null) sprite.SetActive(false);
+            return;
+        }
+
+        dialogueWasShown = true; // ✅ Mark that dialogue is being shown
+
         if (panelBlocker != null)
         {
             panelBlocker.SetActive(true);
         }
 
-        // Show first text, hide others
         for (int i = 0; i < textSprites.Length; i++)
         {
             textSprites[i].SetActive(i == 0);
         }
 
-        // Show character sprite at start
         if (characterSprite != null)
         {
             characterSprite.SetActive(true);
         }
 
-        // Show text box
         if (textBox != null)
         {
             textBox.SetActive(true);
         }
 
-        // Disable interaction with green book while dialogue is active
         if (greenBook != null)
         {
             Collider2D col = greenBook.GetComponent<Collider2D>();
@@ -48,7 +60,7 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // Click to progress dialogue
+        if (Input.GetMouseButtonDown(0))
         {
             AdvanceDialogue();
         }
@@ -62,7 +74,6 @@ public class DialogueManager : MonoBehaviour
             currentTextIndex++;
             textSprites[currentTextIndex].SetActive(true);
 
-            // Hide character sprite after first text
             if (currentTextIndex > 0 && characterSprite != null)
             {
                 characterSprite.SetActive(false);
@@ -70,7 +81,6 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            // End of dialogue
             textSprites[currentTextIndex].SetActive(false);
             textBox.SetActive(false);
 
@@ -84,7 +94,6 @@ public class DialogueManager : MonoBehaviour
                 panelBlocker.SetActive(false);
             }
 
-            // Re-enable green book interaction
             if (greenBook != null)
             {
                 Collider2D col = greenBook.GetComponent<Collider2D>();
@@ -92,11 +101,17 @@ public class DialogueManager : MonoBehaviour
                     col.enabled = true;
             }
 
-            // Add item to inventory
-            if (InventoryManager.Instance != null && !string.IsNullOrEmpty(itemNameToAdd))
+            // ✅ Only add item if dialogue was shown and item is valid
+            if (dialogueWasShown && InventoryManager.Instance != null && !string.IsNullOrEmpty(itemNameToAdd))
             {
                 InventoryManager.Instance.AddItem(itemNameToAdd);
                 Debug.Log("✅ Added item to inventory: " + itemNameToAdd);
+            }
+
+            // ✅ If in dorm room, mark that the dialogue has been shown
+            if (SceneManager.GetActiveScene().name == "1-1")
+            {
+                dormDialogueShown = true;
             }
         }
     }
