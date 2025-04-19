@@ -36,7 +36,15 @@ public class DragNumbers : MonoBehaviour
         if (isDragging)
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            transform.position = mousePos + offset;
+            Vector3 newPos = mousePos + offset;
+
+            Vector3 minBounds = Camera.main.ScreenToWorldPoint(Vector3.zero);
+            Vector3 maxBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+
+            newPos.x = Mathf.Clamp(newPos.x, minBounds.x, maxBounds.x);
+            newPos.y = Mathf.Clamp(newPos.y, minBounds.y, maxBounds.y);
+
+            transform.position = newPos;
         }
 
         if (Input.GetMouseButtonUp(0))
