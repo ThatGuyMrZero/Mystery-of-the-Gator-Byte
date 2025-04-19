@@ -9981,9 +9981,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 163929164}
-        m_TargetAssemblyTypeName: OrderGenerator, Assembly-CSharp
-        m_MethodName: EndGame
+      - m_Target: {fileID: 1581229586}
+        m_TargetAssemblyTypeName: InstructionHandler, Assembly-CSharp
+        m_MethodName: ShowInstructions
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
