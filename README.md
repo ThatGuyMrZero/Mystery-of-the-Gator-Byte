@@ -53,6 +53,7 @@ git clone https://github.com/ThatGuyMrZero/Mystery-of-the-Gator-Byte.git
 --- 
 
 ##Licensing
+
 Mystery of the GatoryBYTE is an open-source project and is licensed under the MIT License. 
 This game was developed as a student project for educational purposes, and contributions or forks are welcome. 
 
