@@ -9,7 +9,7 @@
 ## GameplayOverview 
 Players open to the Start Screen, which upon clicking start leads to the Dorm Room. 
 The Dorm room is the central hub of the game. 
-From there the play has the ability to access four primary locations that contain story based dialogue as well as a mini-game with the intention to teach basic coding concepts. 
+From there the player has the ability to access four primary locations that contain story based dialogue as well as a mini-game with the intention to teach basic coding concepts. 
 After the completion of the dialogue in an area, players earn a unique item to be placed within their inventory. 
 - Library (Checkout Slip)
 - Cafeteria (Crumpled Napkin with Fabric Glue)
