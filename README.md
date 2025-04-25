@@ -55,8 +55,10 @@ If downloading windows version from google drive:
 [Windows Mystery of the Gator Byte
 ](https://drive.google.com/drive/folders/1-xPsh9JIfVaLo6yHrtx7_FJLKQdx8Gvr?usp=drive_link)
 
-Extract files 
+Extract files
+
 Click “Mystery of the Gator Byte.exe”
+
 Enjoy!
 
 If downloading MacOS version from Google Drive: 
