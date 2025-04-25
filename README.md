@@ -51,6 +51,31 @@ git clone https://github.com/ThatGuyMrZero/Mystery-of-the-Gator-Byte.git
 5. To edit, please see assets.
 
 --- 
+If downloading windows version from google drive: 
+[Windows Mystery of the Gator Byte
+](https://drive.google.com/drive/folders/1-xPsh9JIfVaLo6yHrtx7_FJLKQdx8Gvr?usp=drive_link)
+Extract files 
+Click “Mystery of the Gator Byte.exe”
+Enjoy!
+
+If downloading MacOS version from Google Drive: 
+[Mac Mystery of the Gator Byte ](https://drive.google.com/file/d/18EPk13weFiAzZ1rXA6nxvcCUi25WtgID/view?usp=sharing)
+Extract files
+Double click “mystery-of-the-gator-byte_mac.app” in your extracted folder
+Open System Settings, search for Privacy & Security in the search bar on the left side
+Scroll down Security section, and click Allow in the section asking to trust Mystery of the Gator Byte
+Enjoy!
+
+If downloading Linux version from google drive: 
+[Linux Mystery Of the Gator Byte 
+](https://drive.google.com/file/d/1tjAqci89CdO4gtIdvRE7_oQoJBNiJZ22/view?usp=sharing)
+1. Unzip 'Linux Mystery of the Gatory Byte'.zip
+2. cd 'Linux Mystery of the Gatory Byte'
+3. cd 'linux_executable'
+4. sudo chmod +x mystery-of-the-gator-byte-linux.x86_64
+5. ./mystery-of-the-gator-byte-linux.x86_64
+6. Enjoy!
+
 
 ## Licensing
 
