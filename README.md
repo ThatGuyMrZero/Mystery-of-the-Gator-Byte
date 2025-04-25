@@ -54,12 +54,14 @@ git clone https://github.com/ThatGuyMrZero/Mystery-of-the-Gator-Byte.git
 If downloading windows version from google drive: 
 [Windows Mystery of the Gator Byte
 ](https://drive.google.com/drive/folders/1-xPsh9JIfVaLo6yHrtx7_FJLKQdx8Gvr?usp=drive_link)
+
 Extract files 
 Click “Mystery of the Gator Byte.exe”
 Enjoy!
 
 If downloading MacOS version from Google Drive: 
 [Mac Mystery of the Gator Byte ](https://drive.google.com/file/d/18EPk13weFiAzZ1rXA6nxvcCUi25WtgID/view?usp=sharing)
+
 Extract files
 Double click “mystery-of-the-gator-byte_mac.app” in your extracted folder
 Open System Settings, search for Privacy & Security in the search bar on the left side
