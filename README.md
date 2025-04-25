@@ -52,8 +52,8 @@ git clone https://github.com/ThatGuyMrZero/Mystery-of-the-Gator-Byte.git
 
 --- 
 If downloading windows version from google drive: 
-[Windows Mystery of the Gator Byte
-](https://drive.google.com/drive/folders/1-xPsh9JIfVaLo6yHrtx7_FJLKQdx8Gvr?usp=drive_link)
+[Windows Mystery of The Gator Byte
+](https://drive.google.com/file/d/1AlAKzQK1xKFc4CDsZMRd1lSBJVxaGSDy/view?usp=sharing)
 
 Extract files
 
